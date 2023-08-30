@@ -154,27 +154,6 @@ main {
         }
     }
 }
-@media screen and (max-width: 321px) {
-    .data-buttons {
-        button {
-            padding: 6px 12px;
-        }
-    }
-}
-@media screen and (max-width: 284px) {
-    .data-buttons {
-        button {
-            padding: 6px 12px;
-        }
-    }
-}
-@media screen and (max-width: 272px) {
-    .data-buttons {
-        button {
-            padding: 4px 8px;
-        }
-    }
-}
  .g-bc {
      grid-row: 1 / span 2;
      grid-column: 1 / span 3;
