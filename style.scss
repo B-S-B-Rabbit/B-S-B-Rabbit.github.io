@@ -120,6 +120,7 @@ main {
         padding: 2vh;
         font-family: Calculator, sans-serif;
         font-size: calc( (100vw)/(1280 - 480) * (120 - 90) + 60px);
+        line-height: 3;
         text-align: right;
         color: $calc-color;
         background-color: #fff;
