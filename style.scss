@@ -91,7 +91,7 @@ main {
 }
 .monitor {
     display: flex;
-    height: 30vw;
+    height: 40vw;
     max-width: 100%;
     fieldset {
         border: none;
@@ -120,7 +120,7 @@ main {
         padding: 2vh;
         font-family: Calculator, sans-serif;
         font-size: 15vw;
-        line-height: 3;
+        line-height: 20;
         text-align: right;
         color: $calc-color;
         background-color: #fff;

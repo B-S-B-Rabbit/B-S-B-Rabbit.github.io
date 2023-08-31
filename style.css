@@ -132,7 +132,7 @@ main .keys {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 30vw;
+  height: 40vw;
   max-width: 100%;
 }
 .monitor fieldset {
@@ -175,7 +175,7 @@ main .keys {
   padding: 2vh;
   font-family: Calculator, sans-serif;
   font-size: 15vw;
-  line-height: 3;
+  line-height: 20;
   text-align: right;
   color: #212529;
   background-color: #fff;
