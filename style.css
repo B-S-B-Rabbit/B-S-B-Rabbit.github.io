@@ -9,10 +9,11 @@
 }
 html,
 body {
-  overflow-y: hidden !important;
+  overflow-y: scroll !important;
   overflow-x: hidden !important;
   margin: 0;
   padding: 0;
+  height: 100vh;
   position: relative;
 }
 
