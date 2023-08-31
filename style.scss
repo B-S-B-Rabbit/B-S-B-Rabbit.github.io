@@ -10,13 +10,14 @@
 $calc-color: #212529;
 html,
 body {
-    overflow-y: hidden;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    max-height: 100vh;
 }
 html {
-    height: 100%;
+    height: 100vh;
 }
 header {
     margin: 0;
