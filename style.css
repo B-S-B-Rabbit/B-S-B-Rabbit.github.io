@@ -175,6 +175,7 @@ main .keys {
   padding: 0;
   font-family: Calculator, sans-serif;
   font-size: 15vw;
+  line-height: 3;
   text-align: right;
   color: #212529;
   background-color: #fff;
@@ -219,7 +220,7 @@ main .keys {
   border-radius: 2px;
   background: #ffffff;
   color: #212529;
-  padding: 1vw 2vw;
+  padding: 2vw 4vw;
   font-size: 8vw;
   font-family: Calculator, sans-serif;
   -webkit-transition: background-color 0.3s ease;
