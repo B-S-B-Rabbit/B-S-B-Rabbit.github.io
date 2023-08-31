@@ -173,6 +173,12 @@ main {
  }
 .g-eq {
      grid-column: 4 / span 2;
+     background: #35393bbb !important;
+     color: white !important;
+     &:hover
+     {
+        background:rgb(31, 31, 30) !important;
+     }
  }
 footer {
     background-color: rgba(243, 241, 148, 0.849);

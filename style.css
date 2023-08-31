@@ -247,6 +247,11 @@ main .keys {
 
 .g-eq {
   grid-column: 4 / span 2;
+  background: #35393bbb !important;
+  color: white !important;
+}
+.g-eq:hover {
+  background: #1f1f1e !important;
 }
 
 footer {
