@@ -233,7 +233,7 @@ main .keys {
   border-radius: 4px;
   background: #ffffff;
   color: #212529;
-  padding: 2vw 4vw;
+  padding: 4vw 4vw;
   font-size: 8vw;
   font-family: Calculator, sans-serif;
   -webkit-transition: background-color 0.3s ease;
