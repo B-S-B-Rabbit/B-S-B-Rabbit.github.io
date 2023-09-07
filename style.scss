@@ -17,7 +17,7 @@ a {
 }
 html,
 body {
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
     overflow-x: hidden !important;
     margin: 0;
     padding: 0;
@@ -30,6 +30,10 @@ html {
 header {
     margin: 0;
     padding: 0;
+    flex: 0 0 auto;
+    img {
+        max-height: 200px;
+    }
 }
 .hat 
 {
@@ -47,11 +51,20 @@ body {
     background-color: rgba(179, 172, 172, 0.582);
     display: flex;
     flex-direction: column;
+    height: 100%;
     min-height: 100%;
+}
+.wide-screen
+{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
 }
 nav {
     background: black;
-
+    display: flex;
+    justify-content: center;
     ul {
         display: flex;
         flex-direction: row;
@@ -78,15 +91,16 @@ nav {
 .calculator
 {
     max-width: 100%;
+    border: 3px solid;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    margin: 0.25rem;
 }
 main {
     display: flex;
     flex: 1 0 auto;
     color: #333;
-    border: solid;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    margin: 0.5rem;
+    
     align-items: center;
     justify-content: center;
     flex-direction: row;
@@ -102,7 +116,7 @@ main {
 }
 .monitor {
     display: flex;
-    height: 40vw;
+    height: 30vw;
     max-width: 100%;
     fieldset {
         border: none;
@@ -136,7 +150,7 @@ main {
         color: $calc-color;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid #bdbdbd;
+        border: 1px solid #bdbdbd00;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         overflow: visible;
@@ -176,16 +190,17 @@ main {
             box-shadow: inset 2px 6px 12px rgba($calc-color, 0.5);
         }
     }
+    .g-bc,.g-C {
+        font-size: 11vw;
+    }
 }
  .g-bc {
      grid-row: 1 / span 1;
      grid-column: 1 / span 3;
-     font-size: 11vw !important;
 }
 .g-C {
     grid-row: 1 / span 1;
      grid-column: 4 / span 2;
-     font-size: 11vw !important;
 }
 .g-sqrt , .g-pm , .g-pi, .g-log , .g-ln 
  {
@@ -226,4 +241,48 @@ footer {
     background-color: rgba(243, 241, 148, 0.849);
     padding: 0.5rem;
     font-size: 5vw;
+    flex: 0 0 auto;
+}
+@media screen and (min-width: 650px) {
+    .wide-screen {
+        flex-direction: row;
+        align-items: center;
+        nav {
+            align-items: center;
+            ul {
+                flex-direction: row;
+                writing-mode: vertical-lr; 
+                text-orientation: upright; 
+                align-items: center;
+                li {
+                    a {
+                        font-size: 1.7vw;
+                    }
+                }
+            }
+        }
+        .calculator
+        {
+            max-width: 50%;
+        }
+        .data-buttons {
+            gap: 0.8vw;
+            button {
+                padding: 0.2vw 0.2vw;
+                font-size: 3vw;
+            }
+        .g-bc, .g-C {
+            font-size: 4vw;
+        }
+        }
+        .monitor {
+            height: 12vw;
+            input {
+                font-size: 6vw;
+            }
+        }
+    }
+    footer {
+        font-size: 1vw;
+    }
 }
