@@ -51,10 +51,34 @@ header img {
 }
 
 body {
+  background: -webkit-gradient(linear, left top, right top, from(#242323), color-stop(19%, #424242), color-stop(40%, #868686), color-stop(60%, #b4b4b4), color-stop(83%, #d4d4d4), to(#242323));
+  background: linear-gradient(to right, #242323 0%, #424242 19%, #868686 40%, #b4b4b4 60%, #d4d4d4 83%, #242323 100%);
+  background-size: 10000px 100%;
+  -webkit-animation: bg 15s linear infinite;
+          animation: bg 15s linear infinite;
+}
+
+@-webkit-keyframes bg {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 10000px;
+  }
+}
+
+@keyframes bg {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 10000px;
+  }
+}
+body {
   min-width: 272px;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Georgia', serif;
   color: #7c2020;
-  background-color: rgba(179, 172, 172, 0.582);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -112,7 +136,13 @@ nav ul li a {
   padding: 1rem;
 }
 nav ul li a:hover {
-  background-color: rgba(66, 64, 64, 0.5);
+  background-color: rgba(155, 221, 233, 0.2);
+}
+nav ul li a:active {
+  color: aqua !important;
+}
+nav ul li a .active {
+  color: aqua !important;
 }
 
 *, *::before, *::after {
@@ -275,7 +305,7 @@ main .keys {
   background: rgba(192, 192, 177, 0.664);
 }
 .data-buttons button:active {
-  text-shadow: 1vw 1.2vw 1px rgba(33, 37, 41, 0.2);
+  text-shadow: 0.2rem 0.4rem 0.4px rgba(33, 37, 41, 0.2);
   -webkit-box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
           box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
 }
@@ -306,9 +336,9 @@ main .keys {
   background: #1f1f1e !important;
 }
 .g-eq:active {
-  text-shadow: 1vw 1.2vw 1px rgba(243, 241, 148, 0.2) !important;
-  -webkit-box-shadow: inset 2px 6px 12px rgba(255, 255, 255, 0.5) !important;
-          box-shadow: inset 2px 6px 12px rgba(255, 255, 255, 0.5) !important;
+  text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
+  -webkit-box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
+          box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
 }
 
 .data-buttons > .nn {
@@ -319,7 +349,7 @@ main .keys {
   background: #1f1f1e;
 }
 .data-buttons > .nn:active {
-  text-shadow: 1vw 1.2vw 1px rgba(243, 241, 148, 0.2);
+  text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2);
   -webkit-box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
           box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
 }
@@ -347,10 +377,35 @@ footer {
         -ms-flex-align: center;
             align-items: center;
   }
+  .wide-screen .sidebar {
+    position: relative;
+    left: -1.5%;
+    -webkit-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+    overflow-x: hidden;
+  }
+  .wide-screen .sidebar:hover {
+    left: 0;
+  }
+  .wide-screen .sidebar:hover ul a {
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    color: white;
+  }
+  .wide-screen .sidebar ul a {
+    color: black;
+  }
   .wide-screen nav {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    border-radius: 0 3vw 3vw 0;
+  }
+  .wide-screen nav #calc-ref:hover {
+    border-radius: 0 3vw 0 0;
+  }
+  .wide-screen nav #ab-ref:hover {
+    border-radius: 0 0 3vw 0;
   }
   .wide-screen nav ul {
     -webkit-box-orient: horizontal;

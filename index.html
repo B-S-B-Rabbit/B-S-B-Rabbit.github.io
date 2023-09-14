@@ -9,13 +9,23 @@
 <body>
     <header><img class="hat" src="images/hat2.jpg" alt="Калькулятор серый"></header>
     <div class="wide-screen">
-    <nav>
+    <nav class="sidebar">
         <div>
             <ul>
-                <li><a href="index.html">Калькулятор</a></li>
-                <li><a href="about.html">Использование</a></li>
+                <li><a id="calc-ref" href="index.html">Калькулятор</a></li>
+                <li><a id="ab-ref" href="about.html">Использование</a></li>
             </ul>
         </div>
+        <script>
+             document.addEventListener("DOMContentLoaded", function () {
+                var currentURL = window.location.href;
+                if (currentURL.indexOf('https://b-s-b-rabbit.github.io/') !== -1) {
+                    document.getElementById('calc-ref').classList.add('active');
+                } else if (currentURL.indexOf('https://b-s-b-rabbit.github.io/about.html') !== -1) {
+                    document.getElementById('ab-ref').classList.add('active');
+                }
+             });
+        </script>
     </nav>
     <main>
         <section class="calculator">

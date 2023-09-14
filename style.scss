@@ -44,11 +44,26 @@ header {
     padding: 0;
     display: block;
 }
+$bgWidth: 10000px;
+body {
+  background: linear-gradient(to right, #242323 0%,#424242 19%,#868686 40%,#b4b4b4 60%,#d4d4d4 83%,#242323 100%); 
+  background-size: $bgWidth 100%;
+  animation: bg 15s linear infinite ;
+}
+
+@keyframes bg{
+  0%{
+    background-position-x: 0;
+  }
+  
+  100%{
+    background-position-x: $bgWidth;
+  }
+}
 body {
     min-width: 272px; 
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Georgia', serif;
     color: #7c2020;
-    background-color: rgba(179, 172, 172, 0.582);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -79,7 +94,13 @@ nav {
                 font-size: 5vw;
                 padding: 1rem;
                 &:hover {
-                    background-color: rgba($color: #424040, $alpha: 0.5);
+                    background-color: rgba($color: #9bdde9, $alpha: 0.2);
+                }
+                &:active{
+                    color: aqua !important;
+                }
+                .active {
+                    color: aqua !important;
                 }
             }
         }
@@ -186,8 +207,9 @@ main {
         }
         &:active
         {
-            text-shadow: 1vw 1.2vw 1px rgba($calc-color, 0.2);
+            text-shadow:  0.2rem 0.4rem 0.4px rgba($calc-color, 0.2);
             box-shadow: inset 2px 6px 12px rgba($calc-color, 0.5);
+            
         }
     }
     .g-bc,.g-C {
@@ -217,8 +239,8 @@ main {
      }
      &:active
     {
-        text-shadow: 1vw 1.2vw 1px rgba(243, 241, 148, 0.2) !important;
-        box-shadow: inset 2px 6px 12px rgba(white, 0.5) !important;
+        text-shadow:  0.2rem 0.4rem 0.4px  rgba(243, 241, 148, 0.2) !important;
+        box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5) !important;
     }
  } 
 .data-buttons>.nn {
@@ -230,7 +252,7 @@ main {
     }
     &:active
     {
-        text-shadow: 1vw 1.2vw 1px rgba(243, 241, 148, 0.2);
+        text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2);
         box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5);
     }
  }
@@ -247,8 +269,40 @@ footer {
     .wide-screen {
         flex-direction: row;
         align-items: center;
+        .sidebar {
+            position: relative;
+            left: -1.5%;
+            transition: left 0.3s ease; 
+             overflow-x: hidden;        
+            &:hover {
+                left: 0;
+                ul { 
+                a { 
+                    transition: color 0.3s ease;
+                    color: white;
+                }
+                }
+            }
+            ul {
+                a {
+                    color: black;
+                }
+            }
+        }
+
         nav {
             align-items: center;
+            border-radius: 0 3vw 3vw 0;
+            #calc-ref {
+                &:hover {
+                    border-radius: 0 3vw 0 0;
+                }
+            }
+            #ab-ref {
+                &:hover {
+                    border-radius: 0 0 3vw 0;
+                }
+            }
             ul {
                 flex-direction: row;
                 writing-mode: vertical-lr; 
