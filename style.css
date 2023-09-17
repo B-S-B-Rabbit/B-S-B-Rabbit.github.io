@@ -231,9 +231,7 @@ main .keys {
 .monitor input {
   min-width: 0;
   max-width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-flex: 1;
