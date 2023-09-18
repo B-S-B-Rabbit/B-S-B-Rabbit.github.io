@@ -113,7 +113,10 @@ const calculator = {
     this.display += operator; // Добавляем оператор к текущему значению на экране
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
-
+  setFunction(operator) {
+    this.display += operator + "("; // Добавляем оператор к текущему значению на экране
+    this.updateDisplay(); // Обновляем экран после добавления оператора
+  },
   calculate() {
     const rpnExpression = infixToRPN(this.display);
     console.log(rpnExpression);
@@ -138,10 +141,18 @@ const calculator = {
     this.operator = '';
     this.updateDisplay();
   },
+  leftBackspace() {
+    console.log(this.display.length)
+    if (this.display.length == 1) {this.clear();}
+    else if (this.display.length > 1) {
+    this.display = this.display.slice(0, this.display.length - 1);
+    this.operator = '';
+    this.updateDisplay();
+    }
+  },
 };
 
 const digitButtons = document.querySelectorAll('.digit-button'); // Замени '.digit-button' на реальный класс кнопок с цифрами
-
 digitButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const digit = button.textContent;
@@ -151,7 +162,6 @@ digitButtons.forEach((button) => {
 });
 
 const operatorButtons = document.querySelectorAll('.operator-button'); // Замени '.operator-button' на реальный класс кнопок с операторами
-
 operatorButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const operator = button.textContent;
@@ -159,14 +169,21 @@ operatorButtons.forEach((button) => {
   });
 });
 
-const equalsButton = document.getElementById('equalsButton'); // Замени 'equalsButton' на реальный идентификатор кнопки "="
 
+const functionButtons = document.querySelectorAll('.function-button'); // Замени '.operator-button' на реальный класс кнопок с операторами
+functionButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const func = button.textContent;
+    calculator.setFunction(func);
+  });
+});
+
+const equalsButton = document.getElementById('equalsButton'); // Замени 'equalsButton' на реальный идентификатор кнопки "="
 equalsButton.addEventListener('click', () => {
   calculator.calculate();
 });
 
 const clearButton = document.getElementById('clearButton'); // Замени 'clearButton' на реальный идентификатор кнопки "С"
-
 clearButton.addEventListener('click', () => {
   calculator.clear();
 });
@@ -180,4 +197,9 @@ openParenthesisButton.addEventListener('click', () => {
 
 closeParenthesisButton.addEventListener('click', () => {
   calculator.closeParenthesis();
+});
+
+const backspaceButton = document.getElementById('backspaceButton'); // Замени 'clearButton' на реальный идентификатор кнопки "С"
+backspaceButton.addEventListener('click', () => {
+  calculator.leftBackspace();
 });
