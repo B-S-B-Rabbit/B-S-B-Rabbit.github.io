@@ -8,7 +8,6 @@ function infixToRPN(expression) {
     '/': 2,
     '%': 2,
     'sqrt': 3,
-    'PI': 3,
     'lg': 3,
     'ln': 3,
     '^': 4,
@@ -108,7 +107,6 @@ const operatorsBinary = {
 
 const operatorsUnary = {
   'sqrt': (a) => Math.sqrt(a),
-  'PI': Math.PI,
   'lg': (a) => Math.log10(a),
   'ln': (a) => Math.log(a),
   'n': (a) => -a, // Унарный минус
@@ -253,4 +251,49 @@ closeParenthesisButton.addEventListener('click', () => {
 const backspaceButton = document.getElementById('backspaceButton'); // Замени 'clearButton' на реальный идентификатор кнопки "С"
 backspaceButton.addEventListener('click', () => {
   calculator.leftBackspace();
+});
+
+
+document.addEventListener('keydown', (event) => {
+  const key = event.key;
+  const button = document.querySelector(`[data-key="${key}"]`);
+  if (key >= "0" && key <= "9") { 
+    if (button) {
+    // Добавьте класс keytapped к кнопке при нажатии клавиши
+    button.classList.add('keytapped-white');
+    calculator.appendDigit(key);
+  }
+}
+  else if (key == "Backspace") {button.classList.add('keytapped-white'); calculator.leftBackspace();}
+  else {
+    if (button) {
+      // Добавьте класс keytapped к кнопке при нажатии клавиши
+      
+    }
+    if (["+","-", "/", "*", "%", "xy", ".", "x!"].indexOf(button.textContent) + 1) {
+      calculator.setOperator(key);
+    }
+    if (button.textContent == "(") {calculator.openParenthesis();}
+    if (button.textContent == ")") {calculator.closeParenthesis();}
+    if (button.textContent== "=") {calculator.calculate();}
+    
+  }
+
+});
+
+document.addEventListener('keyup', (event) => {
+  const key = event.key;
+  const button = document.querySelector(`[data-key="${key}"]`);
+  if (key >= "0" && key <= "9" || key == "Backspace") { 
+    if (button) {
+    // Добавьте класс keytapped к кнопке при нажатии клавиши
+    setTimeout(a => button.classList.remove('keytapped-white'), 100);
+  }
+}
+  else {
+    if (button) {
+      // Добавьте класс keytapped к кнопке при нажатии клавиши
+      setTimeout(() => button.classList.remove('keytapped-others'), 100);
+    }
+  }
 });

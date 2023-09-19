@@ -182,6 +182,16 @@ main {
         }
     }
 }
+.keytapped-white {
+    background:rgba(192, 192, 177, 0.664) !important;
+    text-shadow:  0.2rem 0.4rem 0.4px rgba($calc-color, 0.2) !important;
+    box-shadow: inset 2px 6px 12px rgba($calc-color, 0.5) !important;
+  }
+.keytapped-others {
+    background:rgb(31, 31, 30) !important;
+    text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
+    box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5) !important;
+  }
 .data-buttons {
     display: grid;
     grid-template-columns: repeat(5,1fr);
@@ -202,7 +212,7 @@ main {
         cursor: pointer;
         &:hover
         {
-            background:rgba(192, 192, 177, 0.664)
+            background:rgba(192, 192, 177, 0.664);
         }
         &:active
         {
@@ -228,20 +238,6 @@ main {
     grid-row: 2 / span 1;
     
  }
-.g-eq {
-     grid-column: 4 / span 2;
-     background: #02203bbb !important;
-     color: white !important;
-     &:hover
-     {
-        background:rgb(31, 31, 30) !important;
-     }
-     &:active
-    {
-        text-shadow:  0.2rem 0.4rem 0.4px  rgba(243, 241, 148, 0.2) !important;
-        box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5) !important;
-    }
- } 
 .data-buttons>.nn {
     background: #5f5f5f;
     color: #f6f7ec;
@@ -255,6 +251,11 @@ main {
         box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5);
     }
  }
+ .data-buttons>.g-eq {
+    grid-column: 4 / span 2;
+    background: #02203bbb;
+    color: white;
+} 
  .data-buttons>.rb {
     background: rgba(187, 6, 6, 0.753);
  }

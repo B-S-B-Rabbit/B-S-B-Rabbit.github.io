@@ -34,13 +34,13 @@
                     <legend>Экран калькулятора</legend>
                     <div>
                         <label for="screen">Ввод-вывод чисел</label>
-                        <input type="text" name="screen" id="screen" placeholder="0" maxlength="8">
+                        <input type="text" name="screen" id="screen" placeholder="0" maxlength="8" readonly>
                     </div>
             </fieldset>
         </form>
         <section class="keys">
             <section class="data-buttons">
-                <button class="g-bc" id="backspaceButton">&larr;</button>
+                <button class="g-bc" id="backspaceButton" data-key="Backspace">&larr;</button>
                 <button class="g-C rb" id="clearButton">C</button>
                 <button class="g-sqrt nn function-button">sqrt</button>
                 <button class="g-pm nn operator-button">+-</button>
@@ -48,30 +48,30 @@
                 <button class="g-log nn function-button">lg</button>
                 <button class="g-ln nn function-button">ln</button>
                 
-                <button class="g-ext nn operator-button">x<sup>y</sup></button>
-                <button class="g-lp nn" id="openParenthesisButton">(</button>
-                <button class="g-rp nn" id="closeParenthesisButton">)</button>
-                <button class="g-md nn operator-button">%</button>
-                <button class="g-dv nn operator-button">/</button>
+                <button class="g-ext nn operator-button" data-key="^">x<sup>y</sup></button>
+                <button class="g-lp nn" id="openParenthesisButton" data-key="(">(</button>
+                <button class="g-rp nn" id="closeParenthesisButton" data-key=")">)</button>
+                <button class="g-md nn operator-button" data-key="%">%</button>
+                <button class="g-dv nn operator-button" data-key="/">/</button>
                 <button class="g-tr nn operator-button ">x<sup>3</sup></button>
-                <button class="g-7 digit-button">7</button>
-                <button class="g-8 digit-button">8</button>
-                <button class="g-9 digit-button">9</button>
-                <button class="g-mul nn operator-button">*</button>
+                <button class="g-7 digit-button" data-key="7">7</button>
+                <button class="g-8 digit-button" data-key="8">8</button>
+                <button class="g-9 digit-button" data-key="9">9</button>
+                <button class="g-mul nn operator-button" data-key="*">*</button>
                 <button class="g-sqr nn operator-button">x<sup>2</sup></button>
-                <button class="g-4 digit-button">4</button>
-                <button class="g-5 digit-button">5</button>
-                <button class="g-6 digit-button">6</button>
-                <button class="g-7 nn operator-button">-</button>
+                <button class="g-4 digit-button" data-key="4">4</button>
+                <button class="g-5 digit-button" data-key="5">5</button>
+                <button class="g-6 digit-button" data-key="6">6</button>
+                <button class="g-7 nn operator-button" data-key="-">-</button>
                 <button class="g-10x nn operator-button">10<sup>x</sup></button>
-                <button class="g-1 digit-button">1</button>
-                <button class="g-2 digit-button">2</button>
-                <button class="g-3 digit-button">3</button>
-                <button class="g-plus nn operator-button">+</button>
-                <button class="g-fact nn operator-button">x!</button>
-                <button class="g-dot nn operator-button">.</button>
-                <button class="g-zero digit-button">0</button>
-                <button class="g-eq" id="equalsButton">=</button>   
+                <button class="g-1 digit-button" data-key="1">1</button>
+                <button class="g-2 digit-button" data-key="2">2</button>
+                <button class="g-3 digit-button" data-key="3">3</button>
+                <button class="g-plus nn operator-button" data-key="+">+</button>
+                <button class="g-fact nn operator-button" data-key="!">x!</button>
+                <button class="g-dot nn operator-button" data-key=".">.</button>
+                <button class="g-zero digit-button" data-key="0">0</button>
+                <button class="g-eq nn" id="equalsButton" data-key="=">=</button>   
             </section>
         </section>
         </section>
