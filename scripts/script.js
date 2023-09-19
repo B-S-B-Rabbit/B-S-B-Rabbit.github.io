@@ -6,12 +6,13 @@ function infixToRPN(expression) {
     '-': 1,
     '*': 2,
     '/': 2,
-    '%':2,
+    '%': 2,
     'sqrt': 3,
     'PI': 3,
     'lg': 3,
     'ln': 3,
-    'x^y': 4,
+    '^': 4,
+    'n': 4, // Унарный минус
   };
 
   const isOperator = (token) => token in precedence;
@@ -43,8 +44,11 @@ function infixToRPN(expression) {
         if (operatorStack[operatorStack.length - 1] === '(') {
           operatorStack.pop();
         }
+      } else if (token === '!') { // Обрабатываем оператор "!" как унарный оператор
+        operatorStack.push(token);
       }
     }
+    
 
     while (operatorStack.length) {
       outputQueue.push(operatorStack.pop());
@@ -52,13 +56,25 @@ function infixToRPN(expression) {
 
     return outputQueue;
   }
+  console.log(expression);
+const modifiedExpression1 = expression.replace(/(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g, (match, p1, p2, p3) => {
+  console.log(`match is ${match}, p1 is ${p1}, p2 is ${p2}, p3 is ${p3}`);
+  // Если совпадение начинается с унарного минуса, заменяем его на 'n', а число без минуса оставляем без изменений.
+  return p2 == '-' ? p1 + 'n' + p3 : p1 + p2 + p3;
+});
+const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, (match, $1) => {
+  console.log(`match is ${match}, p1 is ${$1}`);
+  // Если совпадение начинается с унарного минуса, заменяем его на 'n', а число без минуса оставляем без изменений.
+  return Math.PI;
+});
 
-  const tokens = expression.match(/(\d+(\.\d*)?|\.\d+|[+\-*/%^()]|sqrt|pi|lg|ln|x\^y)/g);
+  console.log("this is modified expression:", modifiedExpression2);
+  const tokens = modifiedExpression2.match(/(\d+(\.\d*)?|\.\d+|[+\-*/%^()!]|sqrt|PI|lg|ln|\^|n)/g);
+  
   console.log(tokens);
   const rpn = shuntingYard(tokens);
   return rpn;
 }
-
 function calculateRPN(rpn) {
   const stack = [];
 
@@ -70,17 +86,16 @@ function calculateRPN(rpn) {
       const operand1 = stack.pop();
       const result = operatorsBinary[token](operand1, operand2);
       stack.push(result);
-    }
-    else if (token in operatorsUnary) 
-    {
-        const operand = stack.pop();
-        const result = operatorsUnary[token](operand);
-        stack.push(result);
+    } else if (token in operatorsUnary) {
+      const operand = stack.pop();
+      const result = operatorsUnary[token](operand);
+      stack.push(result);
     }
   });
 
   return stack[0];
 }
+
 
 const operatorsBinary = {
   '+': (a, b) => a + b,
@@ -88,13 +103,24 @@ const operatorsBinary = {
   '*': (a, b) => a * b,
   '/': (a, b) => a / b,
   '%': (a, b) => a % b,
-  'X^Y': (a, b) => Math.pow(a, b),
+  '^': (a, b) => Math.pow(a, b),
 };
+
 const operatorsUnary = {
-    'sqrt': (a) => Math.sqrt(a),
-    'lg': (a) => Math.log10(a),
-    'ln': (a) => Math.log(a),
-  };
+  'sqrt': (a) => Math.sqrt(a),
+  'PI': Math.PI,
+  'lg': (a) => Math.log10(a),
+  'ln': (a) => Math.log(a),
+  'n': (a) => -a, // Унарный минус
+  '!': (a) => factorial(a), // Факториал
+};
+
+// Функция для вычисления факториала
+function factorial(n) {
+  if (n === 0) return 1;
+  return n * factorial(n - 1);
+}
+
 const calculator = {
   display: '',
   operator: '',
@@ -110,7 +136,32 @@ const calculator = {
   },
 
   setOperator(operator) {
+    if (!(["xy", "x3", "x2", "10x", "x!", "+-"].indexOf(operator) + 1)) {
+      console.log(operator);
     this.display += operator; // Добавляем оператор к текущему значению на экране
+    }
+    else {
+      if (operator == "xy") {this.display += "^(";}
+      if (operator == "x2") {this.display += "^2";}
+      if (operator == "x3") {this.display += "^3";}
+      if (operator == "10x") {this.display += "10^(";}
+      if (operator == "x!") {this.display += "!";}
+      if (operator == "+-" && this.display) {
+        if (this.display[0] == "-")
+        { 
+          this.display = this.display.slice(1, this.display.length);
+          if (this.display[0] == "(" && this.display[this.display.length - 1] == ")") {
+            this.display = this.display.slice(1, this.display.length - 1);
+          }
+        }
+        else if (!(this.display[0] == "(" && this.display[this.display.length - 1] == ")")) {
+          this.display = "-(" + this.display + ")";
+        }
+        else {
+          this.display = "-" + this.display;
+        }
+      }
+    }
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
   setFunction(operator) {
