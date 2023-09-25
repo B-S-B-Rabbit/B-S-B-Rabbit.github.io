@@ -166,7 +166,7 @@ main {
         padding: 2vh;
         font-family: Calculator, sans-serif;
         font-size: 20vw;
-        line-height: 20;
+        line-height: 2;
         text-align: right;
         color: $calc-color;
         background-color: #fff;
@@ -174,7 +174,7 @@ main {
         border: 1px solid #bdbdbd00;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        overflow: visible;
+        overflow: scroll;
         &::placeholder {
             color: $calc-color;
             opacity: 0.7;
@@ -330,13 +330,13 @@ footer {
         }
         }
         .monitor {
-            height: 12vw;
+            height: 7vw;
             input {
                 font-size: 4.6vw;
             }
         }
     }
     footer {
-        font-size: 1vw;
+        font-size: 1.4vw;
     }
 }

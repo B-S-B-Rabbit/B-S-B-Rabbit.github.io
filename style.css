@@ -241,7 +241,7 @@ main .keys {
   padding: 2vh;
   font-family: Calculator, sans-serif;
   font-size: 20vw;
-  line-height: 20;
+  line-height: 2;
   text-align: right;
   color: #212529;
   background-color: #fff;
@@ -252,7 +252,7 @@ main .keys {
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  overflow: visible;
+  overflow: scroll;
 }
 .monitor input::-webkit-input-placeholder {
   color: #212529;
@@ -441,14 +441,14 @@ footer {
     font-size: 4vw;
   }
   .wide-screen .monitor {
-    height: 12vw;
+    height: 7vw;
   }
   .wide-screen .monitor input {
     font-size: 4.6vw;
   }
 
   footer {
-    font-size: 1vw;
+    font-size: 1.4vw;
   }
 }
 

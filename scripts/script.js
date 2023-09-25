@@ -120,81 +120,81 @@ function factorial(n) {
 }
 
 const calculator = {
-  display: '',
+  display: document.getElementById('screen'),
   operator: '',
 
   updateDisplay() {
     const displayElement = document.getElementById('screen');
-    displayElement.value = this.display;
+    displayElement.value = this.display.value;
   },
 
   appendDigit(digit) {
-    this.display = this.display == '' ? digit : this.display + digit;
+    this.display.value = this.display.value == '' ? digit : this.display.value + digit;
     this.updateDisplay();
   },
 
   setOperator(operator) {
     if (!(["xy", "x3", "x2", "10x", "x!", "+-"].indexOf(operator) + 1)) {
       console.log(operator);
-    this.display += operator; // Добавляем оператор к текущему значению на экране
+    this.display.value += operator; // Добавляем оператор к текущему значению на экране
     }
     else {
-      if (operator == "xy") {this.display += "^(";}
-      if (operator == "x2") {this.display += "^2";}
-      if (operator == "x3") {this.display += "^3";}
-      if (operator == "10x") {this.display += "10^(";}
-      if (operator == "x!") {this.display += "!";}
-      if (operator == "+-" && this.display) {
-        if (this.display[0] == "-")
+      if (operator == "xy") {this.display.value += "^(";}
+      if (operator == "x2") {this.display.value += "^2";}
+      if (operator == "x3") {this.display.value += "^3";}
+      if (operator == "10x") {this.display.value += "10^(";}
+      if (operator == "x!") {this.display.value += "!";}
+      if (operator == "+-" && this.display.value) {
+        if (this.display.value[0] == "-")
         { 
-          this.display = this.display.slice(1, this.display.length);
-          if (this.display[0] == "(" && this.display[this.display.length - 1] == ")") {
-            this.display = this.display.slice(1, this.display.length - 1);
+          this.display.value = this.display.value.slice(1, this.display.value.length);
+          if (this.display.value[0] == "(" && this.display.value[this.display.value.length - 1] == ")") {
+            this.display.value = this.display.value.slice(1, this.display.value.length - 1);
           }
         }
-        else if (!(this.display[0] == "(" && this.display[this.display.length - 1] == ")")) {
-          this.display = "-(" + this.display + ")";
+        else if (!(this.display.value[0] == "(" && this.display.value[this.display.value.length - 1] == ")")) {
+          this.display.value = "-(" + this.display.value + ")";
         }
         else {
-          this.display = "-" + this.display;
+          this.display.value = "-" + this.display.value;
         }
       }
     }
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
   setFunction(operator) {
-    this.display += operator + "("; // Добавляем оператор к текущему значению на экране
+    this.display.value += operator + "("; // Добавляем оператор к текущему значению на экране
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
   calculate() {
-    const rpnExpression = infixToRPN(this.display);
+    const rpnExpression = infixToRPN(document.getElementById('screen').value);
     console.log(rpnExpression);
     const result = calculateRPN(rpnExpression);
-    this.display = result;
+    this.display.value = result;
     this.updateDisplay();
     return result;
   },
 
   openParenthesis() {
-    this.display += '(';
+    this.display.value += '(';
     this.updateDisplay();
   },
 
   closeParenthesis() {
-    this.display += ')';
+    this.display.value += ')';
     this.updateDisplay();
   },
 
   clear() {
-    this.display = '';
+    this.display.value = '';
     this.operator = '';
     this.updateDisplay();
   },
   leftBackspace() {
-    console.log(this.display.length)
-    if (this.display.length == 1) {this.clear();}
-    else if (this.display.length > 1) {
-    this.display = this.display.slice(0, this.display.length - 1);
+    console.log(this.display.value.length)
+    if (this.display.value.length == 1) {this.clear();}
+    else if (this.display.value.length > 1) {
+    this.display.value = this.display.value.slice(0, this.display.value.length - 1);
     this.operator = '';
     this.updateDisplay();
     }
@@ -252,9 +252,19 @@ const backspaceButton = document.getElementById('backspaceButton'); // Заме�
 backspaceButton.addEventListener('click', () => {
   calculator.leftBackspace();
 });
-
-
 document.addEventListener('keydown', (event) => {
+  if (event.key == "Enter") { event.preventDefault(); document.querySelector(`[data-key="="]`).classList.add('keytapped-others'); calculator.calculate();}
+});
+document.addEventListener('keyup', (event) => {
+  if (event.key == "Enter") { setTimeout(() => document.querySelector(`[data-key="="]`).classList.remove('keytapped-others'), 100);}
+});
+document.addEventListener('keydown', (event) => {
+  const target = event.target; // Получаем целевой элемент события
+
+  // Проверяем, находится ли фокус внутри элемента input или его потомков
+  if (target.closest('input')) {
+    return; // Если фокус в input, не выполняем листенеры
+  }
   const key = event.key;
   const button = document.querySelector(`[data-key="${key}"]`);
   if (key >= "0" && key <= "9") { 
@@ -267,7 +277,7 @@ document.addEventListener('keydown', (event) => {
   else if (key == "Backspace") {button.classList.add('keytapped-white'); calculator.leftBackspace();}
   else {
     if (button) {
-      // Добавьте класс keytapped к кнопке при нажатии клавиши
+      button.classList.add('keytapped-others');
       
     }
     if (["+","-", "/", "*", "%", "xy", ".", "x!"].indexOf(button.textContent) + 1) {
@@ -275,13 +285,19 @@ document.addEventListener('keydown', (event) => {
     }
     if (button.textContent == "(") {calculator.openParenthesis();}
     if (button.textContent == ")") {calculator.closeParenthesis();}
-    if (button.textContent== "=") {calculator.calculate();}
+    if (button.textContent== "=" ) {calculator.calculate();}
     
   }
 
 });
 
 document.addEventListener('keyup', (event) => {
+  const target = event.target; // Получаем целевой элемент события
+
+  // Проверяем, находится ли фокус внутри элемента input или его потомков
+  if (target.closest('input')) {
+    return; // Если фокус в input, не выполняем листенеры
+  }
   const key = event.key;
   const button = document.querySelector(`[data-key="${key}"]`);
   if (key >= "0" && key <= "9" || key == "Backspace") { 
@@ -297,3 +313,65 @@ document.addEventListener('keyup', (event) => {
     }
   }
 });
+const screen = document.getElementById("screen");
+const hiddenScreen = document.getElementById("hidden-screen");
+let defaultFontSize = parseFloat(window.getComputedStyle(screen).fontSize);
+let currentFontSize = defaultFontSize;
+let shrinkCount = 0;
+let prevText = ""; // Сохраняем предыдущий текст
+
+function updateFontSize() {
+  const textWidth = screen.scrollWidth;
+  const inputWidth = screen.clientWidth;
+  console.log("this is",textWidth, inputWidth);
+  if (textWidth - 1 > inputWidth && shrinkCount < 2) {
+    currentFontSize *= 0.8; // Уменьшаем размер шрифта на 10%
+    shrinkCount++;
+  } else if (textWidth - 1 <= inputWidth && shrinkCount > 0) {
+    // Попытка увеличения шрифта
+    let tempFontSize = currentFontSize/0.8; // Попытка увеличить на 10%
+    let tempScreen = document.createElement("div");
+    tempScreen.style.fontSize = `${tempFontSize}px`;
+    tempScreen.style.visibility = "hidden";
+    tempScreen.style.position = "absolute";
+    tempScreen.style.top = "-9999px";
+    tempScreen.style.left = "-9999px";
+    tempScreen.style.whiteSpace = "nowrap";
+    tempScreen.textContent = screen.value;
+    document.body.appendChild(tempScreen);
+    console.log(tempScreen.scrollWidth, inputWidth);
+    if (tempScreen.scrollWidth - 1 <= inputWidth) {
+      currentFontSize = tempFontSize; // Увеличиваем размер шрифта
+      shrinkCount--;
+    }
+
+    document.body.removeChild(tempScreen);
+  } else if (screen.value === prevText) {
+    currentFontSize = defaultFontSize; // Восстанавливаем до дефолтного размера
+    shrinkCount = 0; // Сбрасываем счетчик уменьшений
+  }
+
+  screen.style.fontSize = `${currentFontSize}px`;
+  hiddenScreen.style.fontSize = `${currentFontSize}px`;
+  hiddenScreen.value = screen.value; // Копируем текст в скрытый input
+  prevText = screen.value; // Сохраняем текущий текст
+}
+
+// Слушаем изменения в поле ввода
+screen.addEventListener("input", updateFontSize);
+
+// Вызываем updateFontSize для установки начального размера шрифта
+updateFontSize();
+
+// Восстановление размера шрифта при стирании всего текста
+screen.addEventListener("keydown", (event) => {
+  if (event.key === "Backspace" && screen.value.length === 0) {
+    currentFontSize = defaultFontSize;
+    screen.style.fontSize = `${currentFontSize}px`;
+    hiddenScreen.style.fontSize = `${currentFontSize}px`;
+    shrinkCount = 0;
+  }
+});
+
+document.addEventListener("click", updateFontSize);
+document.addEventListener("keydown", updateFontSize);
