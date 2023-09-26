@@ -140,7 +140,7 @@ main {
     max-width: 100%;
     fieldset {
         border: none;
-        display: flex;
+        display: block;
         margin: 0;
         margin-bottom: 3px;
         padding: 0;
@@ -158,17 +158,13 @@ main {
     input {
         min-width: 0;
         max-width: 100%;
-        display: inline-flex;
-        justify-content: center; 
-        align-items: center; 
         flex-wrap: wrap;
         flex: 1 1 auto;
         width: 100px;
         font-family: Calculator, sans-serif;
         font-size: 20vw;
         height: 30vw;
-        line-height: 500%;
-        text-align: right;
+        text-align: end;
         color: $calc-color;
         background-color: #fff;
         background-clip: padding-box;
