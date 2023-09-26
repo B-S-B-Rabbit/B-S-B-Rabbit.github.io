@@ -165,7 +165,6 @@ main {
         flex: 1 1 auto;
         width: 100px;
         font-family: Calculator, sans-serif;
-        padding: ((30vw - 20vw)/2) 1vw ((30vw - 20vw)/2) 0;
         font-size: 20vw;
         height: 30vw;
         line-height: 500%;
@@ -208,7 +207,6 @@ main {
         border-radius: 4px;
         background: #ffffff;
         color: $calc-color;
-        padding: 2vw 2vw;
         font-size: 8vw;
         font-family: Calculator, sans-serif;
         transition: background-color 0.3s ease;

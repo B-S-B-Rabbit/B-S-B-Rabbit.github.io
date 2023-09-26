@@ -246,7 +246,6 @@ main .keys {
           flex: 1 1 auto;
   width: 100px;
   font-family: Calculator, sans-serif;
-  padding: 5vw 1vw 5vw 0;
   font-size: 20vw;
   height: 30vw;
   line-height: 500%;
@@ -318,7 +317,6 @@ main .keys {
   border-radius: 4px;
   background: #ffffff;
   color: #212529;
-  padding: 2vw 2vw;
   font-size: 8vw;
   font-family: Calculator, sans-serif;
   -webkit-transition: background-color 0.3s ease;
