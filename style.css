@@ -238,7 +238,7 @@ main .keys {
           flex: 1 1 auto;
   width: 100px;
   font-family: Calculator, sans-serif;
-  padding: 1vw 0.5vw 1vw 0;
+  padding: 0.5vw 0.5vw 0.5vw 0;
   font-size: 20vw;
   height: auto;
   line-height: 2;
