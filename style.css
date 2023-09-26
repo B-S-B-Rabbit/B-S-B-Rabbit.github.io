@@ -254,8 +254,7 @@ main .keys {
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  overflow-y: visible;
-  overflow-x: auto;
+  overflow: visible;
 }
 .monitor input::-webkit-input-placeholder {
   color: #212529;
@@ -362,7 +361,7 @@ main .keys {
 }
 
 .data-buttons > .rb {
-  background: rgba(187, 6, 6, 0.753);
+  background: rgba(24, 6, 187, 0.753);
 }
 
 footer {
