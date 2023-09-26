@@ -11,7 +11,7 @@ function infixToRPN(expression) {
     'lg': 3,
     'ln': 3,
     '^': 4,
-    'n': 4, // Унарный минус
+    'n': 4, // Unary minus
   };
 
   const isOperator = (token) => token in precedence;
@@ -22,7 +22,7 @@ function infixToRPN(expression) {
 
     for (const token of tokens) {
       if (!isNaN(token)) {
-        outputQueue.push(token);
+        outputQueue.push(parseFloat(token).toFixed(5)); // Round numbers to 5 decimal places
       } else if (isOperator(token)) {
         while (
           operatorStack.length &&
@@ -43,11 +43,12 @@ function infixToRPN(expression) {
         if (operatorStack[operatorStack.length - 1] === '(') {
           operatorStack.pop();
         }
-      } else if (token === '!') { // Обрабатываем оператор "!" как унарный оператор
+      } else if (token === '!') { // Handle '!' operator as a unary operator
         operatorStack.push(token);
+      } else {
+        throw new Error('Invalid character in expression: ' + token);
       }
     }
-    
 
     while (operatorStack.length) {
       outputQueue.push(operatorStack.pop());
@@ -55,25 +56,26 @@ function infixToRPN(expression) {
 
     return outputQueue;
   }
-  console.log(expression);
-const modifiedExpression1 = expression.replace(/(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g, (match, p1, p2, p3) => {
-  console.log(`match is ${match}, p1 is ${p1}, p2 is ${p2}, p3 is ${p3}`);
-  // Если совпадение начинается с унарного минуса, заменяем его на 'n', а число без минуса оставляем без изменений.
-  return p2 == '-' ? p1 + 'n' + p3 : p1 + p2 + p3;
-});
-const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, (match, $1) => {
-  console.log(`match is ${match}, p1 is ${$1}`);
-  // Если совпадение начинается с унарного минуса, заменяем его на 'n', а число без минуса оставляем без изменений.
-  return Math.PI;
-});
 
-  console.log("this is modified expression:", modifiedExpression2);
+  const modifiedExpression1 = expression.replace(/(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g, (match, p1, p2, p3) => {
+    // If the match starts with a unary minus, replace it with 'n', otherwise keep the number unchanged.
+    return p2 == '-' ? p1 + 'n' + p3 : p1 + p2 + p3;
+  });
+
+  const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, (match, $1) => {
+    return Math.PI.toFixed(5);
+  });
+
   const tokens = modifiedExpression2.match(/(\d+(\.\d*)?|\.\d+|[+\-*/%^()!]|sqrt|PI|lg|ln|\^|n)/g);
-  
-  console.log(tokens);
+
+  if (!tokens) {
+    throw new Error('Invalid expression');
+  }
+
   const rpn = shuntingYard(tokens);
   return rpn;
 }
+
 function calculateRPN(rpn) {
   const stack = [];
 
@@ -81,16 +83,28 @@ function calculateRPN(rpn) {
     if (!isNaN(token)) {
       stack.push(parseFloat(token));
     } else if (token in operatorsBinary) {
+      if (stack.length < 2) {
+        throw new Error('Insufficient operands for binary operation: ' + token);
+      }
       const operand2 = stack.pop();
       const operand1 = stack.pop();
       const result = operatorsBinary[token](operand1, operand2);
       stack.push(result);
     } else if (token in operatorsUnary) {
+      if (stack.length < 1) {
+        throw new Error('Insufficient operands for unary operation: ' + token);
+      }
       const operand = stack.pop();
       const result = operatorsUnary[token](operand);
       stack.push(result);
+    } else {
+      throw new Error('Unknown operator: ' + token);
     }
   });
+
+  if (stack.length !== 1 || isNaN(stack[0])) {
+    throw new Error('Invalid expression');
+  }
 
   return stack[0];
 }
@@ -167,13 +181,18 @@ const calculator = {
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
   calculate() {
-    const rpnExpression = infixToRPN(document.getElementById('screen').value);
-    console.log(rpnExpression);
-    const result = calculateRPN(rpnExpression);
-    this.display.value = result;
-    this.updateDisplay();
-    return result;
-  },
+    try {
+      const rpnExpression = infixToRPN(document.getElementById('screen').value);
+      const result = calculateRPN(rpnExpression);
+      this.display.value = result;
+      this.updateDisplay();
+      return result;
+    } catch (error) {
+      this.display.value = 'Error: ' + error.message;
+      this.updateDisplay();
+      console.error(error.message);
+    }
+  },  
 
   openParenthesis() {
     this.display.value += '(';
@@ -201,40 +220,47 @@ const calculator = {
   },
 };
 
-const digitButtons = document.querySelectorAll('.digit-button'); // Замени '.digit-button' на реальный класс кнопок с цифрами
+const digitButtons = document.querySelectorAll('.digit-button');
 digitButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const digit = button.textContent;
-    console.log(digit);
     calculator.appendDigit(digit);
+    updateFontSize();
   });
 });
 
-const operatorButtons = document.querySelectorAll('.operator-button'); // Замени '.operator-button' на реальный класс кнопок с операторами
+const operatorButtons = document.querySelectorAll('.operator-button');
 operatorButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const operator = button.textContent;
     calculator.setOperator(operator);
+    updateFontSize();
   });
 });
 
-
-const functionButtons = document.querySelectorAll('.function-button'); // Замени '.operator-button' на реальный класс кнопок с операторами
+const functionButtons = document.querySelectorAll('.function-button');
 functionButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const func = button.textContent;
     calculator.setFunction(func);
+    updateFontSize();
   });
 });
 
-const equalsButton = document.getElementById('equalsButton'); // Замени 'equalsButton' на реальный идентификатор кнопки "="
+const equalsButton = document.getElementById('equalsButton');
 equalsButton.addEventListener('click', () => {
   calculator.calculate();
+  updateFontSize();
 });
 
-const clearButton = document.getElementById('clearButton'); // Замени 'clearButton' на реальный идентификатор кнопки "С"
+const clearButton = document.getElementById('clearButton');
 clearButton.addEventListener('click', () => {
   calculator.clear();
+  currentFontSize = defaultFontSize;
+  screen.style.fontSize = `${currentFontSize}px`;
+  hiddenScreen.style.fontSize = `${currentFontSize}px`;
+  shrinkCount = 0;
+  updateFontSize();
 });
 
 const openParenthesisButton = document.getElementById('openParenthesisButton');
@@ -242,94 +268,109 @@ const closeParenthesisButton = document.getElementById('closeParenthesisButton')
 
 openParenthesisButton.addEventListener('click', () => {
   calculator.openParenthesis();
+  updateFontSize();
 });
 
 closeParenthesisButton.addEventListener('click', () => {
   calculator.closeParenthesis();
+  updateFontSize();
 });
 
-const backspaceButton = document.getElementById('backspaceButton'); // Замени 'clearButton' на реальный идентификатор кнопки "С"
+const backspaceButton = document.getElementById('backspaceButton');
 backspaceButton.addEventListener('click', () => {
   calculator.leftBackspace();
+  updateFontSize();
 });
-document.addEventListener('keydown', (event) => {
-  if (event.key == "Enter") { event.preventDefault(); document.querySelector(`[data-key="="]`).classList.add('keytapped-others'); calculator.calculate();}
-});
-document.addEventListener('keyup', (event) => {
-  if (event.key == "Enter") { setTimeout(() => document.querySelector(`[data-key="="]`).classList.remove('keytapped-others'), 100);}
-});
-document.addEventListener('keydown', (event) => {
-  const target = event.target; // Получаем целевой элемент события
 
-  // Проверяем, находится ли фокус внутри элемента input или его потомков
+document.addEventListener('keydown', (event) => {
+  if (event.key == "Enter") {
+    event.preventDefault();
+    document.querySelector(`[data-key="="]`).classList.add('keytapped-others');
+    calculator.calculate();
+    updateFontSize();
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.key == "Enter") {
+    setTimeout(() => document.querySelector(`[data-key="="]`).classList.remove('keytapped-others'), 100);
+    updateFontSize();
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  const target = event.target;
   if (target.closest('input')) {
-    return; // Если фокус в input, не выполняем листенеры
+    return;
   }
   const key = event.key;
   const button = document.querySelector(`[data-key="${key}"]`);
-  if (key >= "0" && key <= "9") { 
+  if (key >= "0" && key <= "9") {
     if (button) {
-    // Добавьте класс keytapped к кнопке при нажатии клавиши
+      button.classList.add('keytapped-white');
+      calculator.appendDigit(key);
+      updateFontSize();
+    }
+  } else if (key == "Backspace") {
     button.classList.add('keytapped-white');
-    calculator.appendDigit(key);
-  }
-}
-  else if (key == "Backspace") {button.classList.add('keytapped-white'); calculator.leftBackspace();}
-  else {
+    calculator.leftBackspace();
+    updateFontSize();
+  } else {
     if (button) {
       button.classList.add('keytapped-others');
-      
     }
     if (["+","-", "/", "*", "%", "xy", ".", "x!"].indexOf(button.textContent) + 1) {
       calculator.setOperator(key);
+      updateFontSize();
     }
-    if (button.textContent == "(") {calculator.openParenthesis();}
-    if (button.textContent == ")") {calculator.closeParenthesis();}
-    if (button.textContent== "=" ) {calculator.calculate();}
-    
+    if (button.textContent == "(") {
+      calculator.openParenthesis();
+      updateFontSize();
+    }
+    if (button.textContent == ")") {
+      calculator.closeParenthesis();
+      updateFontSize();
+    }
+    if (button.textContent == "=") {
+      calculator.calculate();
+      updateFontSize();
+    }
   }
-
 });
 
 document.addEventListener('keyup', (event) => {
-  const target = event.target; // Получаем целевой элемент события
-
-  // Проверяем, находится ли фокус внутри элемента input или его потомков
+  const target = event.target;
   if (target.closest('input')) {
-    return; // Если фокус в input, не выполняем листенеры
+    return;
   }
   const key = event.key;
   const button = document.querySelector(`[data-key="${key}"]`);
-  if (key >= "0" && key <= "9" || key == "Backspace") { 
+  if (key >= "0" && key <= "9" || key == "Backspace") {
     if (button) {
-    // Добавьте класс keytapped к кнопке при нажатии клавиши
-    setTimeout(a => button.classList.remove('keytapped-white'), 100);
-  }
-}
-  else {
+      setTimeout(() => button.classList.remove('keytapped-white'), 100);
+    }
+  } else {
     if (button) {
-      // Добавьте класс keytapped к кнопке при нажатии клавиши
       setTimeout(() => button.classList.remove('keytapped-others'), 100);
     }
   }
 });
+
 const screen = document.getElementById("screen");
 const hiddenScreen = document.getElementById("hidden-screen");
 let defaultFontSize = parseFloat(window.getComputedStyle(screen).fontSize);
 let currentFontSize = defaultFontSize;
 let shrinkCount = 0;
-let prevText = ""; // Сохраняем предыдущий текст
+let prevText = "";
 
 function updateFontSize() {
   const textWidth = screen.scrollWidth;
   const inputWidth = screen.clientWidth;
-  console.log("this is",textWidth, inputWidth);
   if (textWidth - 1 > inputWidth && shrinkCount < 2) {
-    currentFontSize *= 0.8; // Уменьшаем размер шрифта на 10%
+    currentFontSize *= 0.8;
     shrinkCount++;
   } else if (textWidth - 1 <= inputWidth && shrinkCount > 0) {
-    // Попытка увеличения шрифта
-    let tempFontSize = currentFontSize/0.8; // Попытка увеличить на 10%
+    let tempFontSize = currentFontSize/0.8;
     let tempScreen = document.createElement("div");
     tempScreen.style.fontSize = `${tempFontSize}px`;
     tempScreen.style.visibility = "hidden";
@@ -339,31 +380,24 @@ function updateFontSize() {
     tempScreen.style.whiteSpace = "nowrap";
     tempScreen.textContent = screen.value;
     document.body.appendChild(tempScreen);
-    console.log(tempScreen.scrollWidth, inputWidth);
     if (tempScreen.scrollWidth - 1 <= inputWidth) {
-      currentFontSize = tempFontSize; // Увеличиваем размер шрифта
+      currentFontSize = tempFontSize;
       shrinkCount--;
     }
-
     document.body.removeChild(tempScreen);
   } else if (screen.value === prevText) {
-    currentFontSize = defaultFontSize; // Восстанавливаем до дефолтного размера
-    shrinkCount = 0; // Сбрасываем счетчик уменьшений
+    currentFontSize = defaultFontSize;
+    shrinkCount = 0;
   }
-
   screen.style.fontSize = `${currentFontSize}px`;
   hiddenScreen.style.fontSize = `${currentFontSize}px`;
-  hiddenScreen.value = screen.value; // Копируем текст в скрытый input
-  prevText = screen.value; // Сохраняем текущий текст
+  hiddenScreen.value = screen.value;
+  prevText = screen.value;
 }
 
-// Слушаем изменения в поле ввода
 screen.addEventListener("input", updateFontSize);
-
-// Вызываем updateFontSize для установки начального размера шрифта
 updateFontSize();
 
-// Восстановление размера шрифта при стирании всего текста
 screen.addEventListener("keydown", (event) => {
   if (event.key === "Backspace" && screen.value.length === 0) {
     currentFontSize = defaultFontSize;
@@ -372,6 +406,3 @@ screen.addEventListener("keydown", (event) => {
     shrinkCount = 0;
   }
 });
-
-document.addEventListener("click", updateFontSize);
-document.addEventListener("keydown", updateFontSize);
