@@ -158,12 +158,14 @@ main {
     input {
         min-width: 0;
         max-width: 100%;
+        display: block;
         flex-wrap: wrap;
         flex: 1 1 auto;
         width: 100px;
         font-family: Calculator, sans-serif;
         font-size: 20vw;
         height: 30vw;
+        line-height: 30vw;
         text-align: end;
         color: $calc-color;
         background-color: #fff;
