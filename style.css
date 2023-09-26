@@ -230,9 +230,15 @@ main .keys {
 .monitor input {
   min-width: 0;
   max-width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-flex: 1;
@@ -240,7 +246,7 @@ main .keys {
           flex: 1 1 auto;
   width: 100px;
   font-family: Calculator, sans-serif;
-  padding: 2.5vw 1vw 2.5vw 0;
+  padding: 5vw 1vw 5vw 0;
   font-size: 20vw;
   height: 30vw;
   line-height: 500%;
@@ -299,9 +305,15 @@ main .keys {
   gap: 1.5vw;
 }
 .data-buttons button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: 0;
   border-radius: 4px;
   background: #ffffff;
