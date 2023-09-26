@@ -204,7 +204,9 @@ main .keys {
 }
 .monitor fieldset {
   border: none;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0;
   margin-bottom: 3px;
   padding: 0;
@@ -236,10 +238,11 @@ main .keys {
           flex: 1 1 auto;
   width: 100px;
   font-family: Calculator, sans-serif;
+  padding: 5vw 1vw 5vw 0;
   font-size: 20vw;
   height: 30vw;
-  line-height: 30vw;
-  text-align: end;
+  line-height: 500%;
+  text-align: right;
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
@@ -307,6 +310,7 @@ main .keys {
   border-radius: 4px;
   background: #ffffff;
   color: #212529;
+  padding: 2vw 2vw;
   font-size: 8vw;
   font-family: Calculator, sans-serif;
   -webkit-transition: background-color 0.3s ease;
