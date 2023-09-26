@@ -140,6 +140,11 @@ const calculator = {
   display: document.getElementById('screen'),
   operator: '',
 
+  scrollInputToEnd() {
+    const inputElement = this.display;
+    inputElement.scrollLeft = inputElement.scrollWidth;
+  },
+
   updateDisplay() {
     const displayElement = document.getElementById('screen');
     displayElement.value = this.display.value;
@@ -149,6 +154,7 @@ const calculator = {
     this.display.value =
       this.display.value == '' ? digit : this.display.value + digit;
     this.updateDisplay();
+    this.scrollInputToEnd();
   },
 
   setOperator(operator) {
@@ -199,10 +205,12 @@ const calculator = {
       }
     }
     this.updateDisplay(); // Обновляем экран после добавления оператора
+    this.scrollInputToEnd();
   },
   setFunction(operator) {
     this.display.value += `${operator}(`; // Добавляем оператор к текущему значению на экране
     this.updateDisplay(); // Обновляем экран после добавления оператора
+    this.scrollInputToEnd();
   },
   calculate() {
     try {
@@ -221,11 +229,13 @@ const calculator = {
   openParenthesis() {
     this.display.value += '(';
     this.updateDisplay();
+    this.scrollInputToEnd();
   },
 
   closeParenthesis() {
     this.display.value += ')';
     this.updateDisplay();
+    this.scrollInputToEnd();
   },
 
   clear() {
@@ -441,4 +451,31 @@ screen.addEventListener('keydown', (event) => {
     hiddenScreen.style.fontSize = `${currentFontSize}px`;
     shrinkCount = 0;
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Найти input элемент по его ID
+  const input = document.getElementById('screen');
+
+  // Обработчик события ввода текста
+  input.addEventListener('input', function () {
+    // Прокрутить input вправо до конца
+    this.scrollLeft = this.scrollWidth;
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  let lastTouchTime = 0;
+  const body = document.querySelector('body');
+
+  body.addEventListener('touchstart', (event) => {
+    const currentTime = new Date().getTime();
+    const timeSinceLastTouch = currentTime - lastTouchTime;
+
+    if (timeSinceLastTouch <= 300) {
+      event.preventDefault();
+    }
+
+    lastTouchTime = currentTime;
+  });
 });
