@@ -241,7 +241,7 @@ main .keys {
   padding: 5vw 1vw 5vw 0;
   font-size: 20vw;
   height: 30vw;
-  line-height: 500%;
+  line-height: 100%;
   text-align: right;
   color: #212529;
   background-color: #fff;
@@ -297,15 +297,6 @@ main .keys {
   gap: 1.5vw;
 }
 .data-buttons button {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   border: 0;
   border-radius: 4px;
   background: #ffffff;
