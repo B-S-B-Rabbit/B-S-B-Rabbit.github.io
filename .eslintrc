@@ -1,0 +1,9 @@
+{
+    "extends": [
+      "wesbos"
+    ],
+    "rules": {
+      "eqeqeq": 0,
+      "no-plusplus": 0,
+    }
+  }

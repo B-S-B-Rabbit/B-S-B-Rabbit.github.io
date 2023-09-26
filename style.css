@@ -1,9 +1,9 @@
 @font-face {
-  font-family: 'Calculator';
+  font-family: "Calculator";
   src: url(fonts/digital-7.ttf);
 }
 @font-face {
-  font-family: 'Calculator';
+  font-family: "Calculator";
   font-style: italic;
   src: url(fonts/digital-7-italic.ttf);
 }
@@ -33,8 +33,8 @@ header {
   margin: 0;
   padding: 0;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 header img {
   max-height: 200px;
@@ -42,7 +42,7 @@ header img {
 
 .hat {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -51,11 +51,29 @@ header img {
 }
 
 body {
-  background: -webkit-gradient(linear, left top, right top, from(#242323), color-stop(19%, #424242), color-stop(40%, #868686), color-stop(60%, #b4b4b4), color-stop(83%, #d4d4d4), to(#242323));
-  background: linear-gradient(to right, #242323 0%, #424242 19%, #868686 40%, #b4b4b4 60%, #d4d4d4 83%, #242323 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#242323),
+    color-stop(19%, #424242),
+    color-stop(40%, #868686),
+    color-stop(60%, #b4b4b4),
+    color-stop(83%, #d4d4d4),
+    to(#242323)
+  );
+  background: linear-gradient(
+    to right,
+    #242323 0%,
+    #424242 19%,
+    #868686 40%,
+    #b4b4b4 60%,
+    #d4d4d4 83%,
+    #242323 100%
+  );
   background-size: 10000px 100%;
   -webkit-animation: bg 15s linear infinite;
-          animation: bg 15s linear infinite;
+  animation: bg 15s linear infinite;
 }
 
 @-webkit-keyframes bg {
@@ -77,15 +95,15 @@ body {
 }
 body {
   min-width: 272px;
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   color: #7c2020;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   height: 100%;
   min-height: 100%;
 }
@@ -96,11 +114,11 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 nav {
@@ -109,8 +127,8 @@ nav {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 nav ul {
   display: -webkit-box;
@@ -118,16 +136,16 @@ nav ul {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   list-style-type: none;
   padding: 0;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 nav ul li a {
   text-decoration: none;
@@ -145,9 +163,11 @@ nav ul li a .active {
   color: aqua !important;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .calculator {
@@ -163,37 +183,37 @@ main {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
   color: #333;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 main form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
 }
 main .keys {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
 }
 
 .monitor {
@@ -212,8 +232,8 @@ main .keys {
   margin-bottom: 3px;
   padding: 0;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   max-width: 100%;
 }
 .monitor fieldset div {
@@ -221,11 +241,12 @@ main .keys {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   width: 100%;
 }
-.monitor label, .monitor legend {
+.monitor label,
+.monitor legend {
   display: none;
 }
 .monitor input {
@@ -233,10 +254,10 @@ main .keys {
   max-width: 100%;
   display: block;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   width: 100px;
   padding: 2vh;
   font-family: Calculator, sans-serif;
@@ -248,10 +269,13 @@ main .keys {
   background-clip: padding-box;
   border: 1px solid #bdbdbd00;
   border-radius: 0.25rem;
-  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
   overflow: scroll;
 }
 .monitor input::-webkit-input-placeholder {
@@ -279,14 +303,14 @@ main .keys {
   background: rgba(192, 192, 177, 0.664) !important;
   text-shadow: 0.2rem 0.4rem 0.4px rgba(33, 37, 41, 0.2) !important;
   -webkit-box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5) !important;
-          box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5) !important;
+  box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5) !important;
 }
 
 .keytapped-others {
   background: #1f1f1e !important;
   text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
   -webkit-box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
-          box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
+  box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
 }
 
 .data-buttons {
@@ -298,8 +322,8 @@ main .keys {
 }
 .data-buttons button {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: 0;
   border-radius: 4px;
   background: #ffffff;
@@ -310,7 +334,7 @@ main .keys {
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
   -webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.226);
-          box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.226);
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.226);
   cursor: pointer;
 }
 .data-buttons button:hover {
@@ -319,9 +343,10 @@ main .keys {
 .data-buttons button:active {
   text-shadow: 0.2rem 0.4rem 0.4px rgba(33, 37, 41, 0.2);
   -webkit-box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
-          box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
+  box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
 }
-.data-buttons .g-bc, .data-buttons .g-C {
+.data-buttons .g-bc,
+.data-buttons .g-C {
   font-size: 11vw;
 }
 
@@ -335,7 +360,11 @@ main .keys {
   grid-column: 4 / span 2;
 }
 
-.g-sqrt, .g-pm, .g-pi, .g-log, .g-ln {
+.g-sqrt,
+.g-pm,
+.g-pi,
+.g-log,
+.g-ln {
   grid-row: 2 / span 1;
 }
 
@@ -349,7 +378,7 @@ main .keys {
 .data-buttons > .nn:active {
   text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2);
   -webkit-box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
-          box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
+  box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
 }
 
 .data-buttons > .g-eq {
@@ -367,19 +396,19 @@ footer {
   padding: 0.5rem;
   font-size: 5vw;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width: 650px) {
   .wide-screen {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
   .wide-screen .sidebar {
     position: relative;
@@ -401,8 +430,8 @@ footer {
   }
   .wide-screen nav {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     border-radius: 0 3vw 3vw 0;
   }
   .wide-screen nav #calc-ref:hover {
@@ -414,15 +443,15 @@ footer {
   .wide-screen nav ul {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     -webkit-writing-mode: vertical-lr;
-        -ms-writing-mode: tb-lr;
-            writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    writing-mode: vertical-lr;
     text-orientation: upright;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
   .wide-screen nav ul li a {
     font-size: 1.7vw;
@@ -437,7 +466,8 @@ footer {
     padding: 0.2vw 0.2vw;
     font-size: 3vw;
   }
-  .wide-screen .data-buttons .g-bc, .wide-screen .data-buttons .g-C {
+  .wide-screen .data-buttons .g-bc,
+  .wide-screen .data-buttons .g-C {
     font-size: 4vw;
   }
   .wide-screen .monitor {

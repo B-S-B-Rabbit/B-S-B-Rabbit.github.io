@@ -1,5 +1,3 @@
-"use strict";
-
 function infixToRPN(expression) {
   const precedence = {
     '+': 1,
@@ -7,11 +5,11 @@ function infixToRPN(expression) {
     '*': 2,
     '/': 2,
     '%': 2,
-    'sqrt': 3,
-    'lg': 3,
-    'ln': 3,
+    sqrt: 3,
+    lg: 3,
+    ln: 3,
     '^': 4,
-    'n': 4, // Unary minus
+    n: 4, // Unary minus
   };
 
   const isOperator = (token) => token in precedence;
@@ -21,12 +19,13 @@ function infixToRPN(expression) {
     const operatorStack = [];
 
     for (const token of tokens) {
-      if (!isNaN(token)) {
+      if (!Number.isNaN(Number(token))) {
         outputQueue.push(parseFloat(token).toFixed(5)); // Round numbers to 5 decimal places
       } else if (isOperator(token)) {
         while (
           operatorStack.length &&
-          precedence[operatorStack[operatorStack.length - 1]] >= precedence[token]
+          precedence[operatorStack[operatorStack.length - 1]] >=
+            precedence[token]
         ) {
           outputQueue.push(operatorStack.pop());
         }
@@ -43,10 +42,11 @@ function infixToRPN(expression) {
         if (operatorStack[operatorStack.length - 1] === '(') {
           operatorStack.pop();
         }
-      } else if (token === '!') { // Handle '!' operator as a unary operator
+      } else if (token === '!') {
+        // Handle '!' operator as a unary operator
         operatorStack.push(token);
       } else {
-        throw new Error('Invalid character in expression: ' + token);
+        throw new Error(`Invalid character in expression: ${token}`);
       }
     }
 
@@ -57,22 +57,26 @@ function infixToRPN(expression) {
     return outputQueue;
   }
 
-  const modifiedExpression1 = expression.replace(/(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g, (match, p1, p2, p3) => {
-    // If the match starts with a unary minus, replace it with 'n', otherwise keep the number unchanged.
-    return p2 == '-' ? p1 + 'n' + p3 : p1 + p2 + p3;
-  });
+  const modifiedExpression1 = expression.replace(
+    /(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g,
+    (match, p1, p2, p3) =>
+      // If the match starts with a unary minus, replace it with 'n', otherwise keep the number unchanged.
+      p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3
+  );
 
-  const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, (match, $1) => {
-    return Math.PI.toFixed(5);
-  });
+  const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, () =>
+    Math.PI.toFixed(5)
+  );
 
-  const tokens = modifiedExpression2.match(/(\d+(\.\d*)?|\.\d+|[+\-*/%^()!]|sqrt|PI|lg|ln|\^|n)/g);
+  const tokensExp = modifiedExpression2.match(
+    /(\d+(\.\d*)?|\.\d+|[+\-*/%^()!]|sqrt|PI|lg|ln|\^|n)/g
+  );
 
-  if (!tokens) {
+  if (!tokensExp) {
     throw new Error('Invalid expression');
   }
 
-  const rpn = shuntingYard(tokens);
+  const rpn = shuntingYard(tokensExp);
   return rpn;
 }
 
@@ -80,11 +84,11 @@ function calculateRPN(rpn) {
   const stack = [];
 
   rpn.forEach((token) => {
-    if (!isNaN(token)) {
+    if (!Number.isNaN(Number(token))) {
       stack.push(parseFloat(token));
     } else if (token in operatorsBinary) {
       if (stack.length < 2) {
-        throw new Error('Insufficient operands for binary operation: ' + token);
+        throw new Error(`Insufficient operands for binary operation: ${token}`);
       }
       const operand2 = stack.pop();
       const operand1 = stack.pop();
@@ -92,23 +96,22 @@ function calculateRPN(rpn) {
       stack.push(result);
     } else if (token in operatorsUnary) {
       if (stack.length < 1) {
-        throw new Error('Insufficient operands for unary operation: ' + token);
+        throw new Error(`Insufficient operands for unary operation: ${token}`);
       }
       const operand = stack.pop();
       const result = operatorsUnary[token](operand);
       stack.push(result);
     } else {
-      throw new Error('Unknown operator: ' + token);
+      throw new Error(`Unknown operator: ${token}`);
     }
   });
 
-  if (stack.length !== 1 || isNaN(stack[0])) {
+  if (stack.length !== 1 || Number.isNaN(Number(stack[0]))) {
     throw new Error('Invalid expression');
   }
 
   return stack[0];
 }
-
 
 const operatorsBinary = {
   '+': (a, b) => a + b,
@@ -116,14 +119,14 @@ const operatorsBinary = {
   '*': (a, b) => a * b,
   '/': (a, b) => a / b,
   '%': (a, b) => a % b,
-  '^': (a, b) => Math.pow(a, b),
+  '^': (a, b) => a ** b,
 };
 
 const operatorsUnary = {
-  'sqrt': (a) => Math.sqrt(a),
-  'lg': (a) => Math.log10(a),
-  'ln': (a) => Math.log(a),
-  'n': (a) => -a, // Унарный минус
+  sqrt: (a) => Math.sqrt(a),
+  lg: (a) => Math.log10(a),
+  ln: (a) => Math.log(a),
+  n: (a) => -a, // Унарный минус
   '!': (a) => factorial(a), // Факториал
 };
 
@@ -143,41 +146,62 @@ const calculator = {
   },
 
   appendDigit(digit) {
-    this.display.value = this.display.value == '' ? digit : this.display.value + digit;
+    this.display.value =
+      this.display.value == '' ? digit : this.display.value + digit;
     this.updateDisplay();
   },
 
   setOperator(operator) {
-    if (!(["xy", "x3", "x2", "10x", "x!", "+-"].indexOf(operator) + 1)) {
+    if (!(['xy', 'x3', 'x2', '10x', 'x!', '+-'].indexOf(operator) + 1)) {
       console.log(operator);
-    this.display.value += operator; // Добавляем оператор к текущему значению на экране
-    }
-    else {
-      if (operator == "xy") {this.display.value += "^(";}
-      if (operator == "x2") {this.display.value += "^2";}
-      if (operator == "x3") {this.display.value += "^3";}
-      if (operator == "10x") {this.display.value += "10^(";}
-      if (operator == "x!") {this.display.value += "!";}
-      if (operator == "+-" && this.display.value) {
-        if (this.display.value[0] == "-")
-        { 
-          this.display.value = this.display.value.slice(1, this.display.value.length);
-          if (this.display.value[0] == "(" && this.display.value[this.display.value.length - 1] == ")") {
-            this.display.value = this.display.value.slice(1, this.display.value.length - 1);
+      this.display.value += operator; // Добавляем оператор к текущему значению на экране
+    } else {
+      if (operator == 'xy') {
+        this.display.value += '^(';
+      }
+      if (operator == 'x2') {
+        this.display.value += '^2';
+      }
+      if (operator == 'x3') {
+        this.display.value += '^3';
+      }
+      if (operator == '10x') {
+        this.display.value += '10^(';
+      }
+      if (operator == 'x!') {
+        this.display.value += '!';
+      }
+      if (operator == '+-' && this.display.value) {
+        if (this.display.value[0] == '-') {
+          this.display.value = this.display.value.slice(
+            1,
+            this.display.value.length
+          );
+          if (
+            this.display.value[0] == '(' &&
+            this.display.value[this.display.value.length - 1] == ')'
+          ) {
+            this.display.value = this.display.value.slice(
+              1,
+              this.display.value.length - 1
+            );
           }
-        }
-        else if (!(this.display.value[0] == "(" && this.display.value[this.display.value.length - 1] == ")")) {
-          this.display.value = "-(" + this.display.value + ")";
-        }
-        else {
-          this.display.value = "-" + this.display.value;
+        } else if (
+          !(
+            this.display.value[0] == '(' &&
+            this.display.value[this.display.value.length - 1] == ')'
+          )
+        ) {
+          this.display.value = `-(${this.display.value})`;
+        } else {
+          this.display.value = `-${this.display.value}`;
         }
       }
     }
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
   setFunction(operator) {
-    this.display.value += operator + "("; // Добавляем оператор к текущему значению на экране
+    this.display.value += `${operator}(`; // Добавляем оператор к текущему значению на экране
     this.updateDisplay(); // Обновляем экран после добавления оператора
   },
   calculate() {
@@ -188,11 +212,11 @@ const calculator = {
       this.updateDisplay();
       return result;
     } catch (error) {
-      this.display.value = 'Error: ' + error.message;
+      this.display.value = `Error: ${error.message}`;
       this.updateDisplay();
       console.error(error.message);
     }
-  },  
+  },
 
   openParenthesis() {
     this.display.value += '(';
@@ -210,12 +234,16 @@ const calculator = {
     this.updateDisplay();
   },
   leftBackspace() {
-    console.log(this.display.value.length)
-    if (this.display.value.length == 1) {this.clear();}
-    else if (this.display.value.length > 1) {
-    this.display.value = this.display.value.slice(0, this.display.value.length - 1);
-    this.operator = '';
-    this.updateDisplay();
+    console.log(this.display.value.length);
+    if (this.display.value.length == 1) {
+      this.clear();
+    } else if (this.display.value.length > 1) {
+      this.display.value = this.display.value.slice(
+        0,
+        this.display.value.length - 1
+      );
+      this.operator = '';
+      this.updateDisplay();
     }
   },
 };
@@ -264,7 +292,9 @@ clearButton.addEventListener('click', () => {
 });
 
 const openParenthesisButton = document.getElementById('openParenthesisButton');
-const closeParenthesisButton = document.getElementById('closeParenthesisButton');
+const closeParenthesisButton = document.getElementById(
+  'closeParenthesisButton'
+);
 
 openParenthesisButton.addEventListener('click', () => {
   calculator.openParenthesis();
@@ -283,7 +313,7 @@ backspaceButton.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key == "Enter") {
+  if (event.key == 'Enter') {
     event.preventDefault();
     document.querySelector(`[data-key="="]`).classList.add('keytapped-others');
     calculator.calculate();
@@ -292,26 +322,32 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('keyup', (event) => {
-  if (event.key == "Enter") {
-    setTimeout(() => document.querySelector(`[data-key="="]`).classList.remove('keytapped-others'), 100);
+  if (event.key == 'Enter') {
+    setTimeout(
+      () =>
+        document
+          .querySelector(`[data-key="="]`)
+          .classList.remove('keytapped-others'),
+      100
+    );
     updateFontSize();
   }
 });
 
 document.addEventListener('keydown', (event) => {
-  const target = event.target;
+  const { target } = event;
   if (target.closest('input')) {
     return;
   }
-  const key = event.key;
+  const { key } = event;
   const button = document.querySelector(`[data-key="${key}"]`);
-  if (key >= "0" && key <= "9") {
+  if (key >= '0' && key <= '9') {
     if (button) {
       button.classList.add('keytapped-white');
       calculator.appendDigit(key);
       updateFontSize();
     }
-  } else if (key == "Backspace") {
+  } else if (key == 'Backspace') {
     button.classList.add('keytapped-white');
     calculator.leftBackspace();
     updateFontSize();
@@ -319,19 +355,21 @@ document.addEventListener('keydown', (event) => {
     if (button) {
       button.classList.add('keytapped-others');
     }
-    if (["+","-", "/", "*", "%", "xy", ".", "x!"].indexOf(button.textContent) + 1) {
+    if (
+      ['+', '-', '/', '*', '%', 'xy', '.', 'x!'].indexOf(button.textContent) + 1
+    ) {
       calculator.setOperator(key);
       updateFontSize();
     }
-    if (button.textContent == "(") {
+    if (button.textContent == '(') {
       calculator.openParenthesis();
       updateFontSize();
     }
-    if (button.textContent == ")") {
+    if (button.textContent == ')') {
       calculator.closeParenthesis();
       updateFontSize();
     }
-    if (button.textContent == "=") {
+    if (button.textContent == '=') {
       calculator.calculate();
       updateFontSize();
     }
@@ -339,29 +377,27 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('keyup', (event) => {
-  const target = event.target;
+  const { target } = event;
   if (target.closest('input')) {
     return;
   }
-  const key = event.key;
+  const { key } = event;
   const button = document.querySelector(`[data-key="${key}"]`);
-  if (key >= "0" && key <= "9" || key == "Backspace") {
+  if ((key >= '0' && key <= '9') || key == 'Backspace') {
     if (button) {
       setTimeout(() => button.classList.remove('keytapped-white'), 100);
     }
-  } else {
-    if (button) {
-      setTimeout(() => button.classList.remove('keytapped-others'), 100);
-    }
+  } else if (button) {
+    setTimeout(() => button.classList.remove('keytapped-others'), 100);
   }
 });
 
-const screen = document.getElementById("screen");
-const hiddenScreen = document.getElementById("hidden-screen");
-let defaultFontSize = parseFloat(window.getComputedStyle(screen).fontSize);
+const screen = document.getElementById('screen');
+const hiddenScreen = document.getElementById('hidden-screen');
+const defaultFontSize = parseFloat(window.getComputedStyle(screen).fontSize);
 let currentFontSize = defaultFontSize;
 let shrinkCount = 0;
-let prevText = "";
+let prevText = '';
 
 function updateFontSize() {
   const textWidth = screen.scrollWidth;
@@ -370,14 +406,14 @@ function updateFontSize() {
     currentFontSize *= 0.8;
     shrinkCount++;
   } else if (textWidth - 1 <= inputWidth && shrinkCount > 0) {
-    let tempFontSize = currentFontSize/0.8;
-    let tempScreen = document.createElement("div");
+    const tempFontSize = currentFontSize / 0.8;
+    const tempScreen = document.createElement('div');
     tempScreen.style.fontSize = `${tempFontSize}px`;
-    tempScreen.style.visibility = "hidden";
-    tempScreen.style.position = "absolute";
-    tempScreen.style.top = "-9999px";
-    tempScreen.style.left = "-9999px";
-    tempScreen.style.whiteSpace = "nowrap";
+    tempScreen.style.visibility = 'hidden';
+    tempScreen.style.position = 'absolute';
+    tempScreen.style.top = '-9999px';
+    tempScreen.style.left = '-9999px';
+    tempScreen.style.whiteSpace = 'nowrap';
     tempScreen.textContent = screen.value;
     document.body.appendChild(tempScreen);
     if (tempScreen.scrollWidth - 1 <= inputWidth) {
@@ -395,11 +431,11 @@ function updateFontSize() {
   prevText = screen.value;
 }
 
-screen.addEventListener("input", updateFontSize);
+screen.addEventListener('input', updateFontSize);
 updateFontSize();
 
-screen.addEventListener("keydown", (event) => {
-  if (event.key === "Backspace" && screen.value.length === 0) {
+screen.addEventListener('keydown', (event) => {
+  if (event.key === 'Backspace' && screen.value.length === 0) {
     currentFontSize = defaultFontSize;
     screen.style.fontSize = `${currentFontSize}px`;
     hiddenScreen.style.fontSize = `${currentFontSize}px`;
