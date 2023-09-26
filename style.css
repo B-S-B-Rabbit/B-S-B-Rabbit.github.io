@@ -241,7 +241,7 @@ main .keys {
   padding: 0.5vw 0.5vw 0.5vw 0;
   font-size: 20vw;
   height: auto;
-  line-height: 2;
+  line-height: 1.33;
   text-align: right;
   color: #212529;
   background-color: #fff;
