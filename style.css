@@ -238,10 +238,10 @@ main .keys {
           flex: 1 1 auto;
   width: 100px;
   font-family: Calculator, sans-serif;
-  padding: 5vw 1vw 5vw 0;
+  padding: auto;
   font-size: 20vw;
-  height: 30vw;
-  line-height: 160%;
+  height: auto;
+  line-height: auto;
   text-align: right;
   color: #212529;
   background-color: #fff;
