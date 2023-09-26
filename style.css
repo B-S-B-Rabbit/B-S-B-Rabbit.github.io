@@ -241,7 +241,7 @@ main .keys {
   padding: 2vh;
   font-family: Calculator, sans-serif;
   font-size: 20vw;
-  line-height: 22vw;
+  line-height: normal;
   text-align: right;
   color: #212529;
   background-color: #fff;
