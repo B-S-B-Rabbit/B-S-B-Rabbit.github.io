@@ -164,8 +164,9 @@ main {
         flex: 1 1 auto;
         width: 100px;
         font-family: Calculator, sans-serif;
-        font-size: 2em; 
-        line-height: 2.4em; 
+        padding: 0.5vh;
+        font-size: 20vw;
+        line-height: 24vw;
         text-align: right;
         color: $calc-color;
         background-color: #fff;
@@ -173,13 +174,13 @@ main {
         border: 1px solid #bdbdbd00;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        
+        overflow: scroll;
         &::placeholder {
             color: $calc-color;
             opacity: 0.7;
+            overflow: visible;
         }
     }
-    
 }
 .keytapped-white {
     background:rgba(192, 192, 177, 0.664) !important;
