@@ -174,7 +174,8 @@ main {
         border: 1px solid #bdbdbd00;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        overflow: auto;
+        overflow-y: visible;
+        overflow-x: auto;
         &::placeholder {
             color: $calc-color;
             opacity: 0.7;
