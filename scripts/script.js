@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTime = new Date().getTime();
     const timeSinceLastTouch = currentTime - lastTouchTime;
 
-    if (timeSinceLastTouch <= 100) {
+    if (timeSinceLastTouch <= 50) {
       event.preventDefault();
     }
 
