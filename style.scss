@@ -163,7 +163,7 @@ main {
         flex: 1 1 auto;
         width: 100px;
         font-family: Calculator, sans-serif;
-        padding: ((30vw - 20vw)/2) 1vw ((30vw - 20vw)/2) 0;
+        padding: ((30vw - 20vw)/4) 1vw ((30vw - 20vw)/4) 0;
         font-size: 20vw;
         height: 30vw;
         line-height: 30vw;
@@ -174,7 +174,7 @@ main {
         border: 1px solid #bdbdbd00;
         border-radius: 0.25rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        overflow: visible;
+        overflow: auto;
         &::placeholder {
             color: $calc-color;
             opacity: 0.7;
@@ -257,7 +257,7 @@ main {
     color: white;
 } 
  .data-buttons>.rb {
-    background: rgba(24, 6, 187, 0.753);
+    background: rgba(187, 6, 6, 0.753);
  }
 footer {
     background-color: rgba(243, 241, 148, 0.849);
