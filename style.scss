@@ -163,10 +163,10 @@ main {
         flex: 1 1 auto;
         width: 100px;
         font-family: Calculator, sans-serif;
-        padding: auto;
+        padding: 10px;
         font-size: 20vw;
         height: auto;
-        line-height: auto;
+        line-height: normal;
         text-align: right;
         color: $calc-color;
         background-color: #fff;
@@ -256,7 +256,7 @@ main {
     color: white;
 } 
  .data-buttons>.rb {
-    background: rgba(187, 6, 6, 0.753);
+    background: rgba(6, 33, 187, 0.753);
  }
 footer {
     background-color: rgba(243, 241, 148, 0.849);
