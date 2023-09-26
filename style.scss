@@ -7,6 +7,9 @@
     font-style: italic;
 	src: url(fonts/digital-7-italic.ttf);
 }
+* {
+    touch-action: manipulation;
+}
 $calc-color: #212529;
 input,
 textarea,
