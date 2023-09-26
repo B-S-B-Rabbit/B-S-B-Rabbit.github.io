@@ -231,7 +231,9 @@ main .keys {
 .monitor input {
   min-width: 0;
   max-width: 100%;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-flex: 1;
@@ -239,8 +241,8 @@ main .keys {
           flex: 1 1 auto;
   width: 100px;
   font-family: Calculator, sans-serif;
-  font-size: 20vw;
-  line-height: 24vw;
+  font-size: 2em;
+  line-height: 2.4em;
   text-align: right;
   color: #212529;
   background-color: #fff;
@@ -251,27 +253,22 @@ main .keys {
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  overflow: scroll;
 }
 .monitor input::-webkit-input-placeholder {
   color: #212529;
   opacity: 0.7;
-  overflow: visible;
 }
 .monitor input:-ms-input-placeholder {
   color: #212529;
   opacity: 0.7;
-  overflow: visible;
 }
 .monitor input::-ms-input-placeholder {
   color: #212529;
   opacity: 0.7;
-  overflow: visible;
 }
 .monitor input::placeholder {
   color: #212529;
   opacity: 0.7;
-  overflow: visible;
 }
 
 .keytapped-white {
