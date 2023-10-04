@@ -9,7 +9,7 @@ function infixToRPN(expression) {
     lg: 3,
     ln: 3,
     '^': 4,
-    n: 4, // Unary minus
+    n: 4,
   };
 
   const isOperator = (token) => token in precedence;
@@ -20,7 +20,7 @@ function infixToRPN(expression) {
 
     for (const token of tokens) {
       if (!Number.isNaN(Number(token))) {
-        outputQueue.push(parseFloat(token).toFixed(5)); // Round numbers to 5 decimal places
+        outputQueue.push(parseFloat(token).toFixed(5));
       } else if (isOperator(token)) {
         while (
           operatorStack.length &&
@@ -43,7 +43,6 @@ function infixToRPN(expression) {
           operatorStack.pop();
         }
       } else if (token === '!') {
-        // Handle '!' operator as a unary operator
         operatorStack.push(token);
       } else {
         throw new Error(`Invalid character in expression: ${token}`);
@@ -59,9 +58,7 @@ function infixToRPN(expression) {
 
   const modifiedExpression1 = expression.replace(
     /(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g,
-    (match, p1, p2, p3) =>
-      // If the match starts with a unary minus, replace it with 'n', otherwise keep the number unchanged.
-      p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3
+    (match, p1, p2, p3) => (p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3)
   );
 
   const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, () =>
@@ -126,11 +123,10 @@ const operatorsUnary = {
   sqrt: (a) => Math.sqrt(a),
   lg: (a) => Math.log10(a),
   ln: (a) => Math.log(a),
-  n: (a) => -a, // Унарный минус
-  '!': (a) => factorial(a), // Факториал
+  n: (a) => -a,
+  '!': (a) => factorial(a),
 };
 
-// Функция для вычисления факториала
 function factorial(n) {
   if (n === 0) return 1;
   return n * factorial(n - 1);
@@ -139,6 +135,8 @@ function factorial(n) {
 const calculator = {
   display: document.getElementById('screen'),
   operator: '',
+  hasError: false,
+  hasResult: false,
 
   scrollInputToEnd() {
     const inputElement = this.display;
@@ -151,6 +149,11 @@ const calculator = {
   },
 
   appendDigit(digit) {
+    if (this.hasError || this.hasResult) {
+      this.clear();
+      this.hasError = false;
+      this.hasResult = false;
+    }
     this.display.value =
       this.display.value == '' ? digit : this.display.value + digit;
     this.updateDisplay();
@@ -158,9 +161,16 @@ const calculator = {
   },
 
   setOperator(operator) {
+    if (this.hasError) {
+      this.clear();
+      this.hasError = false;
+    }
+    if (this.hasResult) {
+      this.hasResult = false;
+    }
     if (!(['xy', 'x3', 'x2', '10x', 'x!', '+-'].indexOf(operator) + 1)) {
       console.log(operator);
-      this.display.value += operator; // Добавляем оператор к текущему значению на экране
+      this.display.value += operator;
     } else {
       if (operator == 'xy') {
         this.display.value += '^(';
@@ -204,35 +214,55 @@ const calculator = {
         }
       }
     }
-    this.updateDisplay(); // Обновляем экран после добавления оператора
+    this.updateDisplay();
     this.scrollInputToEnd();
   },
   setFunction(operator) {
-    this.display.value += `${operator}(`; // Добавляем оператор к текущему значению на экране
-    this.updateDisplay(); // Обновляем экран после добавления оператора
+    if (this.hasError || this.hasResult) {
+      this.clear();
+      this.hasError = false;
+      this.hasResult = false;
+    }
+    this.display.value += `${operator}(`;
+    this.updateDisplay();
     this.scrollInputToEnd();
   },
   calculate() {
+    if (document.getElementById('screen').value === '') {
+      return 0;
+    }
     try {
       const rpnExpression = infixToRPN(document.getElementById('screen').value);
       const result = calculateRPN(rpnExpression);
       this.display.value = result;
       this.updateDisplay();
+      this.hasError = false;
+      this.hasResult = true;
       return result;
     } catch (error) {
-      this.display.value = `Error: ${error.message}`;
+      this.display.value = 'Error';
       this.updateDisplay();
-      console.error(error.message);
+      this.hasError = true;
     }
   },
 
   openParenthesis() {
+    if (this.hasError || this.hasResult) {
+      this.clear();
+      this.hasError = false;
+      this.hasResult = false;
+    }
     this.display.value += '(';
     this.updateDisplay();
     this.scrollInputToEnd();
   },
 
   closeParenthesis() {
+    if (this.hasError || this.hasResult) {
+      this.clear();
+      this.hasError = false;
+      this.hasResult = false;
+    }
     this.display.value += ')';
     this.updateDisplay();
     this.scrollInputToEnd();
@@ -454,12 +484,9 @@ screen.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Найти input элемент по его ID
   const input = document.getElementById('screen');
 
-  // Обработчик события ввода текста
   input.addEventListener('input', function () {
-    // Прокрутить input вправо до конца
     this.scrollLeft = this.scrollWidth;
   });
 });
