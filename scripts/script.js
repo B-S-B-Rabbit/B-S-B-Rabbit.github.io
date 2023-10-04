@@ -506,3 +506,8 @@ document.addEventListener('DOMContentLoaded', () => {
     lastTouchTime = currentTime;
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const calc = document.getElementById('calc');
+  calc.scrollIntoView({ behavior: 'smooth' });
+});
