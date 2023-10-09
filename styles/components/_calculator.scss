@@ -1,146 +1,3 @@
-@font-face {
-	font-family: 'Calculator';
-	src: url(fonts/digital-7.ttf);
-}
-@font-face {
-	font-family: 'Calculator';
-    font-style: italic;
-	src: url(fonts/digital-7-italic.ttf);
-}
-@mixin padding-margin($pad, $marg) {
-    padding: $pad;
-    margin: $marg;
-}
-* {
-    touch-action: manipulation;
-}
-// $calc-color: #212529;
-input,
-textarea,
-button,
-select,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-.page {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    background-color: rgba($color: #a8a6a6, $alpha: 1.0);
-    @include padding-margin(0,0);
-}
-html {
-    height: 100vh;
-}
-.header {
-    @include padding-margin(0,0);
-    flex: 0 0 auto;
-}
-.logo 
-{
-    max-height: 200px;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    display: block;
-    @include padding-margin(0,0);
-}
-$bgWidth: 10000px;
-.page_back_animation {
-  background: linear-gradient(to right, #242323 0%,#424242 19%,#868686 40%,#b4b4b4 60%,#d4d4d4 83%,#242323 100%); 
-  background-size: $bgWidth 100%;
-  animation: bg 15s linear infinite ;
-}
-
-@keyframes bg{
-  0%{
-    background-position-x: 0;
-  }
-  
-  100%{
-    background-position-x: $bgWidth;
-  }
-}
-.page {
-    min-width: 272px; 
-    font-family: 'Georgia', serif;
-    color: #7c2020;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 100%;
-}
-.page__wide-screen
-{
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
-    @media screen and (min-width: 650px) {
-    flex-direction: row;
-    align-items: center;
-    }
-}
-.navbar {
-    background: black;
-    display: flex;
-    justify-content: center;
-    &__nav-list {
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        padding: 0;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-    &__link {
-        text-decoration: none;
-        color:#ffffff;
-        font-size: 5vw;
-        padding: 1rem;
-        &:hover {
-            background-color: rgba($color: #9bdde9, $alpha: 0.2);
-        }
-    }
-    @media screen and (min-width: 650px) {
-        position: relative;
-        left: -1.5%;
-        transition: left 0.3s ease; 
-        overflow-x: hidden;
-        &:hover {
-            left: 0;
-            .navbar__link { 
-                transition: color 0.3s ease;
-                color: white;
-            }
-        }
-        &__link {
-            color: black;
-        }
-        align-items: center;
-        border-radius: 0 3vw 3vw 0;
-        &__link_underscore_index {
-            &:hover {
-                border-radius: 0 3vw 0 0;
-            }
-        }
-        &__link_underscore_using {
-            &:hover {
-                border-radius: 0 0 3vw 0;
-            }
-        }
-        &__nav-list {
-            flex-direction: row;
-            writing-mode: vertical-lr; 
-            text-orientation: upright; 
-            align-items: center;
-        }
-        &__link {
-            font-size: 1.7vw;
-        }
-        }
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
 .calculator
 {
     max-width: 100%;
@@ -257,17 +114,6 @@ $bgWidth: 10000px;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.js-keytapped-white {
-    background:rgba(192, 192, 177, 0.664) !important;
-    text-shadow:  0.2rem 0.4rem 0.4px rgba($calc-color, 0.2) !important;
-    box-shadow: inset 2px 6px 12px rgba($calc-color, 0.5) !important;
-  }
-.js-keytapped-others {
-    background:rgb(31, 31, 30) !important;
-    text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
-    box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5) !important;
-  }
-
 .calculator__btn_type_bc,.calculator__btn_type_C {
     font-size: 11vw;
     @media screen and (min-width:650px) {
@@ -309,12 +155,13 @@ $bgWidth: 10000px;
 .calculator__btn_color-back_red {
     background: rgba(187, 6, 6, 0.753);
  }
-.footer {
-    background-color: rgba(243, 241, 148, 0.849);
-    padding: 0.5rem;
-    font-size: 5vw;
-    flex: 0 0 auto;
-    @media screen and (min-width: 650px) {
-    font-size: 1.4vw;
-    }
-}
+ .js-keytapped-white {
+    background:rgba(192, 192, 177, 0.664) !important;
+    text-shadow:  0.2rem 0.4rem 0.4px rgba($calc-color, 0.2) !important;
+    box-shadow: inset 2px 6px 12px rgba($calc-color, 0.5) !important;
+  }
+.js-keytapped-others {
+    background:rgb(31, 31, 30) !important;
+    text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
+    box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5) !important;
+  }

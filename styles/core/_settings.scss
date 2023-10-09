@@ -1,0 +1,16 @@
+* {
+    touch-action: manipulation;
+}
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    height: 100vh;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+  }

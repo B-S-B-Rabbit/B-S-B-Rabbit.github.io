@@ -133,7 +133,7 @@ function factorial(n) {
 }
 
 const calculator = {
-  display: document.getElementById('screen'),
+  display: document.querySelector('.calculator__screen'),
   operator: '',
   hasError: false,
   hasResult: false,
@@ -144,7 +144,7 @@ const calculator = {
   },
 
   updateDisplay() {
-    const displayElement = document.getElementById('screen');
+    const displayElement = document.querySelector('.calculator__screen');
     displayElement.value = this.display.value;
   },
 
@@ -228,11 +228,13 @@ const calculator = {
     this.scrollInputToEnd();
   },
   calculate() {
-    if (document.getElementById('screen').value === '') {
+    if (document.querySelector('.calculator__screen').value === '') {
       return 0;
     }
     try {
-      const rpnExpression = infixToRPN(document.getElementById('screen').value);
+      const rpnExpression = infixToRPN(
+        document.querySelector('.calculator__screen').value
+      );
       const result = calculateRPN(rpnExpression);
       this.display.value = result;
       this.updateDisplay();
@@ -274,6 +276,10 @@ const calculator = {
     this.updateDisplay();
   },
   leftBackspace() {
+    if (this.hasError) {
+      this.clear();
+      this.hasError = false;
+    }
     console.log(this.display.value.length);
     if (this.display.value.length == 1) {
       this.clear();
@@ -288,7 +294,7 @@ const calculator = {
   },
 };
 
-const digitButtons = document.querySelectorAll('.digit-button');
+const digitButtons = document.querySelectorAll('.js-digit-btn');
 digitButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const digit = button.textContent;
@@ -297,7 +303,7 @@ digitButtons.forEach((button) => {
   });
 });
 
-const operatorButtons = document.querySelectorAll('.operator-button');
+const operatorButtons = document.querySelectorAll('.js-operator-btn');
 operatorButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const operator = button.textContent;
@@ -306,7 +312,7 @@ operatorButtons.forEach((button) => {
   });
 });
 
-const functionButtons = document.querySelectorAll('.function-button');
+const functionButtons = document.querySelectorAll('.js-function-btn');
 functionButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const func = button.textContent;
@@ -315,13 +321,13 @@ functionButtons.forEach((button) => {
   });
 });
 
-const equalsButton = document.getElementById('equalsButton');
+const equalsButton = document.querySelector('.calculator__btn_type_eq');
 equalsButton.addEventListener('click', () => {
   calculator.calculate();
   updateFontSize();
 });
 
-const clearButton = document.getElementById('clearButton');
+const clearButton = document.querySelector('.calculator__btn_type_C');
 clearButton.addEventListener('click', () => {
   calculator.clear();
   currentFontSize = defaultFontSize;
@@ -331,9 +337,11 @@ clearButton.addEventListener('click', () => {
   updateFontSize();
 });
 
-const openParenthesisButton = document.getElementById('openParenthesisButton');
-const closeParenthesisButton = document.getElementById(
-  'closeParenthesisButton'
+const openParenthesisButton = document.querySelector(
+  '.calculator__btn_type_lp'
+);
+const closeParenthesisButton = document.querySelector(
+  '.calculator__btn_type_rp'
 );
 
 openParenthesisButton.addEventListener('click', () => {
@@ -346,7 +354,7 @@ closeParenthesisButton.addEventListener('click', () => {
   updateFontSize();
 });
 
-const backspaceButton = document.getElementById('backspaceButton');
+const backspaceButton = document.querySelector('.calculator__btn_type_bc');
 backspaceButton.addEventListener('click', () => {
   calculator.leftBackspace();
   updateFontSize();
@@ -355,7 +363,9 @@ backspaceButton.addEventListener('click', () => {
 document.addEventListener('keydown', (event) => {
   if (event.key == 'Enter') {
     event.preventDefault();
-    document.querySelector(`[data-key="="]`).classList.add('keytapped-others');
+    document
+      .querySelector(`[data-key="="]`)
+      .classList.add('js-keytapped-others');
     calculator.calculate();
     updateFontSize();
   }
@@ -367,7 +377,7 @@ document.addEventListener('keyup', (event) => {
       () =>
         document
           .querySelector(`[data-key="="]`)
-          .classList.remove('keytapped-others'),
+          .classList.remove('js-keytapped-others'),
       100
     );
     updateFontSize();
@@ -383,17 +393,17 @@ document.addEventListener('keydown', (event) => {
   const button = document.querySelector(`[data-key="${key}"]`);
   if (key >= '0' && key <= '9') {
     if (button) {
-      button.classList.add('keytapped-white');
+      button.classList.add('js-keytapped-white');
       calculator.appendDigit(key);
       updateFontSize();
     }
   } else if (key == 'Backspace') {
-    button.classList.add('keytapped-white');
+    button.classList.add('js-keytapped-white');
     calculator.leftBackspace();
     updateFontSize();
   } else {
     if (button) {
-      button.classList.add('keytapped-others');
+      button.classList.add('js-keytapped-others');
     }
     if (
       ['+', '-', '/', '*', '%', 'xy', '.', 'x!'].indexOf(button.textContent) + 1
@@ -425,15 +435,15 @@ document.addEventListener('keyup', (event) => {
   const button = document.querySelector(`[data-key="${key}"]`);
   if ((key >= '0' && key <= '9') || key == 'Backspace') {
     if (button) {
-      setTimeout(() => button.classList.remove('keytapped-white'), 100);
+      setTimeout(() => button.classList.remove('js-keytapped-white'), 100);
     }
   } else if (button) {
-    setTimeout(() => button.classList.remove('keytapped-others'), 100);
+    setTimeout(() => button.classList.remove('js-keytapped-others'), 100);
   }
 });
 
-const screen = document.getElementById('screen');
-const hiddenScreen = document.getElementById('hidden-screen');
+const screen = document.querySelector('.calculator__screen');
+const hiddenScreen = document.querySelector('.calculator__hidden-screen');
 const defaultFontSize = parseFloat(window.getComputedStyle(screen).fontSize);
 let currentFontSize = defaultFontSize;
 let shrinkCount = 0;
@@ -484,7 +494,7 @@ screen.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const input = document.getElementById('screen');
+  const input = document.querySelector('.calculator__screen');
 
   input.addEventListener('input', function () {
     this.scrollLeft = this.scrollWidth;
@@ -493,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   let lastTouchTime = 0;
-  const body = document.querySelector('body');
+  const body = document.querySelector('.page');
 
   body.addEventListener('touchstart', (event) => {
     const currentTime = new Date().getTime();
@@ -508,6 +518,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const calc = document.getElementById('calc');
+  const calc = document.querySelector('.calc-wrapper');
   calc.scrollIntoView({ behavior: 'smooth' });
 });

@@ -1,460 +1,76 @@
-@font-face {
-  font-family: 'Calculator';
-  src: url(fonts/digital-7.ttf);
-}
-@font-face {
-  font-family: 'Calculator';
-  font-style: italic;
-  src: url(fonts/digital-7-italic.ttf);
-}
-* {
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-}
+/*
+Error: Undefined variable: "$calc-color".
+        on line 194 of C:\Users\user\Desktop\calc\style.scss
 
-input,
-textarea,
-button,
-select,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
+189:         padding: 0.5vw 0.5vw 0.5vw 0;
+190:         font-size: 20vw;
+191:         height: auto;
+192:         line-height: 1.33;
+193:         text-align: right;
+194:         color: $calc-color;
+195:         background-color: #fff;
+196:         background-clip: padding-box;
+197:         border: 1px solid #bdbdbd00;
+198:         border-radius: 0.25rem;
+199:         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-html,
-.page {
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  position: relative;
-}
-
-html {
-  height: 100vh;
-}
-
-.header {
-  margin: 0;
-  padding: 0;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-.header img {
-  max-height: 200px;
-}
-
-.logo {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
-.page {
-  background: -webkit-gradient(linear, left top, right top, from(#242323), color-stop(19%, #424242), color-stop(40%, #868686), color-stop(60%, #b4b4b4), color-stop(83%, #d4d4d4), to(#242323));
-  background: linear-gradient(to right, #242323 0%, #424242 19%, #868686 40%, #b4b4b4 60%, #d4d4d4 83%, #242323 100%);
-  background-size: 10000px 100%;
-  -webkit-animation: bg 15s linear infinite;
-          animation: bg 15s linear infinite;
-}
-
-@-webkit-keyframes bg {
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 10000px;
-  }
-}
-
-@keyframes bg {
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 10000px;
-  }
-}
-.page {
-  min-width: 272px;
-  font-family: 'Georgia', serif;
-  color: #7c2020;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
-  min-height: 100%;
-}
-
-.page__wide-screen {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-}
-@media screen and (min-width: 650px) {
-  .page__wide-screen {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-}
-
-.navbar {
-  background: black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.navbar__nav-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  list-style-type: none;
-  padding: 0;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.navbar__link {
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 5vw;
-  padding: 1rem;
-}
-.navbar__link:hover {
-  background-color: rgba(155, 221, 233, 0.2);
-}
-@media screen and (min-width: 650px) {
-  .navbar {
-    position: relative;
-    left: -1.5%;
-    -webkit-transition: left 0.3s ease;
-    transition: left 0.3s ease;
-    overflow-x: hidden;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border-radius: 0 3vw 3vw 0;
-  }
-  .navbar:hover {
-    left: 0;
-  }
-  .navbar:hover .navbar__link {
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
-    color: white;
-  }
-  .navbar__link {
-    color: black;
-  }
-  .navbar__link_underscore_index:hover {
-    border-radius: 0 3vw 0 0;
-  }
-  .navbar__link_underscore_using:hover {
-    border-radius: 0 0 3vw 0;
-  }
-  .navbar__nav-list {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-writing-mode: vertical-lr;
-        -ms-writing-mode: tb-lr;
-            writing-mode: vertical-lr;
-    text-orientation: upright;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .navbar__link {
-    font-size: 1.7vw;
-  }
-}
-
-*, *::before, *::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.calculator {
-  max-width: 100%;
-  border: 3px solid;
-  border-radius: 0.5rem;
-  padding: 0.25rem;
-  margin: 0.25rem;
-}
-@media screen and (min-width: 650px) {
-  .calculator {
-    max-width: 50%;
-  }
-}
-.calculator__form-screen {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
-}
-.calculator__keys {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
-}
-
-main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  color: #333;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.calculator__form-screen {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 100%;
-}
-.calculator__form-screen .calculator__fieldset {
-  border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-  margin-bottom: 3px;
-  padding: 0;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  max-width: 100%;
-}
-.calculator__form-screen .calculator__fieldset .calculator__inputs-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  width: 100%;
-}
-.calculator__form-screen label, .calculator__form-screen legend {
-  display: none;
-}
-.calculator__form-screen .calculator__screen {
-  min-width: 0;
-  max-width: 100%;
-  display: block;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  width: 100px;
-  font-family: Calculator, sans-serif;
-  padding: 0.5vw 0.5vw 0.5vw 0;
-  font-size: 20vw;
-  height: auto;
-  line-height: 1.33;
-  text-align: right;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #bdbdbd00;
-  border-radius: 0.25rem;
-  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  overflow: scroll;
-}
-.calculator__form-screen .calculator__screen::-webkit-input-placeholder {
-  color: #212529;
-  opacity: 0.7;
-  overflow: visible;
-}
-.calculator__form-screen .calculator__screen:-ms-input-placeholder {
-  color: #212529;
-  opacity: 0.7;
-  overflow: visible;
-}
-.calculator__form-screen .calculator__screen::-ms-input-placeholder {
-  color: #212529;
-  opacity: 0.7;
-  overflow: visible;
-}
-.calculator__form-screen .calculator__screen::placeholder {
-  color: #212529;
-  opacity: 0.7;
-  overflow: visible;
-}
-@media screen and (min-width: 650px) {
-  .calculator__form-screen .calculator__screen {
-    padding: 1.2vw 0.2vw 1.2vw 0;
-    font-size: 4.6vw;
-    height: 7vw;
-  }
-}
-
-.keytapped-white {
-  background: rgba(192, 192, 177, 0.664) !important;
-  text-shadow: 0.2rem 0.4rem 0.4px rgba(33, 37, 41, 0.2) !important;
-  -webkit-box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5) !important;
-          box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5) !important;
-}
-
-.keytapped-others {
-  background: #1f1f1e !important;
-  text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
-  -webkit-box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
-          box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5) !important;
-}
-
-.calculator__data-buttons {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-auto-flow: row;
-  gap: 1.5vw;
-}
-.calculator__data-buttons .calculator__btn {
-  border: 0;
-  border-radius: 4px;
-  background: #ffffff;
-  color: #212529;
-  padding: 2vw 2vw;
-  font-size: 8vw;
-  font-family: Calculator, sans-serif;
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
-  -webkit-box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.226);
-          box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.226);
-  cursor: pointer;
-}
-.calculator__data-buttons .calculator__btn:hover {
-  background: rgba(192, 192, 177, 0.664);
-}
-.calculator__data-buttons .calculator__btn:active {
-  text-shadow: 0.2rem 0.4rem 0.4px rgba(33, 37, 41, 0.2);
-  -webkit-box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
-          box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
-}
-@media screen and (min-width: 650px) {
-  .calculator__data-buttons .calculator__btn {
-    padding: 0.2vw 0.2vw;
-    font-size: 3vw;
-  }
-}
-.calculator__data-buttons .calculator__btn_type_bc, .calculator__data-buttons .calculator__btn_type_C {
-  font-size: 11vw;
-}
-@media screen and (min-width: 650px) {
-  .calculator__data-buttons .calculator__btn_type_bc, .calculator__data-buttons .calculator__btn_type_C {
-    font-size: 4vw;
-  }
-}
-@media screen and (min-width: 650px) {
-  .calculator__data-buttons {
-    gap: 0.8vw;
-  }
-}
-
-.calculator__btn_type_bc {
-  grid-row: 1 / span 1;
-  grid-column: 1 / span 3;
-}
-
-.calculator__btn_type_C {
-  grid-row: 1 / span 1;
-  grid-column: 4 / span 2;
-}
-
-.calculator__btn_type_sqrt, .calculator__btn_type_pm, .calculator__btn_type_pi, .calculator__btn_type_log, .calculator__btn_type_ln {
-  grid-row: 2 / span 1;
-}
-
-.calculator__data-buttons > .calculator__btn_not-digit {
-  background: #5f5f5f;
-  color: #f6f7ec;
-}
-.calculator__data-buttons > .calculator__btn_not-digit:hover {
-  background: #1f1f1e;
-}
-.calculator__data-buttons > .calculator__btn_not-digit:active {
-  text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2);
-  -webkit-box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
-          box-shadow: inset 2px 6px 12px rgba(97, 96, 96, 0.5);
-}
-
-.calculator__data-buttons > .calculator__btn_type_eq {
-  grid-column: 4 / span 2;
-  background: #02203bbb;
-  color: white;
-}
-
-.calculator__data-buttons > .rb {
-  background: rgba(187, 6, 6, 0.753);
-}
-
-.footer {
-  background-color: rgba(243, 241, 148, 0.849);
-  padding: 0.5rem;
-  font-size: 5vw;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-@media screen and (min-width: 650px) {
-  .footer {
-    font-size: 1.4vw;
-  }
-}
-
-/*# sourceMappingURL=style.css.map */
+Backtrace:
+C:\Users\user\Desktop\calc\style.scss:194
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:161:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:391:in `run'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Koala/bin/sass:22:in `load'
+C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$calc-color\".\A         on line 194 of C:\Users\user\Desktop\calc\style.scss\A \A 189:         padding: 0.5vw 0.5vw 0.5vw 0;\A 190:         font-size: 20vw;\A 191:         height: auto;\A 192:         line-height: 1.33;\A 193:         text-align: right;\A 194:         color: $calc-color;\A 195:         background-color: #fff;\A 196:         background-clip: padding-box;\A 197:         border: 1px solid #bdbdbd00;\A 198:         border-radius: 0.25rem;\A 199:         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;"; }

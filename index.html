@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Калькулятор</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/app.css">
 </head>
-<body class="page">
+<body class="page page_back_animation">
     <header class="header">
         <img class="logo" src="images/hat2.jpg" alt="Калькулятор серый">
     </header>
     <div class="page__wide-screen">
     <nav class="navbar">
             <ul class="navbar__nav-list">
-                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_index" href="index.html">Калькулятор</a></li>
+                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_index navbar__link_active" href="index.html">Калькулятор</a></li>
                 <li class="navbar__item"><a class="navbar__link navbar__link_underscore_using" href="using.html">Использование</a></li>
             </ul>
     </nav>
-    <main id="calc">
+    <main class="calc-wrapper">
         <section class="calculator">
             <form class="calculator__form-screen" action="get">
                 <fieldset class="calculator__fieldset">
@@ -29,45 +29,45 @@
                     </div>
             </fieldset>
         </form>
-        <section class="calculator__keys">
-            <section class="calculator__data-buttons">
+        <div class="calculator__keys">
+            <div class="calculator__data-buttons">
                 <button class="calculator__btn calculator__btn_type_bc" id="backspaceButton" data-key="Backspace">&larr;</button>
-                <button class="calculator__btn calculator__btn_type_C rb" id="clearButton">C</button>
-                <button class="calculator__btn calculator__btn_type_sqrt calculator__btn_not-digit function-button">sqrt</button>
-                <button class="calculator__btn calculator__btn_type_pm calculator__btn_not-digit operator-button">+-</button>
+                <button class="calculator__btn calculator__btn_type_C calculator__btn_color-back_red" id="clearButton">C</button>
+                <button class="calculator__btn calculator__btn_type_sqrt calculator__btn_not-digit js-function-btn">sqrt</button>
+                <button class="calculator__btn calculator__btn_type_pm calculator__btn_not-digit js-operator-btn">+-</button>
                 <button class="calculator__btn calculator__btn_type_pi calculator__btn_not-digit digit-button">&pi;</button>
-                <button class="calculator__btn calculator__btn_type_log calculator__btn_not-digit function-button">lg</button>
-                <button class="calculator__btn calculator__btn_type_ln calculator__btn_not-digit function-button">ln</button>
-                <button class="calculator__btn calculator__btn_type_ext calculator__btn_not-digit operator-button" data-key="^">x<sup>y</sup></button>
+                <button class="calculator__btn calculator__btn_type_log calculator__btn_not-digit js-function-btn">lg</button>
+                <button class="calculator__btn calculator__btn_type_ln calculator__btn_not-digit js-function-btn">ln</button>
+                <button class="calculator__btn calculator__btn_type_ext calculator__btn_not-digit js-operator-btn" data-key="^">x<sup>y</sup></button>
                 <button class="calculator__btn calculator__btn_type_lp calculator__btn_not-digit" id="openParenthesisButton" data-key="(">(</button>
                 <button class="calculator__btn calculator__btn_type_rp calculator__btn_not-digit" id="closeParenthesisButton" data-key=")">)</button>
-                <button class="calculator__btn calculator__btn_type_md calculator__btn_not-digit operator-button" data-key="%">%</button>
-                <button class="calculator__btn calculator__btn_type_dv calculator__btn_not-digit operator-button" data-key="/">/</button>
-                <button class="calculator__btn calculator__btn_type_tr calculator__btn_not-digit operator-button ">x<sup>3</sup></button>
-                <button class="calculator__btn calculator__btn_type_7 calculator__btn_digit" data-key="7">7</button>
-                <button class="calculator__btn calculator__btn_type_8 calculator__btn_digit" data-key="8">8</button>
-                <button class="calculator__btn calculator__btn_type_9 calculator__btn_digit" data-key="9">9</button>
-                <button class="calculator__btn calculator__btn_type_mul calculator__btn_not-digit operator-button" data-key="*">*</button>
-                <button class="calculator__btn calculator__btn_type_sqr calculator__btn_not-digit operator-button">x<sup>2</sup></button>
-                <button class="calculator__btn calculator__btn_type_4 calculator__btn_digit" data-key="4">4</button>
-                <button class="calculator__btn calculator__btn_type_5 calculator__btn_digit" data-key="5">5</button>
-                <button class="calculator__btn calculator__btn_type_6 calculator__btn_digit" data-key="6">6</button>
-                <button class="calculator__btn calculator__btn_type_7 calculator__btn_not-digit operator-button" data-key="-">-</button>
-                <button class="calculator__btn calculator__btn_type_10x calculator__btn_not-digit operator-button">10<sup>x</sup></button>
-                <button class="calculator__btn calculator__btn_type_1 calculator__btn_digit" data-key="1">1</button>
-                <button class="calculator__btn calculator__btn_type_2 calculator__btn_digit" data-key="2">2</button>
-                <button class="calculator__btn calculator__btn_type_3 calculator__btn_digit" data-key="3">3</button>
-                <button class="calculator__btn calculator__btn_type_plus calculator__btn_not-digit operator-button" data-key="+">+</button>
-                <button class="calculator__btn calculator__btn_type_fact calculator__btn_not-digit operator-button" data-key="!">x!</button>
-                <button class="calculator__btn calculator__btn_type_dot calculator__btn_not-digit operator-button" data-key=".">.</button>
-                <button class="calculator__btn calculator__btn_type_zero calculator__btn_digit" data-key="0">0</button>
+                <button class="calculator__btn calculator__btn_type_md calculator__btn_not-digit js-operator-btn" data-key="%">%</button>
+                <button class="calculator__btn calculator__btn_type_dv calculator__btn_not-digit js-operator-btn" data-key="/">/</button>
+                <button class="calculator__btn calculator__btn_type_tr calculator__btn_not-digit js-operator-btn ">x<sup>3</sup></button>
+                <button class="calculator__btn calculator__btn_type_7 js-digit-btn" data-key="7">7</button>
+                <button class="calculator__btn calculator__btn_type_8 js-digit-btn" data-key="8">8</button>
+                <button class="calculator__btn calculator__btn_type_9 js-digit-btn" data-key="9">9</button>
+                <button class="calculator__btn calculator__btn_type_mul calculator__btn_not-digit js-operator-btn" data-key="*">*</button>
+                <button class="calculator__btn calculator__btn_type_sqr calculator__btn_not-digit js-operator-btn">x<sup>2</sup></button>
+                <button class="calculator__btn calculator__btn_type_4 js-digit-btn" data-key="4">4</button>
+                <button class="calculator__btn calculator__btn_type_5 js-digit-btn" data-key="5">5</button>
+                <button class="calculator__btn calculator__btn_type_6 js-digit-btn" data-key="6">6</button>
+                <button class="calculator__btn calculator__btn_type_7 calculator__btn_not-digit js-operator-btn" data-key="-">-</button>
+                <button class="calculator__btn calculator__btn_type_10x calculator__btn_not-digit js-operator-btn">10<sup>x</sup></button>
+                <button class="calculator__btn calculator__btn_type_1 js-digit-btn" data-key="1">1</button>
+                <button class="calculator__btn calculator__btn_type_2 js-digit-btn" data-key="2">2</button>
+                <button class="calculator__btn calculator__btn_type_3 js-digit-btn" data-key="3">3</button>
+                <button class="calculator__btn calculator__btn_type_plus calculator__btn_not-digit js-operator-btn" data-key="+">+</button>
+                <button class="calculator__btn calculator__btn_type_fact calculator__btn_not-digit js-operator-btn" data-key="!">x!</button>
+                <button class="calculator__btn calculator__btn_type_dot calculator__btn_not-digit js-operator-btn" data-key=".">.</button>
+                <button class="calculator__btn calculator__btn_type_zero js-digit-btn" data-key="0">0</button>
                 <button class="calculator__btn calculator__btn_type_eq calculator__btn_not-digit" id="equalsButton" data-key="=">=</button>   
-            </section>
-        </section>
+            </div>
+        </div>
         </section>
     </main>
 </div>
     <footer class="footer">@created by B-S-B-Rabbit</footer>
-<!--<script src="scripts/script.js"></script>-->
+<script src="scripts/script.js"></script>
 </body>
 </html>

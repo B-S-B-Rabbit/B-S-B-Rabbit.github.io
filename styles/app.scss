@@ -1,0 +1,28 @@
+@import "pages/_home.scss";
+.info {
+    @include padding-margin(0,0);
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.greeting {
+    @include padding-margin(0,0);
+    height: 90vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    font-family: Versus, sans-serif;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 5vw;
+    color: rgba($color: #ffffff, $alpha: 0.7);
+    background-image: url(../images/ebcb599127ce0b72a991902ba2d1a04a.jpg);
+    &__hello {
+        text-align: center;
+        white-space: normal;
+    }
+}
+

@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Калькулятор</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/app.css">
 </head>
-<body>
-    <header><img class="hat" src="images/hat2.jpg" alt="Калькулятор серый"></header>
-    <div class="wide-screen">
-    <nav class="sidebar">
-        <div>
-            <ul>
-                <li><a id="calc-ref" href="index.html">Калькулятор</a></li>
-                <li><a id="ab-ref" href="using.html">Использование</a></li>
+<body class="page">
+    <header class="header">
+        <img class="logo" src="images/hat2.jpg" alt="Калькулятор серый">
+    </header>
+    <div class="page__wide-screen">
+    <nav class="navbar">
+            <ul class="navbar__nav-list">
+                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_index" href="index.html">Калькулятор</a></li>
+                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_using navbar__link_active" href="using.html">Использование</a></li>
             </ul>
-        </div>
     </nav>
-    <main>
-    <section class="info">
-        <div>
-            <h1>Привет! Ниже ты найдешь всю необходимую информацию о том, как использовать этот калькулятор</h1>
+    <main class="main-block">
+        <section class="info">
+            <div class="greeting">
+            <h1 class="greeting__hello">Привет!<br> Ниже ты найдешь всю необходимую информацию о том, как использовать этот калькулятор</h1>
         </div>
         <div>
             <h2>Арифметические операторы</h2>
@@ -62,6 +62,7 @@
     </section>
     </main>
 </div>
-    <footer>@created by B-S-B-Rabbit</footer>
+    <footer class="footer">@created by B-S-B-Rabbit</footer>
+<script src="scripts/script.js"></script>
 </body>
 </html>
