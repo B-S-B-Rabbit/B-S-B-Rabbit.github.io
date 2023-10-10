@@ -1,28 +1,103 @@
 @import "pages/_home.scss";
+.page_mobile-back {
+    background-image: url(../images/uphone.jpg);
+}
 .info {
     @include padding-margin(0,0);
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .greeting {
     @include padding-margin(0,0);
-    height: 90vh;
     width: 100%;
     overflow: hidden;
     display: flex;
-    font-family: Versus, sans-serif;
-    align-items: center;
+    font-family: Oswald, sans-serif;
     flex-wrap: wrap;
     justify-content: center;
     font-size: 5vw;
-    color: rgba($color: #ffffff, $alpha: 0.7);
-    background-image: url(../images/ebcb599127ce0b72a991902ba2d1a04a.jpg);
+    color: rgba($color: #ffffff, $alpha: 1);
     &__hello {
+        height:fit-content;
+        line-height: normal;
+        display: flex;
+        @include padding-margin(0,3vw 3vw 0 3vw);
         text-align: center;
         white-space: normal;
     }
 }
+.arrow-down {
+    height: 80vh;
+}
+.arrow-down__shape {
+    margin-top: 4px;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    --fill1: #0b57c9;
+    --stroke1: rgb(255, 255, 255);
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+.arrow-down__shape:hover {
+    margin-top: 4px;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    --fill1: #0b57c9;
+    --stroke1: rgb(255, 255, 255);
+}
+.arrow-down__shape:hover {
+    animation: blink 0.1s infinite alternate; /* Добавьте анимацию blink */
+}
+
+@keyframes blink {
+    from {
+        --fill1: #0b57c9; /* Исходный цвет fill */
+    }
+    to {
+        --fill1: #0066ff; /* Цвет fill при наведении */
+    }
+}
+
+.math-operators {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30vh;
+    padding: 1vw;
+    font-size: 4vw;
+    font-family: Roboto, sans-serif;
+    line-height: 2;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    &__op {
+        line-height:initial;
+        font-size: 6vw;
+        padding: 1vw;
+        color: rgb(252, 174, 8);
+        background: linear-gradient(45deg, #3358ff, #046c74); /* Градиентный фон */
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, font-size 0.2s; /* Анимация изменения цвета фона и размера шрифта */
+    }
+    
+    &__op:hover {
+        background-color: #333; /* Новый цвет фона при наведении */
+        font-size: 7vw; /* Новый размер шрифта при наведении */
+    }
+    &__other {
+        line-height:initial;
+        align-items: center;
+        justify-content: center;
+    }
+    &__pi {
+        margin-left: 3vw;
+    }
+}
+
 

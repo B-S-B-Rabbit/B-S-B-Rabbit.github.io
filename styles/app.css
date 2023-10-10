@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   -ms-touch-action: manipulation;
       touch-action: manipulation;
@@ -20,6 +21,22 @@ html {
           box-sizing: border-box;
 }
 
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
 @font-face {
   font-family: 'Calculator';
   src: url(../fonts/digital-7.ttf);
@@ -34,8 +51,8 @@ html {
   src: url(../fonts/Comfortaa-VariableFont_wght.ttf);
 }
 @font-face {
-  font-family: 'Versus';
-  src: url(../fonts/versus.otf);
+  font-family: 'Roboto';
+  src: url(../../fonts/Roboto-Regular.ttf);
 }
 .calculator {
   max-width: 100%;
@@ -468,6 +485,10 @@ html {
   }
 }
 
+.page_mobile-back {
+  background-image: url(../images/uphone.jpg);
+}
+
 .info {
   padding: 0;
   margin: 0;
@@ -481,39 +502,148 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .greeting {
   padding: 0;
   margin: 0;
-  height: 90vh;
   width: 100%;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: Versus, sans-serif;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  font-family: Oswald, sans-serif;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   font-size: 5vw;
-  color: rgba(255, 255, 255, 0.7);
-  background-image: url(../images/ebcb599127ce0b72a991902ba2d1a04a.jpg);
+  color: white;
 }
 .greeting__hello {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  line-height: normal;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  margin: 3vw 3vw 0 3vw;
   text-align: center;
   white-space: normal;
+}
+
+.arrow-down {
+  height: 80vh;
+}
+
+.arrow-down__shape {
+  margin-top: 4px;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  --fill1: #0b57c9;
+  --stroke1: rgb(255, 255, 255);
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.arrow-down__shape:hover {
+  margin-top: 4px;
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  --fill1: #0b57c9;
+  --stroke1: rgb(255, 255, 255);
+}
+
+.arrow-down__shape:hover {
+  -webkit-animation: blink 0.1s infinite alternate;
+          animation: blink 0.1s infinite alternate;
+  /* Добавьте анимацию blink */
+}
+
+@-webkit-keyframes blink {
+  from {
+    --fill1: #0b57c9;
+    /* Исходный цвет fill */
+  }
+  to {
+    --fill1: #0066ff;
+    /* Цвет fill при наведении */
+  }
+}
+
+@keyframes blink {
+  from {
+    --fill1: #0b57c9;
+    /* Исходный цвет fill */
+  }
+  to {
+    --fill1: #0066ff;
+    /* Цвет fill при наведении */
+  }
+}
+.math-operators {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30vh;
+  padding: 1vw;
+  font-size: 4vw;
+  font-family: Roboto, sans-serif;
+  line-height: 2;
+  background-color: black;
+  color: white;
+}
+.math-operators__op {
+  line-height: initial;
+  font-size: 6vw;
+  padding: 1vw;
+  color: #fcae08;
+  background: linear-gradient(45deg, #3358ff, #046c74);
+  /* Градиентный фон */
+  border-radius: 4px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: background-color 0.2s, font-size 0.2s;
+  transition: background-color 0.2s, font-size 0.2s;
+  /* Анимация изменения цвета фона и размера шрифта */
+}
+.math-operators__op:hover {
+  background-color: #333;
+  /* Новый цвет фона при наведении */
+  font-size: 7vw;
+  /* Новый размер шрифта при наведении */
+}
+.math-operators__other {
+  line-height: initial;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.math-operators__pi {
+  margin-left: 3vw;
 }
 
 /*# sourceMappingURL=app.css.map */

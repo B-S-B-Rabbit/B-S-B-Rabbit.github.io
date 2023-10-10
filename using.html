@@ -1,68 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Калькулятор</title>
     <link rel="stylesheet" href="styles/app.css">
 </head>
-<body class="page">
+
+<body class="page page_mobile-back">
     <header class="header">
         <img class="logo" src="images/hat2.jpg" alt="Калькулятор серый">
     </header>
     <div class="page__wide-screen">
-    <nav class="navbar">
+        <nav class="navbar">
             <ul class="navbar__nav-list">
-                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_index" href="index.html">Калькулятор</a></li>
-                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_using navbar__link_active" href="using.html">Использование</a></li>
+                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_index"
+                        href="index.html">Калькулятор</a></li>
+                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_using navbar__link_active"
+                        href="using.html">Использование</a></li>
             </ul>
-    </nav>
-    <main class="main-block">
-        <section class="info">
-            <div class="greeting">
-            <h1 class="greeting__hello">Привет!<br> Ниже ты найдешь всю необходимую информацию о том, как использовать этот калькулятор</h1>
-        </div>
-        <div>
-            <h2>Арифметические операторы</h2>
-            <ul>
-                <li><b>+</b>: Сложение. Пример: 2 + 3 = 5</li>
-                <li><b>-</b>: Вычитание. Пример: 7 - 4 = 3</li>
-                <li><b>*</b>: Умножение. Пример: 5 * 6 = 30</li>
-                <li><b>/</b>: Деление. Пример: 10 / 2 = 5</li>
-                <li><b>%</b>: Взятие остатка от деления. Пример: 8 % 3 = 2</li>
-                <li><b>x^y</b>: Возведение числа x в степень y. Пример: 2^3 = 8</li>
-                <li><b>x^3</b>: Возведение числа x в куб. Пример: 2^3 = 8</li>
-                <li><b>x^2</b>: Возведение числа x в квадрат. Пример: 4^2 = 16</li>
-                <li><b>10^x</b>: Возведение числа 10 в степень x. Пример: 10^2 = 100</li>
-                <li><b>x!</b>: Факториал числа x (произведение всех положительных целых чисел от 1 до x). Пример: 5! = 120</li>
-                <li><b>sqrt</b>: Квадратный корень числа. Пример: sqrt(25) = 5</li>
-            </ul>
-        
-            <h2>Логарифмические операторы</h2>
-            <ul>
-                <li><b>lg</b>: Десятичный логарифм. Пример: lg(100) = 2</li>
-                <li><b>ln</b>: Натуральный логарифм (логарифм по основанию e). Пример: ln(e) = 1</li>
-            </ul>
-        
-            <h2>Другие операторы</h2>
-            <ul>
-                <li><b>(</b>: Открывающая скобка. Используется для группировки выражений. Пример: (2 + 3) * 4 = 20</li>
-                <li><b>)</b>: Закрывающая скобка.</li>
-                <li><b>=</b>: Оператор равенства. Пример: 5 + 5 = 10</li>
-                <li><b>C</b>: Очистка всех данных калькулятора.</li>
-                <li><b>backspace</b>: Удаление последнего символа ввода.</li>
-            </ul>
-        
-            <p>Помимо перечисленных операторов, вы также можете использовать константу <b>pi</b>, представляющую число π (пи).</p>
-        </div>
-        <div>
-            <h1>Последние новости</h1>
-            <p>08.10.23 - добавлена новая страница с информацией об использовании калькулятора</p>
-        </div>
-    </section>
-    </main>
-</div>
+        </nav>
+        <main class="main-block">
+            <section class="info">
+                <div class="greeting">
+                    <h1 class="greeting__hello">Ниже находится информация об использовании калькулятора</h1>
+                    <div class="arrow-down">
+                        <svg class="arrow-down__shape" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path class="arrow-down__path" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12ZM7.83335 12C7.4963 12 7.19244 12.2088 7.06346 12.5291C6.93447 12.8494 7.00577 13.2181 7.2441 13.4632L11.4107 17.7489C11.7362 18.0837 12.2638 18.0837 12.5893 17.7489L16.7559 13.4632C16.9942 13.2181 17.0655 12.8494 16.9365 12.5291C16.8076 12.2088 16.5037 12 16.1666 12H14V7C14 6.44771 13.5523 6 13 6H11C10.4477 6 10 6.44771 10 7V12H7.83335Z"
+                                stroke="var(--stroke1)" fill="var(--fill1)" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="math-guide">
+                    <div class="math-operators">
+                        <h2 class="math-operators__head">Арифметические операторы</h2>
+                        <ul class="math-operators__list">
+                            <li class="math-operators__item"><span class="math-operators__op">+</span> Сложение.
+                                <br>Пример: 2 + 3 = 5
+                            </li>
+                            <li class="math-operators__item"><span class="math-operators__op">-</span> Вычитание.
+                                <br>Пример: 7 - 4 = 3
+                            </li>
+                            <li class="math-operators__item"><span class="math-operators__op">*</span> Умножение.
+                                <br>Пример: 5 * 6 = 30
+                            </li>
+                            <li class="math-operators__item"><span class="math-operators__op">/</span> Деление.
+                                <br>Пример: 10 / 2 = 5
+                            </li>
+                            <li class="math-operators__item"><span class="math-operators__op">%</span> Взятие остатка от
+                                деления. <br>Пример: 8 % 3 = 2</li>
+                            <li class="math-operators__item"><span class="math-operators__op">x<sup>y</sup></span>
+                                Возведение числа x в степень y. <br>Пример: 2<sup>3</sup> = 8</li>
+                            <li class="math-operators__item"><span class="math-operators__op">x<sup>3</sup></span>
+                                Возведение числа x в куб. <br>Пример: 2<sup>3</sup> = 8</li>
+                            <li class="math-operators__item"><span class="math-operators__op">x<sup>2</sup></span>
+                                Возведение числа x в квадрат. <br>Пример: 4<sup>2</sup> = 16</li>
+                            <li class="math-operators__item"><span class="math-operators__op">10<sup>x</sup></span>
+                                Возведение числа 10 в степень x. <br>Пример: 10<sup>2</sup> = 100</li>
+                            <li class="math-operators__item"><span class="math-operators__op">x!</span> Факториал числа
+                                x (произведение всех положительных целых чисел от 1 до x). <br>Пример: 5! = 120</li>
+                            <li class="math-operators__item"><span class="math-operators__op">sqrt</span> Квадратный
+                                корень числа. <br>Пример: sqrt(25) = 5</li>
+                        </ul>
+                    </div>
+                    <div class="math-operators">
+                        <h2 class="math-operators__head">Логарифмические операторы</h2>
+                        <ul class="math-operators__list">
+                            <li class="math-operators__item"><span class="math-operators__op">lg</span> Десятичный
+                                логарифм. <br>Пример: lg(100) = 2</li>
+                            <li class="math-operators__item"><span class="math-operators__op">ln</span> Натуральный
+                                логарифм (логарифм по основанию e). <br>Пример: ln(e) = 1</li>
+                        </ul>
+                    </div>
+                    <div class="math-operators">
+                        <h2>Другие операторы</h2>
+                        <ul class="math-operators__list">
+                            <li class="math-operators__item"><span class="math-operators__op">(</span> Открывающая
+                                скобка. Используется для группировки выражений. <br>Пример: (2 + 3) * 4 = 20</li>
+                            <li class="math-operators__item"><span class="math-operators__op">)</span> Закрывающая
+                                скобка.</li>
+                            <li class="math-operators__item"><span class="math-operators__op">=</span> Оператор
+                                равенства. <br>Пример: 5 + 5 = 10</li>
+                            <li class="math-operators__item"><span class="math-operators__op">C</span> Очистка всех
+                                данных калькулятора.</li>
+                            <li class="math-operators__item"><span class="math-operators__op">backspace</span> Удаление
+                                последнего символа ввода.</li>
+                        </ul>
+
+                        <div class="math-operators__other">
+                            <p class="math-operators__pi">Помимо перечисленных операторов, вы также можете использовать
+                                константу <span span class="math-operators__op">&pi;</span>, представляющую число
+                                ПИ(~3.14).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
     <footer class="footer">@created by B-S-B-Rabbit</footer>
-<script src="scripts/script.js"></script>
+    <script>
+        const mainContent = document.querySelector('.arrow-down');
+        mainContent.addEventListener('click', () => {
+            const toInfo = document.querySelector('.math-guide');
+            toInfo.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
 </body>
+
 </html>
