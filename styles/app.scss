@@ -63,15 +63,15 @@
     --stroke1: rgb(255, 255, 255);
 }
 .arrow-down__shape:hover {
-    animation: blink 0.1s infinite alternate; /* Добавьте анимацию blink */
+    animation: blink 0.1s infinite alternate;
 }
 
 @keyframes blink {
     from {
-        --fill1: #0b57c9; /* Исходный цвет fill */
+        --fill1: #0b57c9;
     }
     to {
-        --fill1: #0066ff; /* Цвет fill при наведении */
+        --fill1: #0066ff;
     }
 }
 
@@ -91,17 +91,17 @@
         padding: 1vw;
         font-family: Calculator, sans-serif;
         color: rgb(252, 174, 8);
-        background: linear-gradient(45deg, #3358ff, #046c74); /* Градиентный фон */
+        background: linear-gradient(45deg, #3358ff, #046c74);
         border-radius: 4px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.2s, font-size 0.2s; /* Анимация изменения цвета фона и размера шрифта */
+        transition: background-color 0.2s, font-size 0.2s;
     }
     
     &__op:hover {
-        background-color: #333; /* Новый цвет фона при наведении */
-        font-size: 7vw; /* Новый размер шрифта при наведении */
+        background-color: #333;
+        font-size: 7vw;
     }
     &__other {
         line-height:initial;
