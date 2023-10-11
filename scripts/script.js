@@ -236,7 +236,17 @@ const calculator = {
         document.querySelector('.calculator__screen').value
       );
       const result = calculateRPN(rpnExpression);
-      this.display.value = result;
+      debugger;
+      if (result.toString().indexOf('e') + 1) {
+        this.display.value = 'Too big value';
+        this.updateDisplay();
+        this.hasError = false;
+        this.hasResult = true;
+        return result;
+      }
+      this.display.value = parseFloat(result)
+        .toFixed(5)
+        .replace(/(\.0+|0+)$/, '');
       this.updateDisplay();
       this.hasError = false;
       this.hasResult = true;

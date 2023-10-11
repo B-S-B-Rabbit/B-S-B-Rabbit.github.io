@@ -23,8 +23,12 @@
         </nav>
         <main class="main-block">
             <section class="info">
+                <div class="intro"><p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от 
+                    простых базовых арифметических операций до сложных выражений со скобочками и различными
+                    функциями, такими как возведение в степень, вычисление факториала, взятие логарифма и пр.
+                </p></div>
                 <div class="greeting">
-                    <h1 class="greeting__hello">Ниже находится информация об использовании калькулятора</h1>
+                    <h1 class="greeting__hello">Вся практическая информация ниже</h1>
                     <div class="arrow-down">
                         <svg class="arrow-down__shape" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +80,7 @@
                         </ul>
                     </div>
                     <div class="math-operators">
-                        <h2>Другие операторы</h2>
+                        <h2 class="math-operators__head">Другие операторы</h2>
                         <ul class="math-operators__list">
                             <li class="math-operators__item"><span class="math-operators__op">(</span> Открывающая
                                 скобка. Используется для группировки выражений. <br>Пример: (2 + 3) * 4 = 20</li>
@@ -102,7 +106,7 @@
     </div>
     <footer class="footer">@created by B-S-B-Rabbit</footer>
     <script>
-        const mainContent = document.querySelector('.arrow-down');
+        const mainContent = document.querySelector('.arrow-down__shape');
         mainContent.addEventListener('click', () => {
             const toInfo = document.querySelector('.math-guide');
             toInfo.scrollIntoView({ behavior: 'smooth' });

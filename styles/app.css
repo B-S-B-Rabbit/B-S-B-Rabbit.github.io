@@ -52,7 +52,11 @@ sub {
 }
 @font-face {
   font-family: 'Roboto';
-  src: url(../../fonts/Roboto-Regular.ttf);
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: 'Versus';
+  src: url(../fonts/versus.otf);
 }
 .calculator {
   max-width: 100%;
@@ -487,6 +491,7 @@ sub {
 
 .page_mobile-back {
   background-image: url(../images/uphone.jpg);
+  background-repeat: repeat;
 }
 
 .info {
@@ -504,6 +509,22 @@ sub {
           flex-direction: column;
 }
 
+.intro {
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.intro__text {
+  text-align: center;
+  padding: 0;
+  font-size: 5vw;
+  font-family: Roboto, sans-serif;
+  line-height: 2;
+  color: white;
+}
+
 .greeting {
   padding: 0;
   margin: 0;
@@ -512,7 +533,7 @@ sub {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: Oswald, sans-serif;
+  font-family: Versus, sans-serif;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;
@@ -599,17 +620,17 @@ sub {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 30vh;
-  padding: 1vw;
+  padding: 0;
   font-size: 4vw;
   font-family: Roboto, sans-serif;
   line-height: 2;
-  background-color: black;
   color: white;
 }
 .math-operators__op {
   line-height: initial;
   font-size: 6vw;
   padding: 1vw;
+  font-family: Calculator, sans-serif;
   color: #fcae08;
   background: linear-gradient(45deg, #3358ff, #046c74);
   /* Градиентный фон */
@@ -644,6 +665,17 @@ sub {
 }
 .math-operators__pi {
   margin-left: 3vw;
+}
+.math-operators__list, .math-operators__other {
+  background-color: black;
+}
+.math-operators__head {
+  font-family: Versus, sans-serif;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  text-align: center;
+  font-size: 7vw;
 }
 
 /*# sourceMappingURL=app.css.map */
