@@ -524,6 +524,60 @@ sub {
   color: white;
 }
 
+.inner-nav {
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1vw;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-family: Roboto, sans-serif;
+  font-size: 5vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 2;
+  color: white;
+  margin-bottom: 70vh;
+}
+.inner-nav__list {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+}
+.inner-nav__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 2vw;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+.inner-nav__item::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+.inner-nav__item:hover::before {
+  width: 100%;
+}
+
 .greeting {
   padding: 0;
   margin: 0;
@@ -602,6 +656,12 @@ sub {
     --fill1: #0066ff;
   }
 }
+.video-using {
+  width: auto;
+  height: auto;
+  margin-bottom: 30vh;
+}
+
 .math-operators {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -666,6 +726,34 @@ sub {
   display: inline-flex;
   text-align: center;
   font-size: 7vw;
+}
+
+.FAQ {
+  margin: 0 auto;
+  margin-bottom: 30vh;
+  font-family: Roboto, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  border: 3px white solid;
+}
+.FAQ__head {
+  background-color: #f0f0f0;
+}
+.FAQ__question {
+  margin: 20px 0;
+}
+.FAQ__q-head {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+.FAQ__answer {
+  background-color: #f0f0f0;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease;
 }
 
 /*# sourceMappingURL=app.css.map */

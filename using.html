@@ -23,11 +23,20 @@
         </nav>
         <main class="main-block">
             <section class="info">
-                <div class="intro"><p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от 
-                    простых базовых арифметических операций до сложных выражений со скобочками и различными
-                    функциями, такими как возведение в степень, вычисление факториала, взятие логарифма и пр.
-                </p></div>
-                <div class="greeting">
+                <div class="intro">
+                    <p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от
+                        простых базовых арифметических операций до сложных выражений со скобочками и различными
+                        функциями, такими как возведение в степень, вычисление факториала, взятие логарифма и пр.
+                    </p>
+                </div>
+                <nav class="inner-nav">
+                    <ul class="inner-nav__list">
+                        <li class="inner-nav__item" data-target="video-using">Использование</li>
+                        <li class="inner-nav__item" data-target="math-guide">Операнды</li>
+                        <li class="inner-nav__item" data-target="FAQ">FAQ</li>
+                    </ul>
+                </nav>
+                <!-- <div class="greeting">
                     <h1 class="greeting__hello">Вся практическая информация ниже</h1>
                     <div class="arrow-down">
                         <svg class="arrow-down__shape" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
@@ -37,7 +46,11 @@
                                 stroke="var(--stroke1)" fill="var(--fill1)" />
                         </svg>
                     </div>
-                </div>
+                </div> -->
+                <video class="video-using" src="videos/Screenrecorder-2023-10-11-16-18-51-824.mp4.mp4" loop muted
+                    playsinline onClick="playPause();">If you're reading this either the video didn't load or your
+                    browser
+                    is waaaayyyyyy old!</video>
                 <div class="math-guide">
                     <div class="math-operators">
                         <h2 class="math-operators__head">Арифметические операторы</h2>
@@ -102,14 +115,102 @@
                     </div>
                 </div>
             </section>
+            <section class="FAQ">
+                <h1 class="FAQ__head">Вопросы и ответы</h1>
+                <div class="FAQ__question">
+                    <h2 class="FAQ__q-head">Не совсем понятно, как работают функции у калькулятора.</h2>
+                    <div class="FAQ__answer">
+                        <p>Некоторые функции являются "левосторонними" или "правосторонними". Это значит, что
+                            первые применяются к выражению, стоящему слева(до применения функции), а вторые к выражению
+                            справа(т.е после применения функции). Например - возведение в степень ^ - левостороннее, а
+                            взятие корня sqrt - правостороннее.</p>
+                    </div>
+                </div>
+
+                <div class="FAQ__question">
+                    <h2 class="FAQ__q-head">Будет ли калькулятор развиваться? Стоит ли ожидать появления больших
+                        возможностей,
+                        например тригонометрии?</h2>
+                    <div class="FAQ__answer">
+                        <p class="FAQ__answer-para">Да, такое в планах есть.</p>
+                    </div>
+                </div>
+
+                <div class="FAQ__question">
+                    <h2 class="FAQ__q-head">Почему у калькулятора только один экран, а не два?</h2>
+                    <div class="FAQ__answer">
+                        <p class="FAQ__answer-para">Концепция двух экранов сложнее в реализации, поэтому возможно
+                            появится позже.</p>
+                    </div>
+                </div>
+
+                <div class="FAQ__question">
+                    <h2 class="FAQ__q-head">Как связаться по каким-либо вопросам с создателем сайта?</h2>
+                    <div class="FAQ__answer">
+                        <p class="FAQ__answer-para">В футере, нижней части сайта, есть все необходимые ссылки.</p>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
     <footer class="footer">@created by B-S-B-Rabbit</footer>
     <script>
-        const mainContent = document.querySelector('.arrow-down__shape');
-        mainContent.addEventListener('click', () => {
-            const toInfo = document.querySelector('.math-guide');
-            toInfo.scrollIntoView({ behavior: 'smooth' });
+        // const mainContent = document.querySelector('.arrow-down__shape');
+        // mainContent.addEventListener('click', () => {
+        //     const toInfo = document.querySelector('.math-guide');
+        //     toInfo.scrollIntoView({ behavior: 'smooth' });
+        // });
+
+        const myVideo = document.querySelector('.video-using');
+
+        function playPause() {
+            if (myVideo.paused) myVideo.play();
+            else myVideo.pause();
+        }
+
+        const questions = document.querySelectorAll('.FAQ__question');
+
+        questions.forEach((question) => {
+            const answer = question.querySelector('.FAQ__answer');
+            const questionTitle = question.querySelector('h2');
+
+            questionTitle.addEventListener('click', () => {
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                } else {
+                    answer.style.maxHeight = `${answer.scrollHeight}px`;
+                }
+            });
+        });
+
+        // Ссылки на элементы меню
+        const menuItems = document.querySelectorAll('.inner-nav__item');
+
+        // Функция для установки стилей при нажатии
+        function setStylesOnClick(element) {
+            element.style.transition = 'color 1s';
+            element.style.color = 'red';
+        }
+
+        // Функция для снятия стилей после задержки
+        function resetStyles(element) {
+            element.style.color = 'white';
+        }
+
+        // Функция для прокрутки к соответствующим элементам
+        function scrollToElement(target) {
+            const targetElement = document.querySelector(`.${target}`);
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Добавляем обработчики событий для каждой ссылки
+        menuItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                setStylesOnClick(item);
+                const target = item.getAttribute('data-target');
+                scrollToElement(target);
+                setTimeout(() => resetStyles(item), 1000);
+            });
         });
     </script>
 </body>
