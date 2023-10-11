@@ -529,7 +529,7 @@ sub {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 1vw;
+  margin-top: 0;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -548,6 +548,8 @@ sub {
 }
 .inner-nav__list {
   padding: 0;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -675,13 +677,13 @@ sub {
           flex-direction: column;
   margin-bottom: 30vh;
   padding: 0;
-  font-size: 4vw;
+  font-size: 5vw;
   font-family: Roboto, sans-serif;
   line-height: 2;
   color: white;
 }
 .math-operators__op {
-  line-height: initial;
+  line-height: 1.33;
   font-size: 6vw;
   padding: 1vw;
   font-family: Calculator, sans-serif;
@@ -727,6 +729,13 @@ sub {
   text-align: center;
   font-size: 7vw;
 }
+.math-operators__ref {
+  text-decoration: none;
+  cursor: pointer;
+}
+.math-operators__ref:visited {
+  color: #fcae08;
+}
 
 .FAQ {
   margin: 0 auto;
@@ -734,26 +743,73 @@ sub {
   font-family: Roboto, sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  border: 3px white solid;
+  padding: 0;
 }
 .FAQ__head {
+  margin-top: 0;
   background-color: #f0f0f0;
-}
-.FAQ__question {
-  margin: 20px 0;
 }
 .FAQ__q-head {
   cursor: pointer;
+  margin: 0;
   background-color: #f0f0f0;
   padding: 10px;
 }
 .FAQ__answer {
+  padding-right: 1.5vw;
+  padding-left: 1.5vw;
   background-color: #f0f0f0;
+  font-size: 5vw;
+  margin-top: 2vw;
+  margin-bottom: 3vw;
   max-height: 0;
   overflow: hidden;
   -webkit-transition: max-height 0.3s ease;
   transition: max-height 0.3s ease;
+}
+
+.border-animate {
+  border: 5px solid transparent;
+  -o-border-image: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066) 1;
+     border-image: -webkit-gradient(linear, left top, right top, from(#000066), color-stop(#000099), color-stop(#0066cc), color-stop(#0099ff), color-stop(#0066cc), color-stop(#000099), to(#000066)) 1;
+     border-image: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066) 1;
+  border-image-slice: 1;
+  -webkit-animation: borderAnimation 8s linear infinite;
+          animation: borderAnimation 8s linear infinite;
+}
+@-webkit-keyframes borderAnimation {
+  0% {
+    border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+  }
+  25% {
+    border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+  }
+  75% {
+    border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+  }
+  100% {
+    border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+  }
+}
+@keyframes borderAnimation {
+  0% {
+    border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+  }
+  25% {
+    border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+  }
+  50% {
+    border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+  }
+  75% {
+    border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+  }
+  100% {
+    border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

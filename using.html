@@ -27,9 +27,10 @@
                     <p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от
                         простых базовых арифметических операций до сложных выражений со скобочками и различными
                         функциями, такими как возведение в степень, вычисление факториала, взятие логарифма и пр.
+                        <br>Нажав на некоторые функции и операции можно перейти на страницу википедии с подробной информацией.
                     </p>
                 </div>
-                <nav class="inner-nav">
+                <nav class="inner-nav border-animate">
                     <ul class="inner-nav__list">
                         <li class="inner-nav__item" data-target="video-using">Использование</li>
                         <li class="inner-nav__item" data-target="math-guide">Операнды</li>
@@ -67,9 +68,12 @@
                             <li class="math-operators__item"><span class="math-operators__op">/</span> Деление.
                                 <br>Пример: 10 / 2 = 5
                             </li>
-                            <li class="math-operators__item"><span class="math-operators__op">%</span> Взятие остатка от
+                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Деление_с_остатком">%</a></span> Взятие
+                                остатка от
                                 деления. <br>Пример: 8 % 3 = 2</li>
-                            <li class="math-operators__item"><span class="math-operators__op">x<sup>y</sup></span>
+                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Возведение_в_степень">x<sup>y</sup></a></span>
                                 Возведение числа x в степень y. <br>Пример: 2<sup>3</sup> = 8</li>
                             <li class="math-operators__item"><span class="math-operators__op">x<sup>3</sup></span>
                                 Возведение числа x в куб. <br>Пример: 2<sup>3</sup> = 8</li>
@@ -77,18 +81,21 @@
                                 Возведение числа x в квадрат. <br>Пример: 4<sup>2</sup> = 16</li>
                             <li class="math-operators__item"><span class="math-operators__op">10<sup>x</sup></span>
                                 Возведение числа 10 в степень x. <br>Пример: 10<sup>2</sup> = 100</li>
-                            <li class="math-operators__item"><span class="math-operators__op">x!</span> Факториал числа
+                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Факториал">x!</a></span> Факториал числа
                                 x (произведение всех положительных целых чисел от 1 до x). <br>Пример: 5! = 120</li>
-                            <li class="math-operators__item"><span class="math-operators__op">sqrt</span> Квадратный
+                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Квадратный_корень">sqrt</a></span>
+                                Квадратный
                                 корень числа. <br>Пример: sqrt(25) = 5</li>
                         </ul>
                     </div>
                     <div class="math-operators">
                         <h2 class="math-operators__head">Логарифмические операторы</h2>
                         <ul class="math-operators__list">
-                            <li class="math-operators__item"><span class="math-operators__op">lg</span> Десятичный
+                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref" href="https://ru.wikipedia.org/wiki/Десятичный_логарифм">lg</a></span> Десятичный
                                 логарифм. <br>Пример: lg(100) = 2</li>
-                            <li class="math-operators__item"><span class="math-operators__op">ln</span> Натуральный
+                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref" href="https://ru.wikipedia.org/wiki/Натуральный_логарифм">ln</a></span> Натуральный
                                 логарифм (логарифм по основанию e). <br>Пример: ln(e) = 1</li>
                         </ul>
                     </div>
@@ -109,13 +116,13 @@
 
                         <div class="math-operators__other">
                             <p class="math-operators__pi">Помимо перечисленных операторов, вы также можете использовать
-                                константу <span span class="math-operators__op">&pi;</span>, представляющую число
+                                константу <span span class="math-operators__op"><a class="math-operators__ref" href="https://ru.wikipedia.org/wiki/Пи_(число)">&pi;</a></span>, представляющую число
                                 ПИ(~3.14).</p>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="FAQ">
+            <section class="FAQ border-animate">
                 <h1 class="FAQ__head">Вопросы и ответы</h1>
                 <div class="FAQ__question">
                     <h2 class="FAQ__q-head">Не совсем понятно, как работают функции у калькулятора.</h2>
@@ -172,7 +179,7 @@
 
         questions.forEach((question) => {
             const answer = question.querySelector('.FAQ__answer');
-            const questionTitle = question.querySelector('h2');
+            const questionTitle = question.querySelector('.FAQ__q-head');
 
             questionTitle.addEventListener('click', () => {
                 if (answer.style.maxHeight) {

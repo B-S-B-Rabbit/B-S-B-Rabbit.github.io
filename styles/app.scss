@@ -24,7 +24,7 @@
 .inner-nav {
     background-color: rgb(0, 0, 0);
     display: flex;
-    margin-top: 1vw;
+    margin-top: 0;
     flex-direction: row;
     font-family: Roboto, sans-serif;
     font-size: 5vw;
@@ -35,7 +35,9 @@
     margin-bottom: 70vh;
 
     &__list {
-        padding: 0;
+       padding: 0;
+       margin-top: 1vw;
+       margin-bottom: 1vw;
         display: flex;
         list-style-type: none;
     }
@@ -128,12 +130,12 @@
     flex-direction: column;
     margin-bottom: 30vh;
     padding: 0 ;
-    font-size: 4vw;
+    font-size: 5vw;
     font-family: Roboto, sans-serif;
     line-height: 2;
     color: white;
     &__op {
-        line-height:initial;
+        line-height:1.33;
         font-size: 6vw;
         padding: 1vw;
         font-family: Calculator, sans-serif;
@@ -167,6 +169,13 @@
         text-align: center;
         font-size: 7vw;
     }
+    &__ref {
+        text-decoration: none;
+        cursor: pointer;
+        &:visited {
+            color: rgb(252, 174, 8);
+        }
+    }
 }
 
 
@@ -176,26 +185,52 @@
     font-family: Roboto, sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-    border: 3px white solid;
+    padding: 0;
 &__head{
-
+    margin-top: 0;
     background-color: #f0f0f0;
-}
-&__question {
-    margin: 20px 0;
 }
 &__q-head {
     cursor: pointer;
+    margin: 0;
     background-color: #f0f0f0;
     padding: 10px;
 }
 &__answer {
+    padding-right: 1.5vw;
+    padding-left: 1.5vw;
     background-color: #f0f0f0;
+    font-size: 5vw;
+    margin-top: 2vw;
+    margin-bottom: 3vw;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
 
+}
+.border-animate {
+    border: 5px solid transparent;
+    border-image: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066) 1;
+    border-image-slice: 1;
+    animation: borderAnimation 8s linear infinite;
 
+
+@keyframes borderAnimation {
+    0% {
+        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+    }
+    25% {
+        border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+    }
+    50% {
+        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+    }
+    75% {
+        border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+    }
+    100% {
+        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+    }
+}
 }
