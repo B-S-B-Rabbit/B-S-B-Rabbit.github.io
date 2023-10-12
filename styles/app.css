@@ -378,7 +378,9 @@ sub {
      object-fit: cover;
   width: 100%;
   height: 100%;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 0;
   margin: 0;
 }
@@ -448,7 +450,7 @@ sub {
     color: #2fcae6;
   }
   .navbar__link {
-    color: black;
+    color: rgba(0, 0, 0, 0);
   }
   .navbar__link_underscore_index:hover {
     border-radius: 0 3vw 0 0;
@@ -492,6 +494,15 @@ sub {
   background-image: url(../images/uphone.jpg);
   background-repeat: repeat;
 }
+@media screen and (min-width: 650px) {
+  .page_mobile-back {
+    background-image: url(../images/desk.jpg);
+  }
+}
+
+.main-block {
+  max-width: 100%;
+}
 
 .info {
   padding: 0;
@@ -508,6 +519,54 @@ sub {
           flex-direction: column;
 }
 
+.sidebar-using {
+  z-index: 1;
+}
+@media screen and (min-width: 650px) {
+  .sidebar-using {
+    position: fixed;
+    top: 0;
+    left: -15%;
+    -webkit-transition: left 0.6s ease;
+    transition: left 0.6s ease;
+    line-height: 2;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background: linear-gradient(white, black);
+  }
+  .sidebar-using__link {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0) !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sidebar-using:hover .navbar__link {
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    color: #1b1b1b;
+  }
+  .sidebar-using:hover .navbar__link_active {
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+    color: #2fcae6;
+  }
+  .sidebar-using__nav-list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-writing-mode: horizontal-tb;
+        -ms-writing-mode: lr-tb;
+            writing-mode: horizontal-tb;
+    text-orientation: horizontal-tb;
+  }
+  .sidebar-using__link_underscore_index:hover {
+    color: red !important;
+  }
+  .sidebar-using__link_underscore_using:hover {
+    color: red !important;
+  }
+}
+
 .intro {
   background-color: black;
   display: -webkit-box;
@@ -518,10 +577,16 @@ sub {
 .intro__text {
   text-align: center;
   padding: 0;
+  padding-left: 5vw;
   font-size: 5vw;
   font-family: Roboto, sans-serif;
   line-height: 2;
   color: white;
+}
+@media screen and (min-width: 650px) {
+  .intro__text {
+    font-size: 2vw;
+  }
 }
 
 .inner-nav {
@@ -578,6 +643,11 @@ sub {
 }
 .inner-nav__item:hover::before {
   width: 100%;
+}
+@media screen and (min-width: 650px) {
+  .inner-nav {
+    font-size: 2vw;
+  }
 }
 
 .greeting {
@@ -701,10 +771,21 @@ sub {
           justify-content: center;
   -webkit-transition: background-color 0.2s, font-size 0.2s;
   transition: background-color 0.2s, font-size 0.2s;
+  margin-bottom: 1vw;
+}
+@media screen and (min-width: 650px) {
+  .math-operators__op {
+    font-size: 4vw;
+  }
 }
 .math-operators__op:hover {
   background-color: #333;
   font-size: 7vw;
+}
+@media screen and (min-width: 650px) {
+  .math-operators__op:hover {
+    font-size: 5vw;
+  }
 }
 .math-operators__other {
   line-height: initial;
@@ -720,6 +801,7 @@ sub {
 }
 .math-operators__list, .math-operators__other {
   background-color: black;
+  list-style-type: none;
 }
 .math-operators__head {
   font-family: Versus, sans-serif;
@@ -729,12 +811,22 @@ sub {
   text-align: center;
   font-size: 7vw;
 }
+@media screen and (min-width: 650px) {
+  .math-operators__head {
+    font-size: 4vw;
+  }
+}
 .math-operators__ref {
   text-decoration: none;
   cursor: pointer;
 }
 .math-operators__ref:visited {
   color: #fcae08;
+}
+@media screen and (min-width: 650px) {
+  .math-operators {
+    font-size: 2vw;
+  }
 }
 
 .FAQ {
@@ -744,6 +836,7 @@ sub {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   padding: 0;
+  font-size: 5vw;
 }
 .FAQ__head {
   margin-top: 0;
@@ -766,6 +859,16 @@ sub {
   overflow: hidden;
   -webkit-transition: max-height 0.3s ease;
   transition: max-height 0.3s ease;
+}
+@media screen and (min-width: 650px) {
+  .FAQ__answer {
+    font-size: 2vw;
+  }
+}
+@media screen and (min-width: 650px) {
+  .FAQ {
+    font-size: 1.4vw;
+  }
 }
 
 .border-animate {

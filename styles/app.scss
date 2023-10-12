@@ -2,6 +2,12 @@
 .page_mobile-back {
     background-image: url(../images/uphone.jpg);
     background-repeat: repeat;
+    @media screen and (min-width: 650px) {
+        background-image: url(../images/desk.jpg);
+    }
+}
+.main-block {
+    max-width: 100%;
 }
 .info {
     @include padding-margin(0,0);
@@ -9,18 +15,66 @@
     flex: 1 0 auto;
     flex-direction: column;
 }
+.sidebar-using {
+    z-index: 1;
+    @media screen and (min-width: 650px) {
+        position: fixed;
+    top:0;
+    left: -15%;
+    transition: left 0.6s ease; 
+    line-height: 2;
+    background: linear-gradient(white,black);
+    &__link {
+        text-decoration: none;
+        background-color: rgba(0,0,0,0) !important;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+    }
+    &:hover {
+        .navbar__link { 
+            transition: color 0.3s ease;
+            color: rgb(27, 27, 27);
+        }
+        .navbar__link_active { 
+            transition: color 0.3s ease;
+            color: $nav-link-active-color;
+        }
+    }
+    &__nav-list {
+        flex-direction: column !important;
+        writing-mode:horizontal-tb;
+        text-orientation:horizontal-tb;
+    }
+    &__link_underscore_index {
+        &:hover {
+            color: red !important;
+        }
+    }
+    &__link_underscore_using {
+        &:hover {
+            color: red !important;
+        }
+    }
+    }
+    
+}
 .intro {
     background-color: rgb(0, 0, 0);
     display: flex;
 }
 .intro__text {
     text-align: center;
-    padding: 0 ;
+    padding: 0;
+    padding-left: 5vw;
     font-size: 5vw;
     font-family: Roboto, sans-serif;
     line-height: 2;
     color: white;
+    @media screen and (min-width: 650px) {
+        font-size: 2vw;
+    }
 }
+
 .inner-nav {
     background-color: rgb(0, 0, 0);
     display: flex;
@@ -34,6 +88,7 @@
     color: white;
     margin-bottom: 70vh;
 
+    
     &__list {
        padding: 0;
        margin-top: 1vw;
@@ -63,6 +118,9 @@
         &:hover::before {
             width: 100%;
         }
+    }
+    @media screen and (min-width: 650px) {
+        font-size: 2vw;
     }
 }
 
@@ -146,11 +204,18 @@
         align-items: center;
         justify-content: center;
         transition: background-color 0.2s, font-size 0.2s;
+        margin-bottom: 1vw;
+        @media screen and (min-width: 650px) {
+            font-size: 4vw;
+        }
     }
     
     &__op:hover {
         background-color: #333;
         font-size: 7vw;
+        @media screen and (min-width: 650px) {
+            font-size: 5vw;
+        }
     }
     &__other {
         line-height:initial;
@@ -162,12 +227,16 @@
     }
     &__list, &__other {
         background-color: rgb(0, 0, 0);
+        list-style-type: none;
     }
     &__head {
         font-family: Versus, sans-serif;
         display: inline-flex;
         text-align: center;
         font-size: 7vw;
+        @media screen and (min-width: 650px) {
+            font-size: 4vw;
+        }
     }
     &__ref {
         text-decoration: none;
@@ -175,6 +244,9 @@
         &:visited {
             color: rgb(252, 174, 8);
         }
+    }
+    @media screen and (min-width: 650px) {
+        font-size: 2vw;
     }
 }
 
@@ -186,6 +258,7 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
     padding: 0;
+    font-size: 5vw;
 &__head{
     margin-top: 0;
     background-color: #f0f0f0;
@@ -206,8 +279,14 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-}
+    @media screen and (min-width: 650px) {
+        font-size: 2vw;
+    }
 
+}
+@media screen and (min-width: 650px) {
+    font-size: 1.4vw;
+}
 }
 .border-animate {
     border: 5px solid transparent;

@@ -13,11 +13,13 @@
         <img class="logo" src="images/hat2.jpg" alt="Калькулятор серый">
     </header>
     <div class="page__wide-screen">
-        <nav class="navbar">
-            <ul class="navbar__nav-list">
-                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_index"
+        <nav class="navbar sidebar-using">
+            <ul class="navbar__nav-list sidebar-using__nav-list">
+                <li class="navbar__item"><a
+                        class="navbar__link sidebar-using__link sidebar-using__link_underscore_index"
                         href="index.html">Калькулятор</a></li>
-                <li class="navbar__item"><a class="navbar__link navbar__link_underscore_using navbar__link_active"
+                <li class="navbar__item"><a
+                        class="navbar__link sidebar-using__link navbar__link_underscore_using navbar__link_active sidebar-using__link_underscore_using"
                         href="using.html">Использование</a></li>
             </ul>
         </nav>
@@ -27,7 +29,8 @@
                     <p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от
                         простых базовых арифметических операций до сложных выражений со скобочками и различными
                         функциями, такими как возведение в степень, вычисление факториала, взятие логарифма и пр.
-                        <br>Нажав на некоторые функции и операции можно перейти на страницу википедии с подробной информацией.
+                        <br>Нажав на некоторые функции и операции можно перейти на страницу википедии с подробной
+                        информацией.
                     </p>
                 </div>
                 <nav class="inner-nav border-animate">
@@ -48,10 +51,13 @@
                         </svg>
                     </div>
                 </div> -->
-                <video class="video-using" src="videos/Screenrecorder-2023-10-11-16-18-51-824.mp4.mp4" loop muted
-                    playsinline onClick="playPause();">If you're reading this either the video didn't load or your
-                    browser
-                    is waaaayyyyyy old!</video>
+                <video class="video-using" loop muted onClick="playPause();">
+                    <source src="videos/desk_calc.mp4" media="screen and (min-device-width:650px)">
+                    <source src="videos/Screenrecorder-2023-10-11-16-18-51-824.mp4.mp4"
+                        media="screen and (max-device-width:649px)">
+                    If you're reading this either the video didn't load or your browser is waaaayyyyyy old!
+                </video>
+
                 <div class="math-guide">
                     <div class="math-operators">
                         <h2 class="math-operators__head">Арифметические операторы</h2>
@@ -68,11 +74,13 @@
                             <li class="math-operators__item"><span class="math-operators__op">/</span> Деление.
                                 <br>Пример: 10 / 2 = 5
                             </li>
-                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                            <li class="math-operators__item"><span class="math-operators__op"><a
+                                        class="math-operators__ref"
                                         href="https://ru.wikipedia.org/wiki/Деление_с_остатком">%</a></span> Взятие
                                 остатка от
                                 деления. <br>Пример: 8 % 3 = 2</li>
-                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                            <li class="math-operators__item"><span class="math-operators__op"><a
+                                        class="math-operators__ref"
                                         href="https://ru.wikipedia.org/wiki/Возведение_в_степень">x<sup>y</sup></a></span>
                                 Возведение числа x в степень y. <br>Пример: 2<sup>3</sup> = 8</li>
                             <li class="math-operators__item"><span class="math-operators__op">x<sup>3</sup></span>
@@ -81,10 +89,12 @@
                                 Возведение числа x в квадрат. <br>Пример: 4<sup>2</sup> = 16</li>
                             <li class="math-operators__item"><span class="math-operators__op">10<sup>x</sup></span>
                                 Возведение числа 10 в степень x. <br>Пример: 10<sup>2</sup> = 100</li>
-                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                            <li class="math-operators__item"><span class="math-operators__op"><a
+                                        class="math-operators__ref"
                                         href="https://ru.wikipedia.org/wiki/Факториал">x!</a></span> Факториал числа
                                 x (произведение всех положительных целых чисел от 1 до x). <br>Пример: 5! = 120</li>
-                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                            <li class="math-operators__item"><span class="math-operators__op"><a
+                                        class="math-operators__ref"
                                         href="https://ru.wikipedia.org/wiki/Квадратный_корень">sqrt</a></span>
                                 Квадратный
                                 корень числа. <br>Пример: sqrt(25) = 5</li>
@@ -93,9 +103,15 @@
                     <div class="math-operators">
                         <h2 class="math-operators__head">Логарифмические операторы</h2>
                         <ul class="math-operators__list">
-                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref" href="https://ru.wikipedia.org/wiki/Десятичный_логарифм">lg</a></span> Десятичный
+                            <li class="math-operators__item"><span class="math-operators__op"><a
+                                        class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Десятичный_логарифм">lg</a></span>
+                                Десятичный
                                 логарифм. <br>Пример: lg(100) = 2</li>
-                            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref" href="https://ru.wikipedia.org/wiki/Натуральный_логарифм">ln</a></span> Натуральный
+                            <li class="math-operators__item"><span class="math-operators__op"><a
+                                        class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Натуральный_логарифм">ln</a></span>
+                                Натуральный
                                 логарифм (логарифм по основанию e). <br>Пример: ln(e) = 1</li>
                         </ul>
                     </div>
@@ -116,7 +132,9 @@
 
                         <div class="math-operators__other">
                             <p class="math-operators__pi">Помимо перечисленных операторов, вы также можете использовать
-                                константу <span span class="math-operators__op"><a class="math-operators__ref" href="https://ru.wikipedia.org/wiki/Пи_(число)">&pi;</a></span>, представляющую число
+                                константу <span span class="math-operators__op"><a class="math-operators__ref"
+                                        href="https://ru.wikipedia.org/wiki/Пи_(число)">&pi;</a></span>, представляющую
+                                число
                                 ПИ(~3.14).</p>
                         </div>
                     </div>
@@ -219,6 +237,41 @@
                 setTimeout(() => resetStyles(item), 1000);
             });
         });
+
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const screenWidth = window.screen.width;
+        const navbar = document.querySelector('.sidebar-using');
+        const initialTop = headerHeight;
+        const scrollThreshold = 50; // Пороговое значение для начала возврата сайдбара
+
+        if (screenWidth > 650) {
+            navbar.style.top = `${initialTop}px`;
+            let lastScrollTop = 0;
+            let isScrollingUp = false;
+
+            window.addEventListener('scroll', () => {
+                const st = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (st > lastScrollTop) {
+                    // Прокрутка вниз
+                    isScrollingUp = false;
+                    navbar.style.transition = 'top 0.3s, left 0.6s';
+                    navbar.style.top = `${Math.max(initialTop - st, 0)}px`;
+                } else {
+                    // Прокрутка вверх
+                    if (st < initialTop) {
+                        isScrollingUp = true;
+                        navbar.style.transition = 'top 0.3s, left 0.6s';
+                        navbar.style.top = `${initialTop}px`;
+                    } else if (isScrollingUp) {
+                        navbar.style.transition = 'none';
+                        navbar.style.top = `${Math.max(initialTop - st, 0)}px`;
+                    }
+                }
+
+                lastScrollTop = st;
+            });
+        }
     </script>
 </body>
 

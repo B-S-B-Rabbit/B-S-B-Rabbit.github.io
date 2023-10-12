@@ -248,12 +248,14 @@ const calculator = {
         .toFixed(5)
         .replace(/(\.0+|0+)$/, '');
       this.updateDisplay();
+      updateFontSize();
       this.hasError = false;
       this.hasResult = true;
       return result;
     } catch (error) {
       this.display.value = 'Error';
       this.updateDisplay();
+      updateFontSize();
       this.hasError = true;
     }
   },
