@@ -1,0 +1,25 @@
+.border-animate {
+    border: 5px solid transparent;
+    border-image: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066) 1;
+    border-image-slice: 1;
+    animation: borderAnimation 8s linear infinite;
+
+
+@keyframes borderAnimation {
+    0% {
+        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+    }
+    25% {
+        border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+    }
+    50% {
+        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+    }
+    75% {
+        border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+    }
+    100% {
+        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+    }
+}
+}

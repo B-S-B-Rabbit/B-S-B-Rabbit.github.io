@@ -38,3 +38,15 @@
       align-items: center;
       }
   }
+  .page_mobile-back {
+    background-image: url(../images/uphone.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    @media screen and (min-width: 650px) {
+        background-image: url(../images/desk.jpg);
+    }
+}
+
+.background-parallax {
+  background-attachment: fixed;
+}

@@ -13,13 +13,13 @@
         <img class="logo" src="images/hat2.jpg" alt="Калькулятор серый">
     </header>
     <div class="page__wide-screen">
-        <nav class="navbar sidebar-using">
-            <ul class="navbar__nav-list sidebar-using__nav-list">
+        <nav class="navbar small-hor-sidebar">
+            <ul class="navbar__nav-list small-hor-sidebar__nav-list">
                 <li class="navbar__item"><a
-                        class="navbar__link sidebar-using__link sidebar-using__link_underscore_index"
+                        class="navbar__link small-hor-sidebar__link small-hor-sidebar__link_underscore_index"
                         href="index.html">Калькулятор</a></li>
                 <li class="navbar__item"><a
-                        class="navbar__link sidebar-using__link navbar__link_underscore_using navbar__link_active sidebar-using__link_underscore_using"
+                        class="navbar__link small-hor-sidebar__link navbar__link_underscore_using navbar__link_active small-hor-sidebar__link_underscore_using"
                         href="using.html">Использование</a></li>
             </ul>
         </nav>
@@ -40,25 +40,10 @@
                         <li class="inner-nav__item" data-target="FAQ">FAQ</li>
                     </ul>
                 </nav>
-                <!-- <div class="greeting">
-                    <h1 class="greeting__hello">Вся практическая информация ниже</h1>
-                    <div class="arrow-down">
-                        <svg class="arrow-down__shape" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path class="arrow-down__path" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12ZM7.83335 12C7.4963 12 7.19244 12.2088 7.06346 12.5291C6.93447 12.8494 7.00577 13.2181 7.2441 13.4632L11.4107 17.7489C11.7362 18.0837 12.2638 18.0837 12.5893 17.7489L16.7559 13.4632C16.9942 13.2181 17.0655 12.8494 16.9365 12.5291C16.8076 12.2088 16.5037 12 16.1666 12H14V7C14 6.44771 13.5523 6 13 6H11C10.4477 6 10 6.44771 10 7V12H7.83335Z"
-                                stroke="var(--stroke1)" fill="var(--fill1)" />
-                        </svg>
-                    </div>
-                </div> -->
                 <video class="video-using" loop muted onClick="playPause();">
-                    <source src="videos/desk_calc.mp4" media="screen and (min-device-width:650px)">
-                    <source src="videos/Screenrecorder-2023-10-11-16-18-51-824.mp4.mp4"
-                        media="screen and (max-device-width:649px)">
                     If you're reading this either the video didn't load or your browser is waaaayyyyyy old!
                 </video>
-
-                <div class="math-guide">
+                <section class="math-guide">
                     <div class="math-operators">
                         <h2 class="math-operators__head">Арифметические операторы</h2>
                         <ul class="math-operators__list">
@@ -138,7 +123,7 @@
                                 ПИ(~3.14).</p>
                         </div>
                     </div>
-                </div>
+                </section>
             </section>
             <section class="FAQ border-animate">
                 <h1 class="FAQ__head">Вопросы и ответы</h1>
@@ -179,112 +164,7 @@
         </main>
     </div>
     <footer class="footer">@created by B-S-B-Rabbit</footer>
-    <script>
-        // const mainContent = document.querySelector('.arrow-down__shape');
-        // mainContent.addEventListener('click', () => {
-        //     const toInfo = document.querySelector('.math-guide');
-        //     toInfo.scrollIntoView({ behavior: 'smooth' });
-        // });
-
-        const myVideo = document.querySelector('.video-using');
-
-        function playPause() {
-            if (myVideo.paused) myVideo.play();
-            else myVideo.pause();
-        }
-
-        const questions = document.querySelectorAll('.FAQ__question');
-
-        questions.forEach((question) => {
-            const answer = question.querySelector('.FAQ__answer');
-            const questionTitle = question.querySelector('.FAQ__q-head');
-
-            questionTitle.addEventListener('click', () => {
-                if (answer.style.maxHeight) {
-                    answer.style.maxHeight = null;
-                } else {
-                    answer.style.maxHeight = `${answer.scrollHeight}px`;
-                }
-            });
-        });
-
-        // Ссылки на элементы меню
-        const menuItems = document.querySelectorAll('.inner-nav__item');
-
-        // Функция для установки стилей при нажатии
-        function setStylesOnClick(element) {
-            element.style.transition = 'color 1s';
-            element.style.color = 'red';
-        }
-
-        // Функция для снятия стилей после задержки
-        function resetStyles(element) {
-            element.style.color = 'white';
-        }
-
-        // Функция для прокрутки к соответствующим элементам
-        function scrollToElement(target) {
-            const targetElement = document.querySelector(`.${target}`);
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Добавляем обработчики событий для каждой ссылки
-        menuItems.forEach((item) => {
-            item.addEventListener('click', () => {
-                setStylesOnClick(item);
-                const target = item.getAttribute('data-target');
-                scrollToElement(target);
-                setTimeout(() => resetStyles(item), 1000);
-            });
-        });
-
-        const headerHeight = document.querySelector('.header').offsetHeight;
-        const screenWidth = window.screen.width;
-        const navbar = document.querySelector('.sidebar-using');
-        const initialTop = headerHeight;
-        const scrollThreshold = 50; // Пороговое значение для начала возврата сайдбара
-        function adjustSidebar() { }
-        if (screenWidth > 650) {
-            navbar.style.top = `${initialTop}px`;
-            let lastScrollTop = 0;
-            let isScrollingUp = false;
-
-            window.addEventListener('scroll', () => {
-                const st = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (st > lastScrollTop) {
-                    // Прокрутка вниз
-                    isScrollingUp = false;
-                    navbar.style.transition = 'top 0.3s, left 0.6s';
-                    navbar.style.top = `${Math.max(initialTop - st, 0)}px`;
-                } else {
-                    // Прокрутка вверх
-                    if (st < initialTop) {
-                        isScrollingUp = true;
-                        navbar.style.transition = 'top 0.3s, left 0.6s';
-                        navbar.style.top = `${initialTop}px`;
-                    } else if (isScrollingUp) {
-                        navbar.style.transition = 'none';
-                        navbar.style.top = `${Math.max(initialTop - st, 0)}px`;
-                    }
-                }
-
-                lastScrollTop = st;
-            });
-        }
-
-        // Получить элемент с фоновым изображением
-        const background = document.querySelector('.page_mobile-back');
-
-        // Обработчик события прокрутки страницы
-        window.addEventListener('scroll', () => {
-            // Получить текущую позицию прокрутки
-            const scrollPosition = window.scrollY;
-
-            // Изменить положение фона с учетом позиции прокрутки
-            background.style.backgroundPosition = `50% ${scrollPosition * 0.5}px`;
-        });
-    </script>
+    <script src="scripts/using.js"></script>
 </body>
 
 </html>

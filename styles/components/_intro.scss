@@ -1,0 +1,12 @@
+.intro {
+    display: flex;
+    background-color: rgb(0,0,0);
+}
+.intro__text {
+    text-align: center;
+    padding: 0;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
+}
+

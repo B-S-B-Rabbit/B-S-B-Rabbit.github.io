@@ -1,0 +1,43 @@
+.inner-nav {
+    display: flex;
+    margin-top: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70vh;
+    @include main-text(rgb(0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
+
+    
+    &__list {
+        display: flex;
+        padding: 0;
+        width: 100%;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+        display: flex;
+        list-style-type: none;
+        justify-content: space-evenly;
+    }
+
+    &__item {
+        display: flex;
+        position: relative;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        &:hover::before {
+            width: 100%;
+        }
+    }
+}

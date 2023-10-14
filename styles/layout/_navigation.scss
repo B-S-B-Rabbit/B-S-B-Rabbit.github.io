@@ -65,3 +65,47 @@
         }
         }
     }
+
+.small-hor-sidebar {
+    z-index: 1;
+    @media screen and (min-width: 650px) {
+        position: fixed;
+    top:0;
+    left: -15%;
+    transition: left 0.6s ease; 
+    line-height: 2;
+    background: linear-gradient(white,black);
+    &__link {
+        text-decoration: none;
+        background-color: rgba(0,0,0,0) !important;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+    }
+    &:hover {
+        .navbar__link { 
+            transition: color 0.3s ease;
+            color: rgb(27, 27, 27);
+        }
+        .navbar__link_active { 
+            transition: color 0.3s ease;
+            color: $nav-link-active-color;
+        }
+    }
+    &__nav-list {
+        flex-direction: column !important;
+        writing-mode:horizontal-tb;
+        text-orientation:horizontal-tb;
+    }
+    &__link_underscore_index {
+        &:hover {
+            color: red !important;
+        }
+    }
+    &__link_underscore_using {
+        &:hover {
+            color: red !important;
+        }
+    }
+    }
+    
+}
