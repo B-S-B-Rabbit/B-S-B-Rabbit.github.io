@@ -2,10 +2,13 @@
 .page_mobile-back {
     background-image: url(../images/uphone.jpg);
     background-repeat: repeat;
+    background-attachment: fixed; /* Зафиксировать фон */
+    background-size: cover; /* Заполнить фон */
     @media screen and (min-width: 650px) {
         background-image: url(../images/desk.jpg);
     }
 }
+
 .main-block {
     max-width: 100%;
 }
@@ -59,47 +62,40 @@
     
 }
 .intro {
-    background-color: rgb(0, 0, 0);
     display: flex;
+    background-color: rgb(0,0,0);
 }
 .intro__text {
     text-align: center;
     padding: 0;
-    padding-left: 5vw;
-    font-size: 5vw;
-    font-family: Roboto, sans-serif;
-    line-height: 2;
-    color: white;
-    @media screen and (min-width: 650px) {
-        font-size: 2vw;
-    }
+    padding-left: 2vw;
+    padding-right: 2vw;
+    @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
 }
 
 .inner-nav {
-    background-color: rgb(0, 0, 0);
     display: flex;
     margin-top: 0;
     flex-direction: row;
-    font-family: Roboto, sans-serif;
-    font-size: 5vw;
     justify-content: center;
     align-items: center;
-    line-height: 2;
-    color: white;
     margin-bottom: 70vh;
+    @include main-text(rgb(0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
 
     
     &__list {
-       padding: 0;
-       margin-top: 1vw;
-       margin-bottom: 1vw;
+        display: flex;
+        padding: 0;
+        width: 100%;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
         display: flex;
         list-style-type: none;
+        justify-content: space-evenly;
     }
 
     &__item {
         display: flex;
-        margin: 2vw;
         position: relative;
         cursor: pointer;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -119,63 +115,6 @@
             width: 100%;
         }
     }
-    @media screen and (min-width: 650px) {
-        font-size: 2vw;
-    }
-}
-
-.greeting {
-    @include padding-margin(0,0);
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    font-family: Versus, sans-serif;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 5vw;
-    color: rgba($color: #ffffff, $alpha: 1);
-    &__hello {
-        height:fit-content;
-        line-height: normal;
-        display: flex;
-        @include padding-margin(0,3vw 3vw 0 3vw);
-        text-align: center;
-        white-space: normal;
-    }
-}
-.arrow-down {
-    height: 80vh;
-}
-.arrow-down__shape {
-    margin-top: 4px;
-    display: block;
-    width: 3rem;
-    height: 3rem;
-    --fill1: #0b57c9;
-    --stroke1: rgb(255, 255, 255);
-    cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color: transparent;
-}
-.arrow-down__shape:hover {
-    margin-top: 4px;
-    display: block;
-    width: 4rem;
-    height: 4rem;
-    --fill1: #0b57c9;
-    --stroke1: rgb(255, 255, 255);
-}
-.arrow-down__shape:hover {
-    animation: blink 0.1s infinite alternate;
-}
-
-@keyframes blink {
-    from {
-        --fill1: #0b57c9;
-    }
-    to {
-        --fill1: #0066ff;
-    }
 }
 .video-using {
     width: auto;
@@ -188,10 +127,7 @@
     flex-direction: column;
     margin-bottom: 30vh;
     padding: 0 ;
-    font-size: 5vw;
-    font-family: Roboto, sans-serif;
-    line-height: 2;
-    color: white;
+    @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
     &__op {
         line-height:1.33;
         font-size: 6vw;
@@ -205,6 +141,7 @@
         justify-content: center;
         transition: background-color 0.2s, font-size 0.2s;
         margin-bottom: 1vw;
+        margin-top: 1vw;
         @media screen and (min-width: 650px) {
             font-size: 4vw;
         }
@@ -245,23 +182,21 @@
             color: rgb(252, 174, 8);
         }
     }
-    @media screen and (min-width: 650px) {
-        font-size: 2vw;
-    }
 }
 
 
 .FAQ {
     margin: 0 auto;
     margin-bottom: 30vh;
-    font-family: Roboto, sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
     padding: 0;
-    font-size: 5vw;
+    @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(0, 0, 0), 1.4vw);
 &__head{
-    margin-top: 0;
-    background-color: #f0f0f0;
+    margin: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
 }
 &__q-head {
     cursor: pointer;
@@ -269,24 +204,26 @@
     background-color: #f0f0f0;
     padding: 10px;
 }
+&__question {
+    margin-top: 1vw;
+}
 &__answer {
     padding-right: 1.5vw;
     padding-left: 1.5vw;
-    background-color: #f0f0f0;
+    background-color: #cecece;
     font-size: 5vw;
-    margin-top: 2vw;
-    margin-bottom: 3vw;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
     @media screen and (min-width: 650px) {
-        font-size: 2vw;
+        font-size: 1.4vw;
     }
 
 }
-@media screen and (min-width: 650px) {
-    font-size: 1.4vw;
-}
+    @media screen and (min-width: 650px) {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }
 .border-animate {
     border: 5px solid transparent;

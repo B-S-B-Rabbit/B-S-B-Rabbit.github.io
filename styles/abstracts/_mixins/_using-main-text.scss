@@ -1,0 +1,12 @@
+@mixin main-text($bg, $fSize, $fFamily, $lineHeight, $clr, $mediaFS) {
+    background-color: $bg;
+    font-size: $fSize;
+    font-family: $fFamily, sans-serif;
+    line-height: $lineHeight;
+    color: $clr;
+
+    @media screen and (min-width: 650px) {
+        font-size: $mediaFS;
+    }
+
+}

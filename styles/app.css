@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   -ms-touch-action: manipulation;
       touch-action: manipulation;
@@ -493,6 +494,10 @@ sub {
 .page_mobile-back {
   background-image: url(../images/uphone.jpg);
   background-repeat: repeat;
+  background-attachment: fixed;
+  /* Зафиксировать фон */
+  background-size: cover;
+  /* Заполнить фон */
 }
 @media screen and (min-width: 650px) {
   .page_mobile-back {
@@ -568,16 +573,18 @@ sub {
 }
 
 .intro {
-  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: black;
 }
 
 .intro__text {
   text-align: center;
   padding: 0;
-  padding-left: 5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  background-color: rgba(0, 0, 0, 0);
   font-size: 5vw;
   font-family: Roboto, sans-serif;
   line-height: 2;
@@ -590,7 +597,6 @@ sub {
 }
 
 .inner-nav {
-  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -599,32 +605,42 @@ sub {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-family: Roboto, sans-serif;
-  font-size: 5vw;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 70vh;
+  background-color: black;
+  font-size: 5vw;
+  font-family: Roboto, sans-serif;
   line-height: 2;
   color: white;
-  margin-bottom: 70vh;
+}
+@media screen and (min-width: 650px) {
+  .inner-nav {
+    font-size: 2vw;
+  }
 }
 .inner-nav__list {
-  padding: 0;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0;
+  width: 100%;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  display: flex;
   list-style-type: none;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 .inner-nav__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 2vw;
   position: relative;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -644,90 +660,7 @@ sub {
 .inner-nav__item:hover::before {
   width: 100%;
 }
-@media screen and (min-width: 650px) {
-  .inner-nav {
-    font-size: 2vw;
-  }
-}
 
-.greeting {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: Versus, sans-serif;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: 5vw;
-  color: white;
-}
-.greeting__hello {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  line-height: normal;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 0;
-  margin: 3vw 3vw 0 3vw;
-  text-align: center;
-  white-space: normal;
-}
-
-.arrow-down {
-  height: 80vh;
-}
-
-.arrow-down__shape {
-  margin-top: 4px;
-  display: block;
-  width: 3rem;
-  height: 3rem;
-  --fill1: #0b57c9;
-  --stroke1: rgb(255, 255, 255);
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
-}
-
-.arrow-down__shape:hover {
-  margin-top: 4px;
-  display: block;
-  width: 4rem;
-  height: 4rem;
-  --fill1: #0b57c9;
-  --stroke1: rgb(255, 255, 255);
-}
-
-.arrow-down__shape:hover {
-  -webkit-animation: blink 0.1s infinite alternate;
-          animation: blink 0.1s infinite alternate;
-}
-
-@-webkit-keyframes blink {
-  from {
-    --fill1: #0b57c9;
-  }
-  to {
-    --fill1: #0066ff;
-  }
-}
-
-@keyframes blink {
-  from {
-    --fill1: #0b57c9;
-  }
-  to {
-    --fill1: #0066ff;
-  }
-}
 .video-using {
   width: auto;
   height: auto;
@@ -747,10 +680,16 @@ sub {
           flex-direction: column;
   margin-bottom: 30vh;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0);
   font-size: 5vw;
   font-family: Roboto, sans-serif;
   line-height: 2;
   color: white;
+}
+@media screen and (min-width: 650px) {
+  .math-operators {
+    font-size: 2vw;
+  }
 }
 .math-operators__op {
   line-height: 1.33;
@@ -772,6 +711,7 @@ sub {
   -webkit-transition: background-color 0.2s, font-size 0.2s;
   transition: background-color 0.2s, font-size 0.2s;
   margin-bottom: 1vw;
+  margin-top: 1vw;
 }
 @media screen and (min-width: 650px) {
   .math-operators__op {
@@ -823,24 +763,29 @@ sub {
 .math-operators__ref:visited {
   color: #fcae08;
 }
-@media screen and (min-width: 650px) {
-  .math-operators {
-    font-size: 2vw;
-  }
-}
 
 .FAQ {
   margin: 0 auto;
   margin-bottom: 30vh;
-  font-family: Roboto, sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   padding: 0;
+  background-color: rgba(0, 0, 0, 0);
   font-size: 5vw;
+  font-family: Roboto, sans-serif;
+  line-height: 2;
+  color: black;
+}
+@media screen and (min-width: 650px) {
+  .FAQ {
+    font-size: 1.4vw;
+  }
 }
 .FAQ__head {
-  margin-top: 0;
-  background-color: #f0f0f0;
+  margin: 0;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
 .FAQ__q-head {
   cursor: pointer;
@@ -848,13 +793,14 @@ sub {
   background-color: #f0f0f0;
   padding: 10px;
 }
+.FAQ__question {
+  margin-top: 1vw;
+}
 .FAQ__answer {
   padding-right: 1.5vw;
   padding-left: 1.5vw;
-  background-color: #f0f0f0;
+  background-color: #cecece;
   font-size: 5vw;
-  margin-top: 2vw;
-  margin-bottom: 3vw;
   max-height: 0;
   overflow: hidden;
   -webkit-transition: max-height 0.3s ease;
@@ -862,12 +808,13 @@ sub {
 }
 @media screen and (min-width: 650px) {
   .FAQ__answer {
-    font-size: 2vw;
+    font-size: 1.4vw;
   }
 }
 @media screen and (min-width: 650px) {
   .FAQ {
-    font-size: 1.4vw;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
 
