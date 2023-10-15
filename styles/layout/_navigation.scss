@@ -14,8 +14,8 @@
     &__link {
         text-decoration: none;
         color:#ffffff;
-        font-size: 5vw;
-        padding: 1rem;
+        font-size: 4vw;
+        padding: 0.6rem;
         &:hover {
             background-color: rgba($color: $nav-link-active-color, $alpha: 0.2);
         }
@@ -40,16 +40,19 @@
             }
         }
         &__link {
+            padding: 1rem;
+            padding-left: 100%;
+            padding-right: 100%;
             color: rgba(0, 0, 0, 0);
         }
         align-items: center;
         border-radius: 0 3vw 3vw 0;
-        &__link_underscore_index {
+        &__link_underscore_top {
             &:hover {
                 border-radius: 0 3vw 0 0;
             }
         }
-        &__link_underscore_using {
+        &__link_underscore_bot {
             &:hover {
                 border-radius: 0 0 3vw 0;
             }
@@ -66,6 +69,7 @@
         }
     }
 
+
 .small-hor-sidebar {
     z-index: 1;
     @media screen and (min-width: 650px) {
@@ -74,8 +78,9 @@
     left: -15%;
     transition: left 0.6s ease; 
     line-height: 2;
-    background: linear-gradient(white,black);
+    background: linear-gradient(rgb(255, 255, 255),rgb(3, 25, 150));
     &__link {
+        padding: 1rem;
         text-decoration: none;
         background-color: rgba(0,0,0,0) !important;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -84,7 +89,7 @@
     &:hover {
         .navbar__link { 
             transition: color 0.3s ease;
-            color: rgb(27, 27, 27);
+            color: rgb(0, 0, 0);
         }
         .navbar__link_active { 
             transition: color 0.3s ease;

@@ -622,8 +622,8 @@ sub {
 .navbar__link {
   text-decoration: none;
   color: #ffffff;
-  font-size: 5vw;
-  padding: 1rem;
+  font-size: 4vw;
+  padding: 0.6rem;
 }
 .navbar__link:hover {
   background-color: rgba(47, 202, 230, 0.2);
@@ -657,12 +657,15 @@ sub {
     color: #2fcae6;
   }
   .navbar__link {
+    padding: 1rem;
+    padding-left: 100%;
+    padding-right: 100%;
     color: rgba(0, 0, 0, 0);
   }
-  .navbar__link_underscore_index:hover {
+  .navbar__link_underscore_top:hover {
     border-radius: 0 3vw 0 0;
   }
-  .navbar__link_underscore_using:hover {
+  .navbar__link_underscore_bot:hover {
     border-radius: 0 0 3vw 0;
   }
   .navbar__nav-list {
@@ -694,10 +697,11 @@ sub {
     -webkit-transition: left 0.6s ease;
     transition: left 0.6s ease;
     line-height: 2;
-    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
-    background: linear-gradient(white, black);
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(#031996));
+    background: linear-gradient(white, #031996);
   }
   .small-hor-sidebar__link {
+    padding: 1rem;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0) !important;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -706,7 +710,7 @@ sub {
   .small-hor-sidebar:hover .navbar__link {
     -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
-    color: #1b1b1b;
+    color: black;
   }
   .small-hor-sidebar:hover .navbar__link_active {
     -webkit-transition: color 0.3s ease;
