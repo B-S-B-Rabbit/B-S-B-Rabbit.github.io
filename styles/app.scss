@@ -9,13 +9,29 @@
 @import "blocks/_all";
 
 @import "pages/all";
-
-.job-summary {
+$skills: (
+  html: (background-color: rgb(238, 95, 34), color: rgb(255, 255, 255)),
+  css: (background-color: rgb(59, 154, 219), color: rgb(255, 255, 255)),
+  js: (background-color: rgb(237, 212, 90), color: rgb(255, 255, 255)),
+  c: (background-color: rgba(57, 72, 171, 0.87), color: rgb(255, 255, 255)),
+  cpp: (background-color: rgba(1, 127, 205, 0.842), color: rgb(255, 255, 255)),
+  java: (color: rgb(57, 109, 184)),
+  py: (color: rgb(0, 0, 0)),
+  psql: (color: rgb(0, 0, 0)),
+  doc: (color: rgb(6, 109, 165)),
+  eng: (color: rgb(0, 0, 0)),
+  git: (color: rgb(0, 0, 0)),
+  dj: (background-color: rgba(9, 46, 32, 0.877), color: rgb(255, 255, 255))
+);
+.main-about {
     font-family: Roboto, sans-serif;
     font-size: 5.5vw;
     line-height: 1.33;
     text-align: center;
     align-items: center;
+}
+.job-summary {
+
     &__hello {
         text-align: center;
     }
@@ -24,11 +40,19 @@
         width: 100%;
         height: auto;
     }
-
+    &__education {
+        border: 4px black solid;
+        border-radius: 2vw;
+        margin-top: 5vw;
+        margin-bottom: 6vw;
+    }
     &__education-head {
         @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
     }
-
+    &__education-info {
+        margin: 0;
+        margin-top: -5vw;
+    }
     &__education-info_data {
         font-style: italic;
     }
@@ -38,8 +62,13 @@
         font-weight: bold;
         text-shadow: 1px 2px 3px black;
     }
-
+    &__skills {
+        border: 4px black solid;
+        border-radius: 2vw;
+    }
     &__skills-list {
+        margin: 0;
+        margin-top: -5vw;
         list-style: none;
         padding-inline-start: 0;
     }
@@ -48,78 +77,32 @@
         @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
     }
 
-    &__skills-main-h {
-        @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
-    }
-
-    &__skills-other-h {
+    &__skills-h {
         @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
     }
 
     &__skills-item {
         font-family: Cunia, sans-serif;
+        $skills-list: map-keys($skills);
         background-color: rgba(255, 255, 255, 0.87);
-        &_html {
-            background-image: url(../images/html.png);
-            background-color: rgb(238, 95, 34);
-            color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        
+        @each $skill in $skills-list {
+          &_#{$skill} {
+            background-image: url(../images/#{$skill}.png);
+            @each $property, $value in map-get($skills, $skill) {
+              #{$property}: $value;
+            }
+          }
         }
 
-        &_css {
-            background-image: url(../images/css.png);
-            background-color: rgb(59, 154, 219);
-            color: rgb(255, 255, 255);
-        }
-
-        &_js {
-            background-image: url(../images/js.png);
-            background-color: rgb(237, 212, 90);
-            color: rgb(255, 255, 255);
-        }
-        &_c {
-            background-image: url(../images/c.png);
-            background-color: rgba(57, 72, 171, 0.87);
-            color: rgb(255, 255, 255);
-
-        }
-        &_cpp {
-            background-image: url(../images/cpp.png);
-            background-color: rgba(1, 127, 205, 0.842);
-            color: rgb(255, 255, 255);
-        }
-        &_java {
-            background-image: url(../images/java.png);
-            color: rgb(57, 109, 184);
-        }
-        &_py {
-            background-image: url(../images/python.png);
-            color: rgb(0, 0, 0);
-        }
         &_psql {
-            background-image: url(../images/psql.png);
-            color: rgb(0, 0, 0);
             .sql-color {
                 color: rgb(49,97,146);
             }
         }
-        &_doc {
-            background-image: url(../images/doc.png);
-            color: rgb(6, 109, 165);
-        }
-        &_eng {
-            background-image: url(../images/eng.png);
-            color: rgb(0, 0, 0);
-        }
-        &_git{
-            background-image: url(../images/git.png);
-            color: rgb(0, 0, 0);
-        }
-        &_dj{
-            background-image: url(../images/dj.png);
-            background-color: rgba(9, 46, 32, 0.877);
-            color: rgb(255, 255, 255);
-        }
-        background-image: radial-gradient(gray 0%, black 60%, transparent 70%);
+
+        background-image: radial-gradient(rgb(255, 0, 0) 0%, rgb(138, 0, 0), transparent 70%);
         border: 2px gray solid;
         margin-top: 1vw;
         padding-left: 5vw;
@@ -128,5 +111,88 @@
         background-size: 8vw 8vw;
         background-position: center left;
         background-repeat: no-repeat;
+        transition: font-size 0.4s, background-size 0.4s;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+        &:hover {
+            font-size: larger;
+            background-size: 9vw 9vw;
+        }
     }
+}
+:root {
+    --text: #2B3044;
+    --line: #4e67f3c7;
+    --line-active: #0040ffcc;
+}
+.link-oval-animation {
+
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    margin: 0 var(--spacing, 0px);
+    transition: margin .25s;
+    svg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 7px) translateZ(0);
+        fill: none;
+        stroke: var(--stroke, var(--line));
+        stroke-linecap: round;
+        stroke-width: 2px;
+        stroke-dasharray: var(--offset, 69px) 278px;
+        stroke-dashoffset: 361px;
+        transition: stroke .25s ease var(--stroke-delay, 0s), stroke-dasharray .35s;
+    }
+    &:hover {
+        --spacing: 4px;
+        --stroke: var(--line-active);
+        --stroke-delay: .1s;
+        --offset: 180px;
+    }
+}
+.techno-stack {
+    border: 4px black solid;
+    border-radius: 2vw;
+    &__head {
+        @include main-text(rgba(0, 0, 0, 0), 8vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+    &__list {
+        margin-top: 0;
+        list-style-type: none;
+        padding-inline-start: 0;
+        
+    }
+    &__list-head {
+        @include main-text(rgba(0, 0, 0, 0), 6vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+        margin-top: 0;
+    }
+    &__item {
+        cursor: pointer;
+        margin-top: 1vw;
+        background-color: rgba(139, 19, 139, 0.822);
+        color: rgb(255, 183, 0);
+        transition: background-color 0.6s, color 0.6s, font-size 0.4s;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+        &:hover {
+            background-color: rgba(19, 31, 139, 0.822);
+            color: rgb(197, 79, 0);
+            font-size: larger;
+        }
+    }
+}
+.inline-border {
+    z-index: 4;
+    background-color: rgba($color: #cccbcb, $alpha: 1.0);
+    position: relative;
+    top: -5vw;
+    display: inline;
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
 }
