@@ -57,6 +57,14 @@ sub {
   font-family: 'Versus';
   src: url(../fonts/versus.otf);
 }
+@font-face {
+  font-family: 'OpenSans';
+  src: url(../fonts/OpenSans.ttf);
+}
+@font-face {
+  font-family: 'Cunia';
+  src: url(../fonts/cunia.otf);
+}
 .calculator {
   max-width: 100%;
   border: 3px solid;
@@ -487,7 +495,7 @@ sub {
 .page {
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  background-color: #a8a6a6;
+  background-color: #bdbbbb;
   padding: 0;
   margin: 0;
 }
@@ -863,6 +871,155 @@ sub {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.job-summary {
+  font-family: Roboto, sans-serif;
+  font-size: 5.5vw;
+  line-height: 1.33;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.job-summary__hello {
+  text-align: center;
+}
+.job-summary__photo {
+  width: 100%;
+  height: auto;
+}
+.job-summary__education-head {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 7vw;
+  font-family: Versus, sans-serif;
+  line-height: 1.33;
+  color: black;
+}
+@media screen and (min-width: 650px) {
+  .job-summary__education-head {
+    font-size: 3vw;
+  }
+}
+.job-summary__education-info_data {
+  font-style: italic;
+}
+.job-summary__education-info_place {
+  color: #2778f1;
+  font-weight: bold;
+  text-shadow: 1px 2px 3px black;
+}
+.job-summary__skills-list {
+  list-style: none;
+  -webkit-padding-start: 0;
+     -moz-padding-start: 0;
+          padding-inline-start: 0;
+}
+.job-summary__skills-head {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 7vw;
+  font-family: Versus, sans-serif;
+  line-height: 1.33;
+  color: black;
+}
+@media screen and (min-width: 650px) {
+  .job-summary__skills-head {
+    font-size: 3vw;
+  }
+}
+.job-summary__skills-main-h {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 5vw;
+  font-family: Versus, sans-serif;
+  line-height: 1.33;
+  color: black;
+}
+@media screen and (min-width: 650px) {
+  .job-summary__skills-main-h {
+    font-size: 3vw;
+  }
+}
+.job-summary__skills-other-h {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 5vw;
+  font-family: Versus, sans-serif;
+  line-height: 1.33;
+  color: black;
+}
+@media screen and (min-width: 650px) {
+  .job-summary__skills-other-h {
+    font-size: 3vw;
+  }
+}
+.job-summary__skills-item {
+  font-family: Cunia, sans-serif;
+  background-color: rgba(255, 255, 255, 0.87);
+  background-image: radial-gradient(gray 0%, black 60%, transparent 70%);
+  border: 2px gray solid;
+  margin-top: 1vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  border-radius: 4vw;
+  background-size: 8vw 8vw;
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+.job-summary__skills-item_html {
+  background-image: url(../images/html.png);
+  background-color: #ee5f22;
+  color: white;
+}
+.job-summary__skills-item_css {
+  background-image: url(../images/css.png);
+  background-color: #3b9adb;
+  color: white;
+}
+.job-summary__skills-item_js {
+  background-image: url(../images/js.png);
+  background-color: #edd45a;
+  color: white;
+}
+.job-summary__skills-item_c {
+  background-image: url(../images/c.png);
+  background-color: rgba(57, 72, 171, 0.87);
+  color: white;
+}
+.job-summary__skills-item_cpp {
+  background-image: url(../images/cpp.png);
+  background-color: rgba(1, 127, 205, 0.842);
+  color: white;
+}
+.job-summary__skills-item_java {
+  background-image: url(../images/java.png);
+  color: #396db8;
+}
+.job-summary__skills-item_py {
+  background-image: url(../images/python.png);
+  color: black;
+}
+.job-summary__skills-item_psql {
+  background-image: url(../images/psql.png);
+  color: black;
+}
+.job-summary__skills-item_psql .sql-color {
+  color: #316192;
+}
+.job-summary__skills-item_doc {
+  background-image: url(../images/doc.png);
+  color: #066da5;
+}
+.job-summary__skills-item_eng {
+  background-image: url(../images/eng.png);
+  color: black;
+}
+.job-summary__skills-item_git {
+  background-image: url(../images/git.png);
+  color: black;
+}
+.job-summary__skills-item_dj {
+  background-image: url(../images/dj.png);
+  background-color: rgba(9, 46, 32, 0.877);
+  color: white;
 }
 
 /*# sourceMappingURL=app.css.map */

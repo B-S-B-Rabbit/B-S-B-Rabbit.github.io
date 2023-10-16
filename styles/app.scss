@@ -9,3 +9,124 @@
 @import "blocks/_all";
 
 @import "pages/all";
+
+.job-summary {
+    font-family: Roboto, sans-serif;
+    font-size: 5.5vw;
+    line-height: 1.33;
+    text-align: center;
+    align-items: center;
+    &__hello {
+        text-align: center;
+    }
+
+    &__photo {
+        width: 100%;
+        height: auto;
+    }
+
+    &__education-head {
+        @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__education-info_data {
+        font-style: italic;
+    }
+
+    &__education-info_place {
+        color: rgb(39, 120, 241);
+        font-weight: bold;
+        text-shadow: 1px 2px 3px black;
+    }
+
+    &__skills-list {
+        list-style: none;
+        padding-inline-start: 0;
+    }
+
+    &__skills-head {
+        @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__skills-main-h {
+        @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__skills-other-h {
+        @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__skills-item {
+        font-family: Cunia, sans-serif;
+        background-color: rgba(255, 255, 255, 0.87);
+        &_html {
+            background-image: url(../images/html.png);
+            background-color: rgb(238, 95, 34);
+            color: rgb(255, 255, 255);
+        }
+
+        &_css {
+            background-image: url(../images/css.png);
+            background-color: rgb(59, 154, 219);
+            color: rgb(255, 255, 255);
+        }
+
+        &_js {
+            background-image: url(../images/js.png);
+            background-color: rgb(237, 212, 90);
+            color: rgb(255, 255, 255);
+        }
+        &_c {
+            background-image: url(../images/c.png);
+            background-color: rgba(57, 72, 171, 0.87);
+            color: rgb(255, 255, 255);
+
+        }
+        &_cpp {
+            background-image: url(../images/cpp.png);
+            background-color: rgba(1, 127, 205, 0.842);
+            color: rgb(255, 255, 255);
+        }
+        &_java {
+            background-image: url(../images/java.png);
+            color: rgb(57, 109, 184);
+        }
+        &_py {
+            background-image: url(../images/python.png);
+            color: rgb(0, 0, 0);
+        }
+        &_psql {
+            background-image: url(../images/psql.png);
+            color: rgb(0, 0, 0);
+            .sql-color {
+                color: rgb(49,97,146);
+            }
+        }
+        &_doc {
+            background-image: url(../images/doc.png);
+            color: rgb(6, 109, 165);
+        }
+        &_eng {
+            background-image: url(../images/eng.png);
+            color: rgb(0, 0, 0);
+        }
+        &_git{
+            background-image: url(../images/git.png);
+            color: rgb(0, 0, 0);
+        }
+        &_dj{
+            background-image: url(../images/dj.png);
+            background-color: rgba(9, 46, 32, 0.877);
+            color: rgb(255, 255, 255);
+        }
+        background-image: radial-gradient(gray 0%, black 60%, transparent 70%);
+        border: 2px gray solid;
+        margin-top: 1vw;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        border-radius: 4vw;
+        background-size: 8vw 8vw;
+        background-position: center left;
+        background-repeat: no-repeat;
+    }
+}
