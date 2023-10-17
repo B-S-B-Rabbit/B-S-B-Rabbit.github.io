@@ -28,8 +28,11 @@ $skills: (
     font-size: 5.5vw;
     line-height: 1.33;
     text-align: center;
-    align-items: center;
     color: black;
+    @media screen and (min-width: 650px) {
+        font-size: 1.6vw;
+        
+    }
 }
 .job-summary {
 
@@ -40,12 +43,21 @@ $skills: (
     &__photo {
         width: 100%;
         height: auto;
+        @media screen and (min-width: 650px) {
+            width: 30%;
+        }
     }
     &__education {
         border: 4px black solid;
         border-radius: 2vw;
         margin-top: 5vw;
         margin-bottom: 6vw;
+        @media screen and (min-width: 650px) {
+            width: 40%;
+            border-radius: 1vw;
+            margin: 0 auto;
+            margin-top: 3vw;
+        }
     }
     &__education-head {
         @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
@@ -55,6 +67,8 @@ $skills: (
         margin-top: -5vw;
     }
     &__education-info_data {
+        display: block;
+        margin-top: 3vw;
         font-style: italic;
     }
 
@@ -64,8 +78,15 @@ $skills: (
         text-shadow: 1px 2px 3px black;
     }
     &__skills {
+        display: block;
         border: 4px black solid;
         border-radius: 2vw;
+        @media screen and (min-width: 650px) {
+            width: 40%;
+            border-radius: 1vw;
+            margin: 0 auto;
+            margin-top: 3vw;
+        }
     }
     &__skills-list {
         margin: 0;
@@ -80,6 +101,8 @@ $skills: (
 
     &__skills-h {
         @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+        display: block;
+        margin-top: 3vw;
     }
 
     &__skills-item {
@@ -119,6 +142,13 @@ $skills: (
         &:hover {
             font-size: larger;
             background-size: 9vw 9vw;
+        }
+        @media screen and (min-width: 650px) {
+            background-size: 2.2vw 2.2vw;
+            &:hover {
+                font-size: larger;
+                background-size: 2.8vw 2.8vw;
+            }
         }
     }
 }
@@ -188,13 +218,24 @@ $skills: (
             font-size: larger;
         }
     }
+    @media screen and (min-width: 650px) {
+        width: 40%;
+        border-radius: 1vw;
+        margin: 0 auto;
+        margin-top: 3vw;
+    }
+
 }
 .inline-border {
-    z-index: 4;
+    z-index: 1;
     background-color: rgba($color: #cccbcb, $alpha: 1.0);
     position: relative;
     top: -5vw;
     display: inline;
     margin-block-start: 0.1em;
     margin-block-end: 0.1em;
+    @media screen  and (min-width: 650px) {
+        top: -2vw;
+    }
+
 }
