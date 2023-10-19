@@ -1,10 +1,8 @@
 const myVideo = document.querySelector('.video-using');
-
 function playPause() {
   if (myVideo.paused) myVideo.play();
   else myVideo.pause();
 }
-
 const questions = document.querySelectorAll('.FAQ__question');
 
 questions.forEach((question) => {
@@ -99,4 +97,8 @@ window.addEventListener('scroll', () => {
   const scrollPosition = window.scrollY;
 
   background.style.backgroundPosition = `50% ${scrollPosition * 0.5}px`;
+});
+const loader = document.querySelector('.loader');
+window.addEventListener('load', () => {
+  loader.style.display = 'none';
 });

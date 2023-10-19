@@ -263,4 +263,20 @@ $skills: (
 
 }
 
-
+.video-container {
+    position: relative;
+    display: flex;
+    margin-bottom: 30vh;
+  }
+  
+  .loader {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  

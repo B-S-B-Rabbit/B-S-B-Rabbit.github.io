@@ -457,7 +457,6 @@ sub {
 .video-using {
   width: auto;
   height: auto;
-  margin-bottom: 30vh;
 }
 
 .intro {
@@ -1171,6 +1170,31 @@ sub {
   .inline-border {
     top: -2vw;
   }
+}
+
+.video-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 30vh;
+}
+
+.loader {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 /*# sourceMappingURL=app.css.map */
