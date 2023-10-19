@@ -1,70 +1,80 @@
 .navbar {
-    font-family: Comfortaa, sans-serif;
-    background: black;
     display: flex;
     justify-content: center;
+    background: black;
+    font-family: Comfortaa, sans-serif;
+
     &__nav-list {
         display: flex;
         flex-direction: row;
-        list-style-type: none;
-        padding: 0;
-        justify-content: space-evenly;
         align-items: center;
+        justify-content: space-evenly;
+        padding: 0;
+        list-style-type: none;
     }
+
     &__link {
-        text-decoration: none;
-        color:#ffffff;
-        font-size: 4vw;
         padding: 0.6rem;
+        color:#fff;
+        font-size: 4vw;
+        text-decoration: none;
+
         &:hover {
             background-color: rgba($color: $nav-link-active-color, $alpha: 0.2);
         }
     }
+
     &__link_active {
         color: $nav-link-active-color;
     }
+
     @media screen and (min-width: 650px) {
         position: relative;
         left: -1.5%;
-        transition: left 0.3s ease; 
+        align-items: center;
+        border-radius: 0 3vw 3vw 0; 
         overflow-x: hidden;
-        &:hover {
-            left: 0;
-            .navbar__link { 
-                transition: color 0.3s ease;
-                color: white;
-            }
-            .navbar__link_active { 
-                transition: color 0.3s ease;
-                color: $nav-link-active-color;
-            }
-        }
+        transition: left 0.3s ease;
+
         &__link {
             padding: 1rem;
-            padding-left: 100%;
             padding-right: 100%;
+            padding-left: 100%;
             color: rgba(0, 0, 0, 0);
+            font-size: 1.7vw;
         }
-        align-items: center;
-        border-radius: 0 3vw 3vw 0;
+        
+        &:hover {
+            left: 0;
+
+            .navbar__link {
+                color: white; 
+                transition: color 0.3s ease;
+            }
+
+            .navbar__link_active {
+                color: $nav-link-active-color; 
+                transition: color 0.3s ease;
+            }
+        }
+
         &__link_underscore_top {
             &:hover {
                 border-radius: 0 3vw 0 0;
             }
         }
+
         &__link_underscore_bot {
             &:hover {
-                border-radius: 0 0 3vw 0;
+                border-radius: 0 0 3vw;
             }
         }
+
         &__nav-list {
-            flex-direction: row;
-            writing-mode: vertical-lr; 
-            text-orientation: upright; 
-            align-items: center;
-        }
-        &__link {
-            font-size: 1.7vw;
+            flex-direction: row; 
+            align-items: center; 
+            text-orientation: upright;
+            writing-mode: vertical-lr;
         }
         }
     }
@@ -72,40 +82,47 @@
 
 .small-hor-sidebar {
     z-index: 1;
+
     @media screen and (min-width: 650px) {
         position: fixed;
     top:0;
     left: -15%;
-    transition: left 0.6s ease; 
+    background: linear-gradient(rgb(255, 255, 255),rgb(3, 25, 150)); 
     line-height: 2;
-    background: linear-gradient(rgb(255, 255, 255),rgb(3, 25, 150));
+    transition: left 0.6s ease;
+
     &__link {
         padding: 1rem;
-        text-decoration: none;
         background-color: rgba(0,0,0,0) !important;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
     }
+
     &:hover {
-        .navbar__link { 
+        .navbar__link {
+            color: rgb(0, 0, 0); 
             transition: color 0.3s ease;
-            color: rgb(0, 0, 0);
         }
-        .navbar__link_active { 
+
+        .navbar__link_active {
+            color: $nav-link-active-color; 
             transition: color 0.3s ease;
-            color: $nav-link-active-color;
         }
     }
+
     &__nav-list {
         flex-direction: column !important;
-        writing-mode:horizontal-tb;
         text-orientation:horizontal-tb;
+        writing-mode:horizontal-tb;
     }
+
     &__link_underscore_index {
         &:hover {
             color: red !important;
         }
     }
+
     &__link_underscore_using {
         &:hover {
             color: red !important;

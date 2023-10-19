@@ -1,8 +1,10 @@
 .main-block {
     max-width: 100%;
 }
+
 .info {
     @include padding-margin(0,0);
+
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;

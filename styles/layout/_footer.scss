@@ -1,8 +1,9 @@
 .footer {
-    background-color: rgba(243, 241, 148, 0.849);
-    padding: 0.5rem;
-    font-size: 5vw;
     flex: 0 0 auto;
+    padding: 0.5rem;
+    background-color: rgba(243, 241, 148, 0.849);
+    font-size: 5vw;
+
     @media screen and (min-width: 650px) {
     font-size: 1.4vw;
     }

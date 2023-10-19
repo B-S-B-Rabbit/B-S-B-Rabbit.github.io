@@ -1,24 +1,27 @@
 .math-operators {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 30vh;
-    padding: 0 ;
     @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 ;
+    margin-bottom: 30vh;
+
     &__op {
-        line-height:1.33;
-        font-size: 6vw;
-        padding: 1vw;
-        font-family: Calculator, sans-serif;
-        color: rgb(252, 174, 8);
-        background: linear-gradient(45deg, #3358ff, #046c74);
-        border-radius: 4px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.2s, font-size 0.2s;
-        margin-bottom: 1vw;
+        padding: 1vw;
+        border-radius: 4px;
         margin-top: 1vw;
+        margin-bottom: 1vw;
+        background: linear-gradient(45deg, #3358ff, #046c74);
+        color: rgb(252, 174, 8);
+        font-family: Calculator, sans-serif;
+        font-size: 6vw;
+        line-height:1.33;
+        transition: background-color 0.2s, font-size 0.2s;
+
         @media screen and (min-width: 650px) {
             font-size: 4vw;
         }
@@ -27,32 +30,39 @@
     &__op:hover {
         background-color: #333;
         font-size: 7vw;
+
         @media screen and (min-width: 650px) {
             font-size: 5vw;
         }
     }
+
     &__other {
-        line-height:initial;
         align-items: center;
         justify-content: center;
+        line-height:initial;
     }
+
     &__list, &__other {
         background-color: rgb(0, 0, 0);
         list-style-type: none;
         padding-inline-start: 1.2vw;
     }
+
     &__head {
-        font-family: Versus, sans-serif;
         display: inline-flex;
-        text-align: center;
+        font-family: Versus, sans-serif;
         font-size: 7vw;
+        text-align: center;
+
         @media screen and (min-width: 650px) {
             font-size: 4vw;
         }
     }
+
     &__ref {
-        text-decoration: none;
         cursor: pointer;
+        text-decoration: none;
+
         &:visited {
             color: rgb(252, 174, 8);
         }

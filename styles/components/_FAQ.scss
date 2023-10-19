@@ -1,40 +1,47 @@
 .FAQ {
+    @include main-text(rgba(0,0,0,0), 3vw, Roboto, 1.33, rgb(0, 0, 0), 1.4vw);
+
+    padding: 0;
     margin: 0 auto;
     margin-bottom: 30vh;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
-    padding: 0;
-    @include main-text(rgba(0,0,0,0), 3vw, Roboto, 1.33, rgb(0, 0, 0), 1.4vw);
+
+    @media screen and (min-width: 650px) {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+
 &__head{
     margin: 0;
     background-color: black;
     color: white;
     text-align: center;
 }
+
 &__q-head {
-    cursor: pointer;
+    padding: 10px;
     margin: 0;
     background-color: #f0f0f0;
-    padding: 10px;
+    cursor: pointer;
 }
+
 &__question {
     margin-top: 1vw;
 }
+
 &__answer {
+    overflow: hidden;
+    max-height: 0;
     padding-right: 1.5vw;
     padding-left: 1.5vw;
     background-color: #cecece;
     font-size: 4vw;
-    max-height: 0;
-    overflow: hidden;
     transition: max-height 0.3s ease;
+
     @media screen and (min-width: 650px) {
         font-size: 1.4vw;
     }
 
 }
-    @media screen and (min-width: 650px) {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
 }

@@ -1,25 +1,28 @@
 .border-animate {
-    border: 5px solid transparent;
-    border-image: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066) 1;
-    border-image-slice: 1;
-    animation: borderAnimation 8s linear infinite;
-
-
-@keyframes borderAnimation {
+@keyframes border-animation {
     0% {
-        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+        border-image-source: linear-gradient(90deg, #006, #009, #06c, #09f, #06c, #009, #006);
     }
+
     25% {
-        border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+        border-image-source: linear-gradient(90deg, #09f, #06c, #009, #006, #06c, #09f, #09f);
     }
+
     50% {
-        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+        border-image-source: linear-gradient(90deg, #006, #009, #06c, #09f, #06c, #009, #006);
     }
+
     75% {
-        border-image-source: linear-gradient(90deg, #0099ff, #0066cc, #000099, #000066, #0066cc, #0099ff, #0099ff);
+        border-image-source: linear-gradient(90deg, #09f, #06c, #009, #006, #06c, #09f, #09f);
     }
+
     100% {
-        border-image-source: linear-gradient(90deg, #000066, #000099, #0066cc, #0099ff, #0066cc, #000099, #000066);
+        border-image-source: linear-gradient(90deg, #006, #009, #06c, #09f, #06c, #009, #006);
     }
 }
+
+    border: 5px solid transparent;
+    animation: border-animation 8s linear infinite;
+    border-image: linear-gradient(90deg, #006, #009, #06c, #09f, #06c, #009, #006) 1;
+    border-image-slice: 1;
 }

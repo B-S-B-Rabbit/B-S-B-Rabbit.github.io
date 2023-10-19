@@ -1,14 +1,10 @@
 @import "abstracts/_all";
-
 @import "core/_all";
-
 @import "components/_all";
-
 @import "layout/_all";
-
 @import "blocks/_all";
-
 @import "pages/all";
+
 $skills: (
   html: (background-color: rgb(238, 95, 34), color: rgb(255, 255, 255)),
   css: (background-color: rgb(59, 154, 219), color: rgb(255, 255, 255)),
@@ -23,19 +19,21 @@ $skills: (
   git: (color: rgb(0, 0, 0)),
   dj: (background-color: rgba(9, 46, 32, 0.877), color: rgb(255, 255, 255))
 );
+
 .main-about {
+    color: black;
     font-family: Roboto, sans-serif;
     font-size: 5.5vw;
     line-height: 1.33;
     text-align: center;
-    color: black;
+
     @media screen and (min-width: 650px) {
         font-size: 1.6vw;
         
     }
 }
-.job-summary {
 
+.job-summary {
     &__hello {
         text-align: center;
     }
@@ -43,15 +41,19 @@ $skills: (
     &__photo {
         width: 100%;
         height: auto;
+
+
         @media screen and (min-width: 650px) {
             width: 30%;
         }
     }
+
     &__education {
         border: 4px black solid;
         border-radius: 2vw;
         margin-top: 5vw;
         margin-bottom: 6vw;
+
         @media screen and (min-width: 650px) {
             width: 40%;
             border-radius: 1vw;
@@ -59,13 +61,16 @@ $skills: (
             margin-top: 3vw;
         }
     }
+
     &__education-head {
         @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
     }
+
     &__education-info {
         margin: 0;
         margin-top: -5vw;
     }
+
     &__education-info_data {
         display: block;
         margin-top: 3vw;
@@ -77,10 +82,12 @@ $skills: (
         font-weight: bold;
         text-shadow: 1px 2px 3px black;
     }
+
     &__skills {
         display: block;
         border: 4px black solid;
         border-radius: 2vw;
+
         @media screen and (min-width: 650px) {
             width: 40%;
             border-radius: 1vw;
@@ -88,6 +95,7 @@ $skills: (
             margin-top: 3vw;
         }
     }
+
     &__skills-list {
         margin: 0;
         margin-top: -5vw;
@@ -100,24 +108,49 @@ $skills: (
     }
 
     &__skills-h {
-        @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+        @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 2vw);
+
         display: block;
         margin-top: 3vw;
     }
 
     &__skills-item {
-        font-family: Cunia, sans-serif;
         $skills-list: map-keys($skills);
-        background-color: rgba(255, 255, 255, 0.87);
-        color: rgb(0, 0, 0);
         
         @each $skill in $skills-list {
           &_#{$skill} {
-            background-image: url(../images/#{$skill}.png);
             @each $property, $value in map-get($skills, $skill) {
               #{$property}: $value;
             }
+
+            background-image: url(../images/#{$skill}.png);
           }
+        }
+
+        padding-right: 5vw;
+        padding-left: 5vw;
+        border: 2px gray solid;
+        border-radius: 4vw;
+        margin-top: 1vw;
+        background-color: rgba(255, 255, 255, 0.87);
+        background-image: radial-gradient(rgb(255, 0, 0) 0%, rgb(138, 0, 0), transparent 70%);
+        background-position: center left;
+        background-repeat: no-repeat;
+        background-size: 8vw 8vw;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        font-family: Cunia, sans-serif;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+        transition: font-size 0.4s, background-size 0.4s;
+
+        @media screen and (min-width: 650px) {
+            background-size: 2.2vw 2.2vw;
+
+            &:hover {
+                background-size: 2.8vw 2.8vw;
+                font-size: larger;
+            }
         }
 
         &_psql {
@@ -126,29 +159,9 @@ $skills: (
             }
         }
 
-        background-image: radial-gradient(rgb(255, 0, 0) 0%, rgb(138, 0, 0), transparent 70%);
-        border: 2px gray solid;
-        margin-top: 1vw;
-        padding-left: 5vw;
-        padding-right: 5vw;
-        border-radius: 4vw;
-        background-size: 8vw 8vw;
-        background-position: center left;
-        background-repeat: no-repeat;
-        transition: font-size 0.4s, background-size 0.4s;
-        cursor: pointer;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -webkit-tap-highlight-color: transparent;
         &:hover {
-            font-size: larger;
             background-size: 9vw 9vw;
-        }
-        @media screen and (min-width: 650px) {
-            background-size: 2.2vw 2.2vw;
-            &:hover {
-                font-size: larger;
-                background-size: 2.8vw 2.8vw;
-            }
+            font-size: larger;
         }
     }
 }
@@ -158,29 +171,31 @@ $skills: (
     --line: #4e67f3c7;
     --line-active: #0040ffcc;
 }
-.link-oval-animation {
 
-    display: inline-block;
+.link-oval-animation {
     position: relative;
-    text-decoration: none;
+    display: inline-block;
+    margin: 0 var(--spacing, 0);
     color: inherit;
-    margin: 0 var(--spacing, 0px);
+    text-decoration: none;
     transition: margin .25s;
+
     svg {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
         width: 76px;
         height: 40px;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 7px) translateZ(0);
         fill: none;
         stroke: var(--stroke, var(--line));
-        stroke-linecap: round;
-        stroke-width: 2px;
         stroke-dasharray: var(--offset, 69px) 278px;
         stroke-dashoffset: 361px;
+        stroke-linecap: round;
+        stroke-width: 2px;
+        transform: translate(-50%, 7px) translateZ(0);
         transition: stroke .25s ease var(--stroke-delay, 0s), stroke-dasharray .35s;
     }
+
     &:hover {
         --spacing: 5px;
         --stroke: var(--line-active);
@@ -188,54 +203,64 @@ $skills: (
         --offset: 180px;
     }
 }
+
 .techno-stack {
     border: 4px black solid;
-    border-radius: 2vw;
+
+    @media screen and (min-width: 650px) {
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 3vw;
+    }
+
     &__head {
         @include main-text(rgba(0, 0, 0, 0), 8vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
     }
+
     &__list {
-        margin-top: 0;
+        margin: 0;
         list-style-type: none;
         padding-inline-start: 0;
         
     }
+
     &__list-head {
-        @include main-text(rgba(0, 0, 0, 0), 6vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
-        margin-top: 0;
+        @include main-text(rgba(0, 0, 0, 0), 6vw, Versus, 1.33, rgb(0, 0, 0), 2vw);
+
+        margin-top: 2vw;
+        margin-bottom: 1vw;
     }
+
     &__item {
-        cursor: pointer;
         margin-top: 1vw;
         background-color: rgba(139, 19, 139, 0.822);
         color: rgb(255, 183, 0);
-        transition: background-color 0.6s, color 0.6s, font-size 0.4s;
+        cursor: pointer;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
         -webkit-tap-highlight-color: transparent;
+        transition: background-color 0.6s, color 0.6s, font-size 0.4s;
+
         &:hover {
             background-color: rgba(19, 31, 139, 0.822);
             color: rgb(197, 79, 0);
             font-size: larger;
         }
     }
-    @media screen and (min-width: 650px) {
-        width: 40%;
-        border-radius: 1vw;
-        margin: 0 auto;
-        margin-top: 3vw;
-    }
 
 }
+
 .inline-border {
-    z-index: 1;
-    background-color: rgba($color: #cccbcb, $alpha: 1.0);
     position: relative;
+    z-index: 1;
     top: -5vw;
     display: inline;
-    margin-block-start: 0.1em;
-    margin-block-end: 0.1em;
+    background-color: rgba($color: #cccbcb, $alpha: 1);
+    margin-block: 0.1em 0.1em;
+
     @media screen  and (min-width: 650px) {
         top: -2vw;
     }
 
 }
+
+

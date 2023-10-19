@@ -1,0 +1,11 @@
+{
+    "extends": ["stylelint-config-standard-scss", "stylelint-config-idiomatic-order"],
+    "rules": {
+        "scss/at-import-no-partial-leading-underscore": null,
+        "color-function-notation": "legacy",
+        "media-feature-range-notation": "prefix",
+        "scss/no-global-function-names": null,
+        "selector-class-pattern": null,
+        "alpha-value-notation": "number"
+      }
+}
