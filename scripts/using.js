@@ -99,6 +99,6 @@ window.addEventListener('scroll', () => {
   background.style.backgroundPosition = `50% ${scrollPosition * 0.5}px`;
 });
 const loader = document.querySelector('.loader');
-window.addEventListener('load', () => {
+video.addEventListener('canplaythrough', () => {
   loader.style.display = 'none';
 });
