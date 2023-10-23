@@ -28,21 +28,28 @@
         </nav>
         <main class="main-block">
             <section class="info">
-                <div class="intro main-text">
-                    <p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от
-                        простых базовых арифметических операций до сложных выражений со скобочками и различными
-                        функциями, такими как возведение в степень, вычисление факториала, взятие логарифма и пр.
-                        <br>Нажав на некоторые функции и операции можно перейти на страницу википедии с подробной
-                        информацией.
-                    </p>
-                </div>
-                <nav class="inner-nav border-animate">
-                    <ul class="inner-nav__list">
-                        <li class="inner-nav__item" data-target="video-using">Использование</li>
-                        <li class="inner-nav__item" data-target="math-guide">Операнды</li>
-                        <li class="inner-nav__item" data-target="FAQ">FAQ</li>
-                    </ul>
-                </nav>
+                <header>
+                    <div class="intro main-text">
+                        <h1 class="intro__text">Как пользоваться калькулятором?</h1>
+                        <p class="intro__text">Этот калькулятор предназначен для вычисления различных выражений - от
+                            <em>базовых арифметических операций</em> до сложных выражений <em>скобочной
+                                последовательности</em> и
+                            <em>различными функциями</em>, такими как возведение в степень, вычисление факториала,
+                            взятие логарифма и пр.
+                            <br>Нажав на некоторые функции и операции можно перейти на страницу википедии с подробной
+                            информацией.
+                        </p>
+                    </div>
+                    <nav class="inner-nav border-animate">
+                        <ul class="inner-nav__list">
+                            <li class="inner-nav__item" data-target="video-using">Использование</li>
+                            <li class="inner-nav__item" data-target="math-guide">Операнды</li>
+                            <abbr id="faq-def" title="Вопросы и ответы">
+                                <li class="inner-nav__item" data-target="FAQ">FAQ</li>
+                            </abbr>
+                        </ul>
+                    </nav>
+                </header>
                 <div class="video-container">
                     <div class="loader">
                         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -65,13 +72,14 @@
                         </svg>
                     </div>
                     <video class="video-using" loop muted onClick="playPause();">
-                        If you're reading this either the video didn't load or your browser is waaaayyyyyy old!
+                        Не удалось загрузить видео
                     </video>
                 </div>
 
 
                 <section class="math-guide">
-                    <div class="math-operators">
+                    <h1 class="math-guide__head">Операнды</h1>
+                    <section class="math-operators">
                         <h2 class="math-operators__head">Арифметические операторы</h2>
                         <ul class="math-operators__list">
                             <li class="math-operators__item"><span class="math-operators__op">+</span> Сложение.
@@ -111,84 +119,89 @@
                                 Квадратный
                                 корень числа. <br>Пример: sqrt(25) = 5</li>
                         </ul>
-                    </div>
-                    <div class="math-operators">
-                        <h2 class="math-operators__head">Логарифмические операторы</h2>
-                        <ul class="math-operators__list">
-                            <li class="math-operators__item"><span class="math-operators__op"><a
-                                        class="math-operators__ref"
-                                        href="https://ru.wikipedia.org/wiki/Десятичный_логарифм">lg</a></span>
-                                Десятичный
-                                логарифм. <br>Пример: lg(100) = 2</li>
-                            <li class="math-operators__item"><span class="math-operators__op"><a
-                                        class="math-operators__ref"
-                                        href="https://ru.wikipedia.org/wiki/Натуральный_логарифм">ln</a></span>
-                                Натуральный
-                                логарифм (логарифм по основанию e). <br>Пример: ln(e) = 1</li>
-                        </ul>
-                    </div>
-                    <div class="math-operators">
-                        <h2 class="math-operators__head">Другие операторы</h2>
-                        <ul class="math-operators__list">
-                            <li class="math-operators__item"><span class="math-operators__op">(</span> Открывающая
-                                скобка. Используется для группировки выражений. <br>Пример: (2 + 3) * 4 = 20</li>
-                            <li class="math-operators__item"><span class="math-operators__op">)</span> Закрывающая
-                                скобка.</li>
-                            <li class="math-operators__item"><span class="math-operators__op">=</span> Оператор
-                                равенства. <br>Пример: 5 + 5 = 10</li>
-                            <li class="math-operators__item"><span class="math-operators__op">C</span> Очистка всех
-                                данных калькулятора.</li>
-                            <li class="math-operators__item"><span class="math-operators__op">&larr;</span> Удаление
-                                последнего символа ввода.</li>
-                        </ul>
+    </div>
+    <section class="math-operators">
+        <h2 class="math-operators__head">Логарифмические операторы</h2>
+        <ul class="math-operators__list">
+            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                        href="https://ru.wikipedia.org/wiki/Десятичный_логарифм">lg</a></span>
+                Десятичный
+                логарифм. <br>Пример: lg(100) = 2</li>
+            <li class="math-operators__item"><span class="math-operators__op"><a class="math-operators__ref"
+                        href="https://ru.wikipedia.org/wiki/Натуральный_логарифм">ln</a></span>
+                Натуральный
+                логарифм (логарифм по основанию e). <br>Пример: ln(e) = 1</li>
+        </ul>
+        </div>
+        <section class="math-operators">
+            <h2 class="math-operators__head">Другие операторы</h2>
+            <ul class="math-operators__list">
+                <li class="math-operators__item"><span class="math-operators__op">(</span> Открывающая
+                    скобка. Используется для группировки выражений. <br>Пример: (2 + 3) * 4 = 20</li>
+                <li class="math-operators__item"><span class="math-operators__op">)</span> Закрывающая
+                    скобка.</li>
+                <li class="math-operators__item"><span class="math-operators__op">=</span> Оператор
+                    равенства. <br>Пример: 5 + 5 = 10</li>
+                <li class="math-operators__item"><span class="math-operators__op">C</span> Очистка <strong>всех
+                        данных</strong> калькулятора.</li>
+                <li class="math-operators__item"><span class="math-operators__op">&larr;</span> Удаление
+                    <strong>последнего символа</strong> ввода.
+                </li>
+            </ul>
 
-                        <div class="math-operators__other">
-                            <p class="math-operators__pi">Помимо перечисленных операторов, вы также можете использовать
-                                константу <span span class="math-operators__op"><a class="math-operators__ref"
-                                        href="https://ru.wikipedia.org/wiki/Пи_(число)">&pi;</a></span>, представляющую
-                                число
-                                ПИ(~3.14).</p>
-                        </div>
-                    </div>
-                </section>
-            </section>
-            <section class="FAQ border-animate">
-                <h1 class="FAQ__head">Вопросы и ответы</h1>
-                <div class="FAQ__question">
-                    <h2 class="FAQ__q-head">Не совсем понятно, как работают функции у калькулятора.</h2>
-                    <div class="FAQ__answer">
-                        <p>Некоторые функции являются "левосторонними" или "правосторонними". Это значит, что
-                            первые применяются к выражению, стоящему слева(до применения функции), а вторые к выражению
-                            справа(т.е после применения функции). Например - возведение в степень ^ - левостороннее, а
-                            взятие корня sqrt - правостороннее.</p>
-                    </div>
-                </div>
+            <div class="math-operators__other">
+                <p class="math-operators__pi">Помимо перечисленных операторов, вы также можете использовать
+                    константу <span span class="math-operators__op"><a class="math-operators__ref"
+                            href="https://ru.wikipedia.org/wiki/Пи_(число)">&pi;</a></span>, представляющую
+                    число
+                    ПИ(~3.14).</p>
+            </div>
+            </div>
+        </section>
+    </section>
+    <section class="FAQ border-animate">
+        <h1 class="FAQ__head">Вопросы и ответы</h1>
+        <div class="FAQ__question">
+            <h2 class="FAQ__q-head">Не совсем понятно, как работают функции у калькулятора.</h2>
+            <div class="FAQ__answer">
+                <p>Некоторые функции являются:</p>
+                <dl>
+                    <dt><dfn>"левосторонними"</dfn></dt>
+                    <dd>применяются к выражению, стоящему слева(до
+                        применения функции)</dd>
+                    <dt><dfn>"правосторонними"</dfn></dt><dd>к выражению
+                        справа(т.е после применения функции).</dd>
+                    <p>Например - возведение в степень ^ — левостороннее, а
+                        взятие корня sqrt — правостороннее.</p>
+                </dl>
+            </div>
+        </div>
 
-                <div class="FAQ__question">
-                    <h2 class="FAQ__q-head">Будет ли калькулятор развиваться? Стоит ли ожидать появления больших
-                        возможностей,
-                        например тригонометрии?</h2>
-                    <div class="FAQ__answer">
-                        <p class="FAQ__answer-para">Да, такое в планах есть.</p>
-                    </div>
-                </div>
+        <div class="FAQ__question">
+            <h2 class="FAQ__q-head">Будет ли калькулятор развиваться? Стоит ли ожидать появления больших
+                возможностей,
+                например тригонометрии?</h2>
+            <div class="FAQ__answer">
+                <p class="FAQ__answer-para">Да, такое в планах есть.</p>
+            </div>
+        </div>
 
-                <div class="FAQ__question">
-                    <h2 class="FAQ__q-head">Почему у калькулятора только один экран, а не два?</h2>
-                    <div class="FAQ__answer">
-                        <p class="FAQ__answer-para">Концепция двух экранов сложнее в реализации, поэтому возможно
-                            появится позже.</p>
-                    </div>
-                </div>
+        <div class="FAQ__question">
+            <h2 class="FAQ__q-head">Почему у калькулятора только один экран, а не два?</h2>
+            <div class="FAQ__answer">
+                <p class="FAQ__answer-para">Концепция двух экранов сложнее в реализации, поэтому возможно
+                    появится позже.</p>
+            </div>
+        </div>
 
-                <div class="FAQ__question">
-                    <h2 class="FAQ__q-head">Как связаться по каким-либо вопросам с создателем сайта?</h2>
-                    <div class="FAQ__answer">
-                        <p class="FAQ__answer-para">В футере, нижней части сайта, есть все необходимые ссылки.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <div class="FAQ__question">
+            <h2 class="FAQ__q-head">Как связаться по каким-либо вопросам с создателем сайта?</h2>
+            <div class="FAQ__answer">
+                <p class="FAQ__answer-para">В футере, нижней части сайта, есть все необходимые ссылки.</p>
+            </div>
+        </div>
+    </section>
+    </main>
     </div>
     <footer class="footer">@designed by B-S-B-Rabbit
         <div class="contacts-wrapper">

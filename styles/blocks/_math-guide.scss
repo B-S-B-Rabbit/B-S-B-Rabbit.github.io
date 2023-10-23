@@ -1,3 +1,10 @@
+.math-guide__head {
+    @include main-text(rgba(255, 255, 255, 0.356), 7vw, Versus, 2,rgb(255, 217, 0), 3vw);
+
+    display: block;
+    text-align: center;
+}
+
 .math-operators {
     @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
 
@@ -51,11 +58,11 @@
     &__head {
         display: inline-flex;
         font-family: Versus, sans-serif;
-        font-size: 7vw;
+        font-size: 6vw;
         text-align: center;
 
         @media screen and (min-width: 650px) {
-            font-size: 4vw;
+            font-size: 2.6vw;
         }
     }
 

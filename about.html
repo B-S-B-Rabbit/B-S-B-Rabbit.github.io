@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Калькулятор</title>
-    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/app.css" />
 </head>
 
 <body class="page">
@@ -28,29 +28,31 @@
         </nav>
     </div>
     <main class="main-about">
-        <section class="job-summary">
-            <p class="job-summary__hello">Привет! Меня зовут Андрей.<br> Я студент 3 курса бакалавриата НИУ ВШЭ-НН и
-                начинающий
-                фронтенд-разработчик</p>
+        <article class="job-summary">
+            <header>
+                <h1>Обо мне</h1>
+                <p class="job-summary__hello">Привет! Меня зовут Андрей.<br> Я <em>студент 3 курса</em> бакалавриата НИУ
+                    ВШЭ-НН и
+                    <em>начинающий
+                        фронтенд-разработчик</em>
+                </p>
+            </header>
             <img class="job-summary__photo border-animate" src="images/photo.jpg" alt="тут будет фото">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
-            <script src="scripts/app.js"></script>
             <div class="job-summary__education">
-                <h1 class="job-summary__education-head inline-border">Образование</h1>
-                <p class="job-summary__education-info"><span
-                        class="job-summary__education-info_data">2021-2025</span><span
+                <p class="job-summary__education-head inline-border">Образование</p>
+                <p class="job-summary__education-info"><span class="job-summary__education-info_data"><time
+                            datetime="2021-09-01">2021</time> - <time datetime="2025-07-01">2025</time></span><span
                         class="job-summary__education-info_place">НИУ-ВШЭ-НН, 3 КУРС,
                         БАКАЛАВРИАТ</span></p>
             </div>
             <div class="job-summary__skills">
-                <h1 class="job-summary__skills-head inline-border">Навыки</h1>
+                <p class="job-summary__skills-head inline-border">Навыки</p>
                 <ul class="job-summary__skills-list">
-                    <h1 class="job-summary__skills-h">Основной стек</h1>
+                    <p class="job-summary__skills-h">Основной стек</p>
                     <li class="job-summary__skills-item job-summary__skills-item_html">HTML</li>
                     <li class="job-summary__skills-item job-summary__skills-item_css">CSS(SCSS)</li>
                     <li class="job-summary__skills-item job-summary__skills-item_js">Javascript</li>
-                    <h1 class="job-summary__skills-h">Прочие навыки</h1>
+                    <p class="job-summary__skills-h">Прочие навыки</p>
                     <li class="job-summary__skills-item job-summary__skills-item_c">C</li>
                     <li class="job-summary__skills-item job-summary__skills-item_cpp">C++</li>
                     <li class="job-summary__skills-item job-summary__skills-item_java">Java</li>
@@ -65,11 +67,14 @@
                     <li class="job-summary__skills-item job-summary__skills-item_ads">АИСД</li>
                 </ul>
             </div>
-        </section>
+        </article>
         <section class="project-info">
-            <p class="project-info__para">Этот веб-калькулятор является моим первым pet-проектом. Основная причина
-                его написания - практическое применение знаний в области HTML, CSS и JS</p>
-            <p class="project-info__para">Это уже не первый мой веб-проект. Ранее я писал несложный <a
+            <header>
+                <h1>О проекте</h1>
+                <p class="project-info__para">Этот веб-калькулятор является моим первым <em>pet-проектом</em>. Основная причина
+                    его написания - <strong>практическое</strong> применение знаний в области HTML, CSS и JS</p>
+            </header>
+            <p class="project-info__para">Это уже не первый мой <em>веб-проект</em>. Ранее я писал несложный <a target="_blank"
                     class="link-oval-animation" href="doc-coursepaper.docx">
                     сайт
                     <svg viewBox="0 0 70 36">
@@ -79,36 +84,36 @@
                 </a> с
                 интегрированной нейросетью в
                 качестве курсовой работы с использованием Bootstrap 5 на Django</p>
-            <p class="project-info__para">В этом проекте я решил писать всё с нуля, не используя каких-либо CSS
+            <p class="project-info__para">В <em>этом проекте</em> я решил писать всё <strong>с нуля</strong>, не используя каких-либо CSS
                 фреймворков. Всё, что
-                необходимо по структуре и реализации этого проекта, можно найти, нажав <a class="link-oval-animation"
-                    href="https://github.com/B-S-B-Rabbit/B-S-B-Rabbit.github.io">
+                необходимо по структуре и реализации этого проекта, можно найти, нажав <a target="_blank"
+                    class="link-oval-animation" href="https://github.com/B-S-B-Rabbit/B-S-B-Rabbit.github.io">
                     сюда
                     <svg viewBox="0 0 70 36">
                         <path
                             d="M6.9739 30.8153H63.0244C65.5269 30.8152 75.5358 -3.68471 35.4998 2.81531C-16.1598 11.2025 0.894099 33.9766 26.9922 34.3153C104.062 35.3153 54.5169 -6.68469 23.489 9.31527" />
                     </svg>
                 </a></p>
-            <div class="techno-stack">
+            <section class="techno-stack">
                 <h1 class="techno-stack__head inline-border">Проект</h1>
                 <ul class="techno-stack__list">
-                    <h1 class="techno-stack__list-head">Основные технологии</h1>
+                    <p class="techno-stack__list-head">Основные технологии</p>
                     <li class="techno-stack__item">HTML</li>
                     <li class="techno-stack__item">SCSS</li>
                     <li class="techno-stack__item">Javascript</li>
                 </ul>
                 <ul class="techno-stack__list">
-                    <h1 class="techno-stack__list-head">Линтеры и форматтеры</h1>
+                    <p class="techno-stack__list-head">Линтеры и форматтеры</p>
                     <li class="techno-stack__item">Prettier</li>
                     <li class="techno-stack__item">ESLint</li>
                     <li class="techno-stack__item">Stylelint</li>
                 </ul>
                 <ul class="techno-stack__list">
-                    <h1 class="techno-stack__list-head">Методологии</h1>
+                    <p class="techno-stack__list-head">Методологии</p>
                     <li class="techno-stack__item">БЭМ</li>
                     <li class="techno-stack__item">7-in-1</li>
                 </ul>
-            </div>
+            </section>
         </section>
         </section>
     </main>
