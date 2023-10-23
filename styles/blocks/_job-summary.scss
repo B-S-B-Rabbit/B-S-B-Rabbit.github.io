@@ -1,0 +1,134 @@
+.job-summary {
+    &__hello {
+        text-align: center;
+    }
+
+    &__photo {
+        width: 100%;
+        height: auto;
+
+
+        @media screen and (min-width: 650px) {
+            width: 30%;
+        }
+    }
+
+    &__education {
+        border: 4px black solid;
+        border-radius: 2vw;
+        margin-top: 5vw;
+        margin-bottom: 6vw;
+
+        @media screen and (min-width: 650px) {
+            width: 40%;
+            border-radius: 1vw;
+            margin: 0 auto;
+            margin-top: 3vw;
+        }
+    }
+
+    &__education-head {
+        @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__education-info {
+        margin: 0;
+        margin-top: -5vw;
+    }
+
+    &__education-info_data {
+        display: block;
+        margin-top: 3vw;
+        font-style: italic;
+    }
+
+    &__education-info_place {
+        color: rgb(39, 120, 241);
+        font-weight: bold;
+        text-shadow: 1px 2px 3px black;
+    }
+
+    &__skills {
+        display: block;
+        border: 4px black solid;
+        border-radius: 2vw;
+
+        @media screen and (min-width: 650px) {
+            width: 40%;
+            border-radius: 1vw;
+            margin: 0 auto;
+            margin-top: 3vw;
+        }
+    }
+
+    &__skills-list {
+        margin: 0;
+        margin-top: -5vw;
+        list-style: none;
+        padding-inline-start: 0;
+    }
+
+    &__skills-head {
+        @include main-text(rgba(0, 0, 0, 0), 7vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__skills-h {
+        @include main-text(rgba(0, 0, 0, 0), 5vw, Versus, 1.33, rgb(0, 0, 0), 2vw);
+
+        display: block;
+        margin-top: 3vw;
+    }
+
+    &__skills-item {
+        $skills-list: map-keys($skills);
+        
+        @each $skill in $skills-list {
+          &_#{$skill} {
+            @each $property, $value in map-get($skills, $skill) {
+              #{$property}: $value;
+            }
+
+            background-image: url(../images/#{$skill}.png);
+          }
+        }
+
+        padding-right: 5vw;
+        padding-left: 5vw;
+        border: 2px gray solid;
+        border-radius: 4vw;
+        margin-top: 1vw;
+        background-color: rgba(255, 255, 255, 0.87);
+        background-image: radial-gradient(rgb(255, 0, 0) 0%, rgb(138, 0, 0), transparent 70%);
+        background-position: center left;
+        background-repeat: no-repeat;
+        background-size: 8vw 8vw;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        font-family: Cunia, sans-serif;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+        transition: font-size 0.4s, background-size 0.4s;
+
+
+        &_psql {
+            .sql-color {
+                color: rgb(49,97,146);
+            }
+        }
+
+        &:hover {
+            background-size:  9vw 9vw;
+            font-size: larger;
+
+        }
+
+        @media screen and (min-width: 650px) {
+            background-size: 2.2vw 2.2vw;
+
+            &:hover {
+                background-size: 2.8vw 2.8vw;
+                font-size: larger;
+            }
+        }
+    }
+}

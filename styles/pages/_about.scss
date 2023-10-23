@@ -1,0 +1,15 @@
+.main-about {
+    color: black;
+    font-family: Roboto, sans-serif;
+    font-size: 5.5vw;
+    line-height: 1.33;
+    text-align: center;
+
+    @media screen and (min-width: 650px) {
+        font-size: 1.6vw;
+        
+    }
+}
+
+
+

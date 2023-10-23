@@ -1,3 +1,23 @@
 $calc-color: #212529;
 $bg-width: 10000px;
 $nav-link-active-color: #2fcae6;
+$skills: (
+  html: (background-color: rgb(238, 95, 34), color: rgb(255, 255, 255)),
+  css: (background-color: rgb(59, 154, 219), color: rgb(255, 255, 255)),
+  js: (background-color: rgb(237, 212, 90), color: rgb(255, 255, 255)),
+  c: (background-color: rgba(57, 72, 171, 0.87), color: rgb(255, 255, 255)),
+  cpp: (background-color: rgba(1, 127, 205, 0.842), color: rgb(255, 255, 255)),
+  java: (color: rgb(57, 109, 184)),
+  py: (color: rgb(0, 0, 0)),
+  psql: (color: rgb(0, 0, 0)),
+  doc: (color: rgb(6, 109, 165)),
+  eng: (color: rgb(0, 0, 0)),
+  git: (color: rgb(0, 0, 0)),
+  dj: (background-color: rgba(9, 46, 32, 0.877), color: rgb(255, 255, 255))
+);
+
+:root {
+    --text: #2B3044;
+    --line: #4e67f3c7;
+    --line-active: #0040ffcc;
+}

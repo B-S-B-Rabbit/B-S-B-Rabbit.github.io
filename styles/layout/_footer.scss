@@ -1,10 +1,44 @@
 .footer {
+    display: flex;
     flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
     padding: 0.5rem;
-    background-color: rgba(243, 241, 148, 0.849);
+    background-color: rgb(243, 241, 148);
     font-size: 5vw;
 
     @media screen and (min-width: 650px) {
-    font-size: 1.4vw;
+    font-size: 1.6vw;
     }
 }
+
+  .contacts-wrapper__item {
+    width: auto;
+    height: 8vw;
+    border: 0 transparent;
+    border-radius: 1vw;
+    margin: 0.4vw;
+    cursor: pointer;
+
+    &:first-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        box-shadow: inset 2px 5vw 5vw rgb(255, 255, 255);
+    }
+
+    &:active {
+        filter: invert(1);
+    }
+
+    @media screen and (min-width: 650px) {
+        height: 3vw;
+        margin: 0.3vw;
+
+        &:hover {
+            box-shadow: inset 2px 2vw 2vw rgb(255, 255, 255);
+        }
+    }
+
+  }

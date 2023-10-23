@@ -1,0 +1,44 @@
+.techno-stack {
+    border: 4px black solid;
+
+    @media screen and (min-width: 650px) {
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 3vw;
+    }
+
+    &__head {
+        @include main-text(rgba(0, 0, 0, 0), 8vw, Versus, 1.33, rgb(0, 0, 0), 3vw);
+    }
+
+    &__list {
+        margin: 0;
+        list-style-type: none;
+        padding-inline-start: 0;
+        
+    }
+
+    &__list-head {
+        @include main-text(rgba(0, 0, 0, 0), 6vw, Versus, 1.33, rgb(0, 0, 0), 2vw);
+
+        margin-top: 2vw;
+        margin-bottom: 1vw;
+    }
+
+    &__item {
+        margin-top: 1vw;
+        background-color: rgba(139, 19, 139, 0.822);
+        color: rgb(255, 183, 0);
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: transparent;
+        transition: background-color 0.6s, color 0.6s, font-size 0.4s;
+
+        &:hover {
+            background-color: rgba(19, 31, 139, 0.822);
+            color: rgb(197, 79, 0);
+            font-size: larger;
+        }
+    }
+
+}
