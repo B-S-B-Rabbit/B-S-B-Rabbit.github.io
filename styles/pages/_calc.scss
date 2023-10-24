@@ -22,6 +22,7 @@
             content: attr(data-text);
             -webkit-text-stroke: .02em gold
         }
+
         @media screen and (min-width: 650px) {
             font-size: 3vw;
         }

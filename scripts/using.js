@@ -18,27 +18,22 @@ questions.forEach((question) => {
   });
 });
 
-// Ссылки на элементы меню
 const menuItems = document.querySelectorAll('.inner-nav__item');
 
-// Функция для установки стилей при нажатии
 function setStylesOnClick(element) {
   element.style.transition = 'color 1s';
   element.style.color = 'red';
 }
 
-// Функция для снятия стилей после задержки
 function resetStyles(element) {
   element.style.color = 'white';
 }
 
-// Функция для прокрутки к соответствующим элементам
 function scrollToElement(target) {
   const targetElement = document.querySelector(`.${target}`);
   targetElement.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Добавляем обработчики событий для каждой ссылки
 menuItems.forEach((item) => {
   item.addEventListener('click', () => {
     setStylesOnClick(item);
@@ -52,8 +47,6 @@ const headerHeight = document.querySelector('.header').offsetHeight;
 const screenWidth = window.screen.width;
 const navbar = document.querySelector('.small-hor-sidebar');
 const initialTop = headerHeight;
-const scrollThreshold = 50; // Пороговое значение для начала возврата сайдбара
-function adjustSidebar() {}
 if (screenWidth > 650) {
   navbar.style.top = `${initialTop}px`;
   let lastScrollTop = 0;

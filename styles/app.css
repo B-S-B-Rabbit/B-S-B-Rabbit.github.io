@@ -60,22 +60,27 @@ sub {
   src: url("../fonts/Comfortaa-VariableFont_wght.ttf");
 }
 @font-face {
+  font-display: swap;
   font-family: Roboto;
   src: url("../fonts/Roboto-Regular.ttf");
 }
 @font-face {
+  font-display: swap;
   font-family: Versus;
   src: url("../fonts/versus.otf");
 }
 @font-face {
+  font-display: swap;
   font-family: OpenSans;
   src: url("../fonts/OpenSans.ttf");
 }
 @font-face {
+  font-display: swap;
   font-family: Cunia;
   src: url("../fonts/cunia.otf");
 }
 @font-face {
+  font-display: swap;
   font-family: DiplomatiaTwo;
   src: url("../fonts/DiplomatiaTwo.ttf");
 }
@@ -902,8 +907,8 @@ sub {
 }
 @media screen and (min-width: 650px) {
   .contacts-wrapper__item {
-    height: 3vw;
     width: 3vw;
+    height: 3vw;
     margin: 0.3vw;
   }
   .contacts-wrapper__item:hover {

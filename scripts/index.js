@@ -58,7 +58,7 @@ function infixToRPN(expression) {
 
   const modifiedExpression1 = expression.replace(
     /(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g,
-    (match, p1, p2, p3) => (p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3)
+    (_, p1, p2, p3) => (p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3)
   );
 
   const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, () =>
@@ -132,21 +132,18 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 
-const calculator = {
-  display: document.querySelector('.calculator__screen'),
-  operator: '',
-  hasError: false,
-  hasResult: false,
+class Calculator {
+  constructor() {
+    this.display = document.querySelector('.calculator__screen');
+    this.operator = '';
+    this.hasError = false;
+    this.hasResult = false;
+  }
 
   scrollInputToEnd() {
     const inputElement = this.display;
     inputElement.scrollLeft = inputElement.scrollWidth;
-  },
-
-  updateDisplay() {
-    const displayElement = document.querySelector('.calculator__screen');
-    displayElement.value = this.display.value;
-  },
+  }
 
   appendDigit(digit) {
     if (this.hasError || this.hasResult) {
@@ -156,20 +153,15 @@ const calculator = {
     }
     this.display.value =
       this.display.value == '' ? digit : this.display.value + digit;
-    this.updateDisplay();
     this.scrollInputToEnd();
-  },
+  }
 
   setOperator(operator) {
     if (this.hasError) {
       this.clear();
       this.hasError = false;
     }
-    if (this.hasResult) {
-      this.hasResult = false;
-    }
     if (!(['xy', 'x3', 'x2', '10x', 'x!', '+-'].indexOf(operator) + 1)) {
-      console.log(operator);
       this.display.value += operator;
     } else {
       if (operator == 'xy') {
@@ -182,7 +174,11 @@ const calculator = {
         this.display.value += '^3';
       }
       if (operator == '10x') {
-        this.display.value += '10^(';
+        if (this.hasResult) {
+          this.display.value = `10^(${this.display.value})`;
+        } else {
+          this.display.value += '10^(';
+        }
       }
       if (operator == 'x!') {
         this.display.value += '!';
@@ -214,31 +210,35 @@ const calculator = {
         }
       }
     }
-    this.updateDisplay();
-    this.scrollInputToEnd();
-  },
-  setFunction(operator) {
-    if (this.hasError || this.hasResult) {
-      this.clear();
-      this.hasError = false;
+    if (this.hasResult) {
       this.hasResult = false;
     }
-    this.display.value += `${operator}(`;
-    this.updateDisplay();
     this.scrollInputToEnd();
-  },
+  }
+
+  setFunction(operator) {
+    if (this.hasError) {
+      this.clear();
+      this.hasError = false;
+    }
+    if (this.hasResult) {
+      this.display.value = `${operator}(${this.display.value})`;
+      this.hasResult = false;
+    } else {
+      this.display.value += `${operator}(`;
+    }
+    this.scrollInputToEnd();
+  }
+
   calculate() {
-    if (document.querySelector('.calculator__screen').value === '') {
+    if (this.display.value == '') {
       return 0;
     }
     try {
-      const rpnExpression = infixToRPN(
-        document.querySelector('.calculator__screen').value
-      );
+      const rpnExpression = infixToRPN(this.display.value);
       const result = calculateRPN(rpnExpression);
       if (result.toString().indexOf('e') + 1) {
         this.display.value = 'Too big value';
-        this.updateDisplay();
         this.hasError = false;
         this.hasResult = true;
         return result;
@@ -246,18 +246,16 @@ const calculator = {
       this.display.value = parseFloat(result)
         .toFixed(5)
         .replace(/(\.0+|0+)$/, '');
-      this.updateDisplay();
       updateFontSize();
       this.hasError = false;
       this.hasResult = true;
       return result;
     } catch (error) {
       this.display.value = 'Error';
-      this.updateDisplay();
       updateFontSize();
       this.hasError = true;
     }
-  },
+  }
 
   openParenthesis() {
     if (this.hasError || this.hasResult) {
@@ -266,9 +264,8 @@ const calculator = {
       this.hasResult = false;
     }
     this.display.value += '(';
-    this.updateDisplay();
     this.scrollInputToEnd();
-  },
+  }
 
   closeParenthesis() {
     if (this.hasError || this.hasResult) {
@@ -277,15 +274,14 @@ const calculator = {
       this.hasResult = false;
     }
     this.display.value += ')';
-    this.updateDisplay();
     this.scrollInputToEnd();
-  },
+  }
 
   clear() {
     this.display.value = '';
     this.operator = '';
-    this.updateDisplay();
-  },
+  }
+
   leftBackspace() {
     if (this.hasError) {
       this.clear();
@@ -300,10 +296,10 @@ const calculator = {
         this.display.value.length - 1
       );
       this.operator = '';
-      this.updateDisplay();
     }
-  },
-};
+  }
+}
+const calculator = new Calculator();
 
 const digitButtons = document.querySelectorAll('.js-digit-btn');
 digitButtons.forEach((button) => {
