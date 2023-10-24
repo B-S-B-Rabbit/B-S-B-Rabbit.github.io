@@ -1,17 +1,21 @@
 @font-face {
+	font-display: swap;
 	font-family: Calculator;
 	src: url("../fonts/digital-7.ttf");
 }
 
 @font-face {
+	font-display: swap;
 	font-family: Calculator;
     font-style: italic;
 	src: url("../fonts/digital-7-italic.ttf");
 }
 
 @font-face {
+	font-display: swap;
 	font-family: Comfortaa;
 	src: url("../fonts/Comfortaa-VariableFont_wght.ttf");
+
 }
 
 @font-face {
@@ -32,4 +36,9 @@
 @font-face {
 	font-family: Cunia;
 	src: url("../fonts/cunia.otf");
+}
+
+@font-face {
+	font-family: DiplomatiaTwo;
+	src: url("../fonts/DiplomatiaTwo.ttf");
 }

@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Калькулятор</title>
+    <meta name="description"
+        content="Онлайн калькулятор BSB-Calc для выполнения различных математических операций. Простой и удобный калькулятор в вашем браузере.">
+    <meta name="keywords"
+        content="калькулятор, BSB-Calc, вычисления, онлайн калькулятор, математика, вычисления онлайн">
+    <title>Калькулятор Онлайн - Вычисляй, Решай, Считай | BSB-Calc</title>
     <link rel="stylesheet" href="styles/app.css">
 </head>
 
 <body class="page page_back_animation">
     <header class="header">
-        <img class="logo" src="images/hat2.jpg" alt="Калькулятор серый">
+        <img class="logo" src="images/hat2.jpg" alt="Логотип BSB-Calc">
     </header>
     <div class="page__wide-screen">
         <nav class="navbar navbar_sidebar">
@@ -23,13 +27,15 @@
             </ul>
         </nav>
         <main class="calc-wrapper">
-            <section class="calculator">
+            <h1 class="calc-wrapper__head head-animation">BSB-Calc <br> простое решение</h1>
+            <div class="calculator">
                 <form class="calculator__form-screen" action="get">
                     <fieldset class="calculator__fieldset">
                         <legend>Экран калькулятора</legend>
                         <div class="calculator__inputs-wrapper">
-                            <label for="calculator__screen">Ввод-вывод чисел</label>
-                            <input type="text" name="screen" class="calculator__screen" placeholder="0">
+                            <label for="calculator__input">Ввод-вывод чисел</label>
+                            <input type="text" name="screen" class="calculator__screen" id="calculator__input"
+                                placeholder="0">
                             <input type="text" class="calculator__screen calculator__hidden-screen"
                                 style="display: none;">
                         </div>
@@ -98,14 +104,15 @@
                             id="equalsButton" data-key="=">=</button>
                     </div>
                 </div>
-            </section>
+            </div>
         </main>
     </div>
     <footer class="footer">@designed by B-S-B-Rabbit
         <div class="contacts-wrapper">
             <a href="https://github.com/B-S-B-Rabbit"><img class="contacts-wrapper__item" src="images/github.png"
-                    alt="Github"></a>
-            <a href="https://vk.com/d_danvers"><img class="contacts-wrapper__item" src="images/vk2.png" alt="VK"></a>
+                    alt="Профиль GitHub B-S-B-Rabbit"></a>
+            <a href="https://vk.com/d_danvers"><img class="contacts-wrapper__item" src="images/vk2.png"
+                    alt="Профиль VK d_danvers"></a>
             <!-- <a href=""><img class="contacts-wrapper__item" src="images/email.png" alt="Написать письмо"></a>   -->
         </div>
     </footer>

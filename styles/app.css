@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --text: #2B3044;
   --line: #4e67f3c7;
@@ -43,15 +44,18 @@ sub {
 }
 
 @font-face {
+  font-display: swap;
   font-family: Calculator;
   src: url("../fonts/digital-7.ttf");
 }
 @font-face {
+  font-display: swap;
   font-family: Calculator;
   font-style: italic;
   src: url("../fonts/digital-7-italic.ttf");
 }
 @font-face {
+  font-display: swap;
   font-family: Comfortaa;
   src: url("../fonts/Comfortaa-VariableFont_wght.ttf");
 }
@@ -70,6 +74,10 @@ sub {
 @font-face {
   font-family: Cunia;
   src: url("../fonts/cunia.otf");
+}
+@font-face {
+  font-family: DiplomatiaTwo;
+  src: url("../fonts/DiplomatiaTwo.ttf");
 }
 .calculator {
   padding: 0.25rem;
@@ -217,26 +225,6 @@ sub {
   -webkit-box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
           box-shadow: inset 2px 6px 12px rgba(33, 37, 41, 0.5);
   text-shadow: 0.2rem 0.4rem 0.4px rgba(33, 37, 41, 0.2);
-}
-
-.calc-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: #333;
 }
 
 .calculator__btn_type_bc, .calculator__btn_type_C {
@@ -894,7 +882,7 @@ sub {
 }
 
 .contacts-wrapper__item {
-  width: auto;
+  width: 8vw;
   height: 8vw;
   border: 0 transparent;
   border-radius: 1vw;
@@ -915,6 +903,7 @@ sub {
 @media screen and (min-width: 650px) {
   .contacts-wrapper__item {
     height: 3vw;
+    width: 3vw;
     margin: 0.3vw;
   }
   .contacts-wrapper__item:hover {
@@ -1224,6 +1213,94 @@ sub {
   }
 }
 
+.calc-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #333;
+}
+.calc-wrapper__head {
+  max-width: 100%;
+  margin-top: 0;
+  color: #ffd000;
+  font-family: DiplomatiaTwo, sans-serif;
+  font-size: 7vw;
+  text-align: center;
+  -webkit-text-stroke: 0.03em black;
+}
+.calc-wrapper__head::before {
+  position: absolute;
+  /* в том же месте той же ширины */
+  right: 0;
+  left: 0;
+  content: attr(data-text);
+  -webkit-text-stroke: 0.02em gold;
+}
+@media screen and (min-width: 650px) {
+  .calc-wrapper__head {
+    font-size: 3vw;
+  }
+}
+
+.head-animation {
+  -webkit-animation: cl 15s linear infinite;
+          animation: cl 15s linear infinite;
+}
+
+@-webkit-keyframes cl {
+  0% {
+    color: #ffd000;
+  }
+  19% {
+    color: black;
+  }
+  40% {
+    color: #002df5;
+  }
+  60% {
+    color: #0044ff;
+  }
+  83% {
+    color: #0077ff;
+  }
+  100% {
+    color: #ffd000;
+  }
+}
+
+@keyframes cl {
+  0% {
+    color: #ffd000;
+  }
+  19% {
+    color: black;
+  }
+  40% {
+    color: #002df5;
+  }
+  60% {
+    color: #0044ff;
+  }
+  83% {
+    color: #0077ff;
+  }
+  100% {
+    color: #ffd000;
+  }
+}
 .main-block {
   max-width: 100%;
 }

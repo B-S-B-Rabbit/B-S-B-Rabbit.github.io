@@ -1,0 +1,59 @@
+.calc-wrapper {
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+
+    &__head {
+        max-width: 100%;
+        margin-top: 0;
+        color: rgb(255, 208, 0);
+        font-family: DiplomatiaTwo, sans-serif;
+        font-size: 7vw;
+        text-align: center;
+        -webkit-text-stroke: .03em rgb(0, 0, 0);
+
+        &::before {
+            position: absolute; /* в том же месте той же ширины */
+            right: 0;
+            left: 0;
+            content: attr(data-text);
+            -webkit-text-stroke: .02em gold
+        }
+        @media screen and (min-width: 650px) {
+            font-size: 3vw;
+        }
+    }
+}
+
+.head-animation {
+    animation: cl 15s linear infinite ;
+  }
+  
+  @keyframes cl{
+    0%{
+      color: rgb(255, 208, 0);
+    }
+    
+    19% {
+        color: rgb(0, 0, 0);
+    }
+
+    40% {
+        color: rgb(0, 45, 245);
+    }
+
+    60% {
+        color: rgb(0, 68, 255);
+    }
+
+    83% {
+        color: rgb(0, 119, 255);
+    }
+
+    100% {
+        color: rgb(255, 208, 0);
+    }
+  }

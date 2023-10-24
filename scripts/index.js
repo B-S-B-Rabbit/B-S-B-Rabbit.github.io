@@ -529,6 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const calc = document.querySelector('.calc-wrapper');
+  const calc = document.querySelector('.calculator');
   calc.scrollIntoView({ behavior: 'smooth' });
 });

@@ -13,7 +13,7 @@
 }
 
   .contacts-wrapper__item {
-    width: auto;
+    width: 8vw;
     height: 8vw;
     border: 0 transparent;
     border-radius: 1vw;
@@ -34,6 +34,7 @@
 
     @media screen and (min-width: 650px) {
         height: 3vw;
+        width: 3vw;
         margin: 0.3vw;
 
         &:hover {
