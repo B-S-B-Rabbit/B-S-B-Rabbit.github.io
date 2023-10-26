@@ -155,6 +155,7 @@ class Calculator {
     try {
       const rpnExpression = infixToRPN(this.display.value);
       const result = calculateRPN(rpnExpression);
+      this.display.value = result;
       if (result.toString().indexOf('e') + 1) {
         this.display.value = 'Too big value';
         this.hasError = false;
@@ -169,7 +170,7 @@ class Calculator {
       this.hasResult = true;
       return result;
     } catch (error) {
-      this.display.value = 'Error';
+      this.display.value = "error";
       updateFontSize();
       this.hasError = true;
     }
@@ -205,6 +206,8 @@ class Calculator {
    * Очищает экран калькулятора.
    */
   clear() {
+    this.hasError = false;
+    this.hasResult = false;
     this.display.value = '';
     this.operator = '';
   }

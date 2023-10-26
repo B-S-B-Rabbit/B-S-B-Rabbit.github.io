@@ -23,10 +23,11 @@ const alghoritm = {
       '*': 2,
       '/': 2,
       '%': 2,
-      sqrt: 3,
-      lg: 3,
-      ln: 3,
+      sqrt: 4,
+      lg: 4,
+      ln: 4,
       '^': 4,
+      '!': 4,
       n: 4,
     };
     /**
@@ -94,7 +95,7 @@ const alghoritm = {
      * @type {string}
      */
     const modifiedExpression1 = expression.replace(
-      /(^|[-+*/%^()!]|\([-+*/%^()!]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g,
+      /(^|[-+*/%^(]|\([-+*/%^(]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g,
       (_, p1, p2, p3) => (p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3)
     );
     /**
@@ -113,7 +114,7 @@ const alghoritm = {
     );
 
     if (!tokensExp) {
-      throw new Error('Invalid expression');
+      throw new Error(`Invalid expression ${tokensExp}`);
     }
     /**
      * Массив токенов в обратной польской нотации (RPN), полученный после обработки входных токенов.
@@ -134,6 +135,7 @@ const alghoritm = {
      * @type {number[]}
      */
     const stack = [];
+    debugger;
     rpn.forEach((token) => {
       if (!Number.isNaN(Number(token))) {
         stack.push(parseFloat(token));
@@ -182,7 +184,7 @@ const alghoritm = {
     });
 
     if (stack.length !== 1 || Number.isNaN(Number(stack[0]))) {
-      throw new Error('Invalid expression');
+      throw new Error(`Invalid expression length${stack}`);
     }
 
     return stack[0];
