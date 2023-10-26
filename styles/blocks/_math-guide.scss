@@ -6,7 +6,7 @@
 }
 
 .math-operators {
-    @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 2vw);
+    @include main-text(rgba(0,0,0,0), 5vw, Roboto, 2, rgb(255,255,255), 1.7vw);
 
     display: flex;
     flex-direction: column;
@@ -18,15 +18,15 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1vw;
+        padding: .5vw;
         border-radius: 4px;
         margin-top: 1vw;
         margin-bottom: 1vw;
         background: linear-gradient(45deg, #3358ff, #046c74);
         color: rgb(252, 174, 8);
         font-family: Calculator, sans-serif;
-        font-size: 6vw;
-        line-height:1.33;
+        font-size: 5vw;
+        line-height:1.2;
         transition: background-color 0.2s, font-size 0.2s;
 
         @media screen and (min-width: 650px) {

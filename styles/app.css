@@ -953,7 +953,7 @@ sub {
 }
 @media screen and (min-width: 650px) {
   .math-operators {
-    font-size: 2vw;
+    font-size: 1.7vw;
   }
 }
 .math-operators__op {
@@ -966,15 +966,15 @@ sub {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1vw;
+  padding: .5vw;
   border-radius: 4px;
   margin-top: 1vw;
   margin-bottom: 1vw;
   background: linear-gradient(45deg, #3358ff, #046c74);
   color: #fcae08;
   font-family: Calculator, sans-serif;
-  font-size: 6vw;
-  line-height: 1.33;
+  font-size: 5vw;
+  line-height: 1.2;
   -webkit-transition: background-color 0.2s, font-size 0.2s;
   transition: background-color 0.2s, font-size 0.2s;
 }
