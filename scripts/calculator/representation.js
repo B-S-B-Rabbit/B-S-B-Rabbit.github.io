@@ -1,20 +1,56 @@
+/**
+ * Модуль, представляющий класс для работы с калькулятором.
+ * @module representation
+ */
 import { infixToRPN, calculateRPN } from './algorithm';
-import { updateFontSize } from './app';
-import { funtionality } from './page-functionality';
-
+import { updateFontSize } from './calculator-functionality';
+/**
+ * Класс, представляющий калькулятор.
+ */
 class Calculator {
+  /**
+   * Создает экземпляр класса Calculator.
+   * @constructor
+   * @this  {Calculator}
+   */
   constructor() {
+    /**
+     * Элемент экрана калькулятора.
+     * @type {HTMLElement}
+     */
     this.display = document.querySelector('.calculator__screen');
+
+    /**
+     * Текущий оператор (если есть).
+     * @type {string}
+     */
     this.operator = '';
+
+    /**
+     * Флаг, указывающий на наличие ошибки в выражении.
+     * @type {boolean}
+     */
     this.hasError = false;
+
+    /**
+     * Флаг, указывающий на наличие результата вычисления.
+     * @type {boolean}
+     */
     this.hasResult = false;
   }
 
+  /**
+   * Прокручивает ввод к концу строки на экране калькулятора.
+   */
   scrollInputToEnd() {
     const inputElement = this.display;
     inputElement.scrollLeft = inputElement.scrollWidth;
   }
 
+  /**
+   * Добавляет цифру к текущему вводу на экране.
+   * @param {string} digit - Добавляемая цифра.
+   */
   appendDigit(digit) {
     if (this.hasError || this.hasResult) {
       this.clear();
@@ -26,6 +62,10 @@ class Calculator {
     this.scrollInputToEnd();
   }
 
+  /**
+   * Устанавливает оператор на экране калькулятора.
+   * @param {string} operator - Устанавливаемый оператор.
+   */
   setOperator(operator) {
     if (this.hasError) {
       this.clear();
@@ -86,6 +126,10 @@ class Calculator {
     this.scrollInputToEnd();
   }
 
+  /**
+   * Устанавливает функцию на экране калькулятора.
+   * @param {string} operator - Устанавливаемая функция.
+   */
   setFunction(operator) {
     if (this.hasError) {
       this.clear();
@@ -100,6 +144,10 @@ class Calculator {
     this.scrollInputToEnd();
   }
 
+  /**
+   * Вычисляет результат выражения на экране калькулятора.
+   * @returns {number} Результат вычисления.
+   */
   calculate() {
     if (this.display.value == '') {
       return 0;
@@ -127,6 +175,9 @@ class Calculator {
     }
   }
 
+  /**
+   * Добавляет открывающую скобку на экране калькулятора.
+   */
   openParenthesis() {
     if (this.hasError || this.hasResult) {
       this.clear();
@@ -137,6 +188,9 @@ class Calculator {
     this.scrollInputToEnd();
   }
 
+  /**
+   * Добавляет закрывающую скобку на экране калькулятора.
+   */
   closeParenthesis() {
     if (this.hasError || this.hasResult) {
       this.clear();
@@ -147,11 +201,17 @@ class Calculator {
     this.scrollInputToEnd();
   }
 
+  /**
+   * Очищает экран калькулятора.
+   */
   clear() {
     this.display.value = '';
     this.operator = '';
   }
 
+  /**
+   * Выполняет операцию "назад" (удаляет символ справа) на экране калькулятора.
+   */
   leftBackspace() {
     if (this.hasError) {
       this.clear();
@@ -171,4 +231,3 @@ class Calculator {
 }
 
 export const calculator = new Calculator();
-funtionality();

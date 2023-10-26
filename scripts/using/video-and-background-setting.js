@@ -1,12 +1,26 @@
-const video = document.querySelector('.video-using');
+/**
+ * Обрабатывает проигрывание и паузу видео при нажатии на кнопку.
+ * @function
+ * @fires HTMLMediaElement#play
+ * @fires HTMLMediaElement#pause
+ */
 export function playPause() {
+  const video = document.querySelector('.video-using');
+
   if (video.paused) video.play();
   else video.pause();
 }
 
-const mobilePage = document.querySelector('.page_mobile-back');
-const windowWidth = window.innerWidth;
+/**
+ * Настраивает видео и фон страницы в зависимости от ширины окна.
+ * @function
+ * @fires scroll
+ */
 export function setPreloaderVideoBackround() {
+  const video = document.querySelector('.video-using');
+  const mobilePage = document.querySelector('.page_mobile-back');
+  const windowWidth = window.innerWidth;
+
   if (windowWidth > 650) {
     video.innerHTML = "<source src='../videos/desk_calc.mp4' type='video/mp4'>";
     mobilePage.classList.add('background-parallax');

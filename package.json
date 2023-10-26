@@ -8,7 +8,8 @@
     "eslint:fix": "eslint . --fix",
     "stylelint": "stylelint '**/*{.css,.scss}'",
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
-    "buildjs": "webpack"
+    "buildjs": "webpack",
+    "docs:build": "documentation build scripts/** -f html -o docs"
   },
   "keywords": [],
   "author": "",

@@ -1,3 +1,9 @@
+/**
+ * Обработчик события, раскрывающий ответы на вопросы FAQ при клике на вопрос.
+ * @function
+ * @listens click
+ * @param {MouseEvent} event - Объект события "click".
+ */
 export function FAQ() {
   const questions = document.querySelectorAll('.FAQ__question');
 
