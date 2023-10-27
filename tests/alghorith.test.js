@@ -1,121 +1,99 @@
 const alghoritm = require('../scripts/calculator/algorithm');
 
 const { infixToRPN, calculateRPN } = alghoritm;
-
-describe('calculateRPN', () => {
-  test('Вычисление RPN выражения с унарным оператором', () => {
-    const expression = 'sqrt(9)+ln(10)-3!';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBeCloseTo(-0.69741, 5);
+describe('Тестирование логики внутренних вычислений калькулятора c десятичным результатом', () => {
+  const testCases = [
+    {
+      inString: 'sqrt(9)+ln(10)-3!',
+      expected: -0.69741,
+    },
+    {
+      inString: '2*π',
+      expected: 6.28318,
+    },
+    {
+      inString: '2+(2+(2+(2+(3*6-1*(2+sqrt(7-5))*8^2-5)*2)/4)+π)',
+      expected: -93.11324,
+    },
+    {
+      inString: 'sqrt(π)*lg(π)-ln(π)^2',
+      expected: -0.42923,
+    },
+    {
+      inString: '-2+3*-4/-5^2^3',
+      expected: -2.000768,
+    },
+  ];
+  testCases.forEach((test) => {
+    it(`На вход: ${test.inString}. Ожидается: ${test.expected}`, () => {
+      const res = calculateRPN(infixToRPN(test.inString));
+      expect(res).toBeCloseTo(test.expected, 5);
+    });
   });
-
-  test('Вычисление RPN выражения с Pi', () => {
-    const expression = '2*π';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBeCloseTo(6.28318, 5);
+});
+describe('Тестирование логики внутренних вычислений калькулятора c целым результатом', () => {
+  const testCases = [
+    {
+      inString: '-3+-3',
+      expected: -6,
+    },
+    {
+      inString: '2-(-3)',
+      expected: 5,
+    },
+    {
+      inString: 'sqrt(2^((4 - lg(10))!-lg(100)!))',
+      expected: 4,
+    },
+    {
+      inString: '2!+3!+4!+5!+6!+7!-8!-9!+10!',
+      expected: 3231512,
+    },
+    {
+      inString: '0-0+0+0-1+1*0*1/1^0!',
+      expected: -1,
+    },
+    {
+      inString: 'sqrt(16)+lg(100)-ln(1)^2',
+      expected: 6,
+    },
+    {
+      inString: '3!!',
+      expected: 720,
+    },
+    {
+      inString: '2^(3^4)',
+      expected: 2.4178516392292583e24,
+    },
+  ];
+  testCases.forEach((test) => {
+    it(`На вход: ${test.inString}. Ожидается: ${test.expected}`, () => {
+      const res = calculateRPN(infixToRPN(test.inString));
+      expect(res).toBe(test.expected);
+    });
   });
-
-  test('Вычисление RPN выражения с отрицательным числом', () => {
-    const expression = '2-(-3)';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(5);
-  });
-
-  test('Вычисление RPN выражения с кучей скобок', () => {
-    const expression = '2*(3+4/(2-1))';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(14);
-  });
-
-  test('Вычисление RPN выражения с высоким приоритетом оператора', () => {
-    const expression = '2^3+5';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(13);
-  });
-
-  test('Вычисление RPN выражения с операторами вида "2! + 3!"', () => {
-    const expression = '2!+3!';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(8);
-  });
-
-  test('Вычисление RPN выражения с модулем', () => {
-    const expression = '7%3';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(1);
-  });
-
-  test('Вычисление RPN выражения с граничными значениями', () => {
-    const expression = '1^1+3*(5-4)';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(4);
-  });
-
-  test('Вычисление RPN выражения с разными функциями', () => {
-    const expression = 'sqrt(16)+lg(100)-ln(1)^2';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(6);
-  });
-
-  test('Проверка наличия ошибки при некорректном выражении', () => {
-    const expression = '2+3+';
-    expect(() => calculateRPN(infixToRPN(expression))).toThrow(Error);
-  });
-
-  test('Проверка наличия ошибки при использовании неизвестного оператора', () => {
-    const expression = '2&3';
-    expect(() => calculateRPN(infixToRPN(expression))).toThrow(Error);
-  });
-
-  test('Проверка наличия ошибки при некорректном RPN выражении', () => {
-    const rpnExpression = ['2', '2', '+', '+'];
-    expect(() => calculateRPN(rpnExpression)).toThrow(Error);
-  });
-
-  test('Проверка наличия ошибки при неверном количестве операндов для бинарной операции', () => {
-    const rpnExpression = ['2', '+'];
-    expect(() => calculateRPN(rpnExpression)).toThrow(Error);
-  });
-
-  test('Проверка наличия ошибки при неверном количестве операндов для унарной операции', () => {
-    const rpnExpression = ['sqrt'];
-    expect(() => calculateRPN(rpnExpression)).toThrow(Error);
-  });
-
-  test('Вычисление RPN выражения с большим количеством операторов', () => {
-    const expression = '2+3*4-5/6^2^3';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBeCloseTo(13.99989, 5);
-  });
-
-  test('Вычисление RPN выражения с операторами вида "5! + 2! - 3!"', () => {
-    const expression = '5!+2!-3!';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBe(116);
-  });
-
-  test('Вычисление RPN выражения с Pi внутри функций', () => {
-    const expression = 'sqrt(π)*lg(π)-ln(π)^2';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBeCloseTo(-0.42923, 5);
-  });
-
-  test('Вычисление RPN выражения с отрицательным числом', () => {
-    const expression = '-2+3*-4/-5^2^3';
-    const rpnExpression = infixToRPN(expression);
-    const result = calculateRPN(rpnExpression);
-    expect(result).toBeCloseTo(-2.000768, 5);
+});
+describe('Тестирование логики внутренних вычислений калькулятора c ошибкой', () => {
+  const testCases = [
+    {
+      inString: '2+3+',
+    },
+    {
+      inString: '2&3',
+    },
+    {
+      inString: 'sqrt',
+    },
+    {
+      inString: '22++',
+    },
+    {
+      inString: '2+',
+    },
+  ];
+  testCases.forEach((test) => {
+    it(`На вход: ${test.inString}. Ожидается: Error`, () => {
+      expect(() => calculateRPN(infixToRPN(test.inString))).toThrow(Error);
+    });
   });
 });

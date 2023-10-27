@@ -170,7 +170,7 @@ class Calculator {
       this.hasResult = true;
       return result;
     } catch (error) {
-      this.display.value = "error";
+      this.display.value = 'error';
       updateFontSize();
       this.hasError = true;
     }
