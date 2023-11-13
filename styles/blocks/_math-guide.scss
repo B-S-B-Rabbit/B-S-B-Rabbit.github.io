@@ -25,7 +25,7 @@
         background: linear-gradient(45deg, #3358ff, #046c74);
         color: rgb(252, 174, 8);
         font-family: Calculator, sans-serif;
-        font-size: 5vw;
+        font-size: 8vw;
         line-height:1.2;
         transition: background-color 0.2s, font-size 0.2s;
 
@@ -36,7 +36,7 @@
     
     &__op:hover {
         background-color: #333;
-        font-size: 7vw;
+        font-size: 9vw;
 
         @media screen and (min-width: 650px) {
             font-size: 5vw;

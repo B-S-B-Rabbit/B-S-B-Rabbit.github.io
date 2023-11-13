@@ -357,11 +357,6 @@ sub {
 }
 
 .FAQ {
-  background-color: rgba(0, 0, 0, 0);
-  color: black;
-  font-family: Roboto, sans-serif;
-  font-size: 3vw;
-  line-height: 1.33;
   padding: 0;
   margin: 0 auto;
   margin-bottom: 30vh;
@@ -370,26 +365,41 @@ sub {
 }
 @media screen and (min-width: 650px) {
   .FAQ {
-    font-size: 1.4vw;
-  }
-}
-@media screen and (min-width: 650px) {
-  .FAQ {
     margin-right: 10%;
     margin-left: 10%;
   }
 }
 .FAQ__head {
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  font-family: Roboto, sans-serif;
+  font-size: 7vw;
+  line-height: 1.33;
   margin: 0;
   background-color: black;
   color: white;
   text-align: center;
 }
+@media screen and (min-width: 650px) {
+  .FAQ__head {
+    font-size: 1.8vw;
+  }
+}
 .FAQ__q-head {
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  font-family: Roboto, sans-serif;
+  font-size: 6vw;
+  line-height: 1.33;
   padding: 10px;
   margin: 0;
   background-color: #f0f0f0;
   cursor: pointer;
+}
+@media screen and (min-width: 650px) {
+  .FAQ__q-head {
+    font-size: 1.4vw;
+  }
 }
 .FAQ__question {
   margin-top: 1vw;
@@ -400,13 +410,13 @@ sub {
   padding-right: 1.5vw;
   padding-left: 1.5vw;
   background-color: #cecece;
-  font-size: 4vw;
+  font-size: 5vw;
   -webkit-transition: max-height 0.3s ease;
   transition: max-height 0.3s ease;
 }
 @media screen and (min-width: 650px) {
   .FAQ__answer {
-    font-size: 1.4vw;
+    font-size: 1.2vw;
   }
 }
 
@@ -973,7 +983,7 @@ sub {
   background: linear-gradient(45deg, #3358ff, #046c74);
   color: #fcae08;
   font-family: Calculator, sans-serif;
-  font-size: 5vw;
+  font-size: 8vw;
   line-height: 1.2;
   -webkit-transition: background-color 0.2s, font-size 0.2s;
   transition: background-color 0.2s, font-size 0.2s;
@@ -985,7 +995,7 @@ sub {
 }
 .math-operators__op:hover {
   background-color: #333;
-  font-size: 7vw;
+  font-size: 9vw;
 }
 @media screen and (min-width: 650px) {
   .math-operators__op:hover {
