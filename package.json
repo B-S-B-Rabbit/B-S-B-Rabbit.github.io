@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-config-wesbos": "^3.2.3"
+    "eslint-config-wesbos": "^3.2.3",
+    "translate": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",

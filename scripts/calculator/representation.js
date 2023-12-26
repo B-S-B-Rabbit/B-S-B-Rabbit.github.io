@@ -25,13 +25,6 @@ class Calculator {
      * @type {string}
      */
     this.operator = '';
-
-    /**
-     * Флаг, указывающий на наличие ошибки в выражении.
-     * @type {boolean}
-     */
-    this.hasError = false;
-
     /**
      * Флаг, указывающий на наличие результата вычисления.
      * @type {boolean}
@@ -52,14 +45,14 @@ class Calculator {
    * @param {string} digit - Добавляемая цифра.
    */
   appendDigit(digit) {
-    if (this.hasError || this.hasResult) {
+    if (this.hasResult) {
       this.clear();
-      this.hasError = false;
       this.hasResult = false;
     }
     this.display.value =
       this.display.value == '' ? digit : this.display.value + digit;
     this.scrollInputToEnd();
+    this.checkValidity(this);
   }
 
   /**
@@ -67,10 +60,6 @@ class Calculator {
    * @param {string} operator - Устанавливаемый оператор.
    */
   setOperator(operator) {
-    if (this.hasError) {
-      this.clear();
-      this.hasError = false;
-    }
     if (!(['xy', 'x3', 'x2', '10x', 'x!', '+-'].indexOf(operator) + 1)) {
       this.display.value += operator;
     } else {
@@ -124,6 +113,7 @@ class Calculator {
       this.hasResult = false;
     }
     this.scrollInputToEnd();
+    this.checkValidity(this);
   }
 
   /**
@@ -131,10 +121,6 @@ class Calculator {
    * @param {string} operator - Устанавливаемая функция.
    */
   setFunction(operator) {
-    if (this.hasError) {
-      this.clear();
-      this.hasError = false;
-    }
     if (this.hasResult) {
       this.display.value = `${operator}(${this.display.value})`;
       this.hasResult = false;
@@ -142,6 +128,7 @@ class Calculator {
       this.display.value += `${operator}(`;
     }
     this.scrollInputToEnd();
+    this.checkValidity(this);
   }
 
   /**
@@ -158,21 +145,19 @@ class Calculator {
       this.display.value = result;
       if (result.toString().indexOf('e') + 1) {
         this.display.value = 'Too big value';
-        this.hasError = false;
         this.hasResult = true;
+        this.checkValidity();
         return result;
       }
       this.display.value = parseFloat(result)
         .toFixed(5)
         .replace(/(\.0+|0+)$/, '');
       updateFontSize();
-      this.hasError = false;
       this.hasResult = true;
+      this.checkValidity();
       return result;
     } catch (error) {
-      this.display.value = 'error';
       updateFontSize();
-      this.hasError = true;
     }
   }
 
@@ -180,46 +165,43 @@ class Calculator {
    * Добавляет открывающую скобку на экране калькулятора.
    */
   openParenthesis() {
-    if (this.hasError || this.hasResult) {
+    if (this.hasResult) {
       this.clear();
-      this.hasError = false;
       this.hasResult = false;
     }
     this.display.value += '(';
     this.scrollInputToEnd();
+    this.checkValidity(this);
   }
 
   /**
    * Добавляет закрывающую скобку на экране калькулятора.
    */
   closeParenthesis() {
-    if (this.hasError || this.hasResult) {
+    if (this.hasResult) {
       this.clear();
-      this.hasError = false;
       this.hasResult = false;
     }
     this.display.value += ')';
     this.scrollInputToEnd();
+    this.checkValidity(this);
   }
 
   /**
    * Очищает экран калькулятора.
    */
   clear() {
-    this.hasError = false;
     this.hasResult = false;
     this.display.value = '';
     this.operator = '';
+    this.display.classList.remove('calculator__screen_right-expr');
+    this.display.classList.remove('calculator__screen_wrong-expr');
   }
 
   /**
    * Выполняет операцию "назад" (удаляет символ справа) на экране калькулятора.
    */
   leftBackspace() {
-    if (this.hasError) {
-      this.clear();
-      this.hasError = false;
-    }
     console.log(this.display.value.length);
     if (this.display.value.length == 1) {
       this.clear();
@@ -229,6 +211,18 @@ class Calculator {
         this.display.value.length - 1
       );
       this.operator = '';
+    }
+  }
+
+  checkValidity() {
+    try {
+      const rpnExpression = infixToRPN(this.display.value);
+      calculateRPN(rpnExpression);
+      this.display.classList.add('calculator__screen_right-expr');
+      this.display.classList.remove('calculator__screen_wrong-expr');
+    } catch (error) {
+      this.display.classList.add('calculator__screen_wrong-expr');
+      this.display.classList.remove('calculator__screen_right-expr');
     }
   }
 }

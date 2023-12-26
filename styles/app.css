@@ -292,6 +292,14 @@ sub {
   text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
 }
 
+.calculator__screen_wrong-expr {
+  background-color: #fc9c9c;
+}
+
+.calculator__screen_right-expr {
+  background-color: #afffa7;
+}
+
 .inner-nav {
   background-color: black;
   color: white;
@@ -628,6 +636,111 @@ sub {
   font-size: larger;
 }
 
+.project-updates__list-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.project-updates__head {
+  font-family: Versus, sans-serif;
+  text-align: center;
+}
+.project-updates__list {
+  padding: 0;
+  background-color: "";
+  color: "";
+  font-family: "Verdana, Geneva, Tahoma, sans-serif", sans-serif;
+  font-size: 5vw;
+  line-height: 1.5;
+  list-style: none;
+}
+@media screen and (min-width: 650px) {
+  .project-updates__list {
+    font-size: 1.4vw;
+  }
+}
+@media screen and (min-width: 650px) {
+  .project-updates__list {
+    height: 20vw;
+    overflow-y: auto;
+  }
+}
+.project-updates__item {
+  position: relative;
+  left: -9999px;
+  padding-right: 1vw;
+  padding-left: 4vw;
+  border: 2px solid purple;
+  margin: 0;
+  margin-bottom: 1.5vw;
+  background-color: white;
+  -webkit-transition: left 0.6s ease, background-color 0.4s linear, text-shadow 0.4s linear, right 1s;
+  transition: left 0.6s ease, background-color 0.4s linear, text-shadow 0.4s linear, right 1s;
+}
+.project-updates__item::before {
+  content: "💾";
+}
+.project-updates__item:hover {
+  background-color: yellow;
+  text-shadow: 3px 3px white;
+}
+@media screen and (min-width: 650px) {
+  .project-updates__item {
+    width: 13vw;
+    height: 13vw;
+    padding-left: 1vw;
+    overflow-y: auto;
+  }
+}
+@media screen and (min-width: 650px) {
+  .project-updates {
+    position: fixed;
+    top: 0;
+    right: -10%;
+  }
+  .project-updates:hover {
+    right: .1%;
+  }
+}
+
+.animated-text {
+  -webkit-animation: textAnimation 1s ease-in-out;
+          animation: textAnimation 1s ease-in-out;
+}
+
+@-webkit-keyframes textAnimation {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
 .page {
   padding: 0;
   margin: 0;
@@ -673,6 +786,7 @@ sub {
   }
 }
 .page__wide-screen {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1351,5 +1465,3 @@ sub {
     font-size: 1.6vw;
   }
 }
-
-/*# sourceMappingURL=app.css.map */

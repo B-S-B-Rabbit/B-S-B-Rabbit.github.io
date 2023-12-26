@@ -3,10 +3,10 @@
  * @function
  * @listens scroll
  */
-export function movingSmallSidebar() {
-  const headerHeight = document.querySelector('.header').offsetHeight;
+export function movingSmallSidebar(header, sidebar) {
+  const headerHeight = document.querySelector(`.${header}`).offsetHeight;
   const screenWidth = window.screen.width;
-  const navbar = document.querySelector('.small-hor-sidebar');
+  const navbar = document.querySelector(`.${sidebar}`);
   const initialTop = headerHeight;
 
   if (screenWidth > 650) {
@@ -19,11 +19,11 @@ export function movingSmallSidebar() {
 
       if (st > lastScrollTop) {
         isScrollingUp = false;
-        navbar.style.transition = 'top 0.3s, left 0.6s';
+        navbar.style.transition = 'top 0.3s, left 0.6s, right 0.6s';
         navbar.style.top = `${Math.max(initialTop - st, 0)}px`;
       } else if (st < initialTop) {
         isScrollingUp = true;
-        navbar.style.transition = 'top 0.3s, left 0.6s';
+        navbar.style.transition = 'top 0.3s, left 0.6s, right 0.6s';
         navbar.style.top = `${initialTop}px`;
       } else if (isScrollingUp) {
         navbar.style.transition = 'none';

@@ -6,4 +6,4 @@ import { setPreloaderVideoBackround } from './video-and-background-setting';
 FAQ();
 setInnerNavShiftingStyling();
 setPreloaderVideoBackround();
-movingSmallSidebar();
+movingSmallSidebar('header', 'small-hor-sidebar');

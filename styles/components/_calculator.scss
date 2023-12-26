@@ -179,3 +179,11 @@
     box-shadow: inset 2px 6px 12px rgba(rgba(97, 96, 96, 0.212), 0.5) !important;
     text-shadow: 0.2rem 0.4rem 0.4px rgba(243, 241, 148, 0.2) !important;
   }
+
+.calculator__screen_wrong-expr {
+    background-color:rgb(252, 156, 156);
+}
+
+.calculator__screen_right-expr {
+    background-color:rgb(175, 255, 167);
+}

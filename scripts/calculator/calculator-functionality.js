@@ -307,3 +307,7 @@ export function followLastInput() {
     });
   });
 }
+
+export function inputCalcValidity() {
+  screen.addEventListener('input', calculator.checkValidity.bind(calculator));
+}
