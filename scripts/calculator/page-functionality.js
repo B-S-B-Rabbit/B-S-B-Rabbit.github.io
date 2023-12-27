@@ -90,10 +90,17 @@ export function showListItem() {
         }, 200 * count++);
       }
     } else {
+      console.log(
+        el.getBoundingClientRect().y + el.getBoundingClientRect().height,
+        window.innerHeight
+      );
       el.style.left = 0;
     }
   });
-
-  window.addEventListener('scroll', showListItem);
-  window.addEventListener('DOMContentLoaded', showListItem);
+}
+export function eventListShow() {
+  document.addEventListener('DOMContentLoaded', () => {
+    showListItem();
+    window.addEventListener('touchmove', showListItem);
+  });
 }

@@ -17,7 +17,7 @@ import {
   preventDoubleTouchZoom,
   getLastUpdates,
   moveToCalc,
-  showListItem,
+  eventListShow,
 } from './page-functionality';
 import { movingSmallSidebar } from '../using/moving-small-sidebar';
 
@@ -36,6 +36,6 @@ followLastInput();
 moveToCalc();
 preventDoubleTouchZoom();
 getLastUpdates();
-showListItem();
+eventListShow();
 movingSmallSidebar('header', 'project-updates');
 inputCalcValidity();
