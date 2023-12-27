@@ -6,9 +6,9 @@
  */
 export function playPause() {
   const video = document.querySelector('.video-using');
-
-  if (video.paused) video.play();
-  else video.pause();
+  video.addEventListener('click', () =>
+    video.paused ? video.play() : video.pause()
+  );
 }
 
 /**
@@ -27,15 +27,14 @@ export function setPreloaderVideoBackround() {
   } else {
     video.innerHTML = "<source src='../videos/mob_calc.mp4' type='video/mp4'>";
   }
+  if (window.innerWidth > 650) {
+    const background = document.querySelector('.background-parallax');
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
 
-  const background = document.querySelector('.background-parallax');
-
-  window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY;
-
-    background.style.backgroundPosition = `50% ${scrollPosition * 0.5}px`;
-  });
-
+      background.style.backgroundPosition = `50% ${scrollPosition * 0.5}px`;
+    });
+  }
   const loader = document.querySelector('.loader');
   video.addEventListener('canplaythrough', () => {
     loader.style.display = 'none';

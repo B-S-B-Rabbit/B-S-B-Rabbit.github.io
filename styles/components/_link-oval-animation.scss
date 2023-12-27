@@ -20,10 +20,15 @@
         stroke-width: 2px;
         transform: translate(-50%, 7px) translateZ(0);
         transition: stroke .25s ease var(--stroke-delay, 0s), stroke-dasharray .35s;
+
+        @media  screen and (max-width: 650px) {
+            width: 60px;
+            height: 42px;
+        }
     }
 
     &:hover {
-        --spacing: 5px;
+        --spacing: 8px;
         --stroke: var(--line-active);
         --stroke-delay: .1s;
         --offset: 180px;

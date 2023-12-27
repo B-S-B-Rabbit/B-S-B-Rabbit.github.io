@@ -90,10 +90,6 @@ export function showListItem() {
         }, 200 * count++);
       }
     } else {
-      console.log(
-        el.getBoundingClientRect().y + el.getBoundingClientRect().height,
-        window.innerHeight
-      );
       el.style.left = 0;
     }
   });
