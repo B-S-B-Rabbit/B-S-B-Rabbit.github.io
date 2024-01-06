@@ -1,3 +1,3 @@
 import { movingSmallSidebar } from '../using/moving-small-sidebar';
 
-movingSmallSidebar();
+movingSmallSidebar('header', 'small-hor-sidebar');
