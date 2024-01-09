@@ -82,31 +82,40 @@ class Calculator {
       if (operator == 'x!') {
         this.display.value += '!';
       }
-      if (operator == '+-' && this.display.value) {
-        if (this.display.value[0] == '-') {
-          this.display.value = this.display.value.slice(
-            1,
-            this.display.value.length
-          );
-          if (
-            this.display.value[0] == '(' &&
-            this.display.value[this.display.value.length - 1] == ')'
-          ) {
-            this.display.value = this.display.value.slice(
-              1,
-              this.display.value.length - 1
-            );
+      if (operator === '+-') {
+        const numberOrExpressionRegex =
+          /([\+\*%/\-])([\(\)\^\w]+)$|([\(\)\^\w]+)$/;
+        const newExpression = this.display.value.replace(
+          numberOrExpressionRegex,
+          (match, $1, $2, $3) => {
+            console.log(match, $1, $2, $3);
+            if ($2) {
+              if ($1 === '-') {
+                if (
+                  match.length === this.display.value.length ||
+                  ['*', '/', '%', '+', '-'].includes(
+                    this.display.value[
+                      this.display.value.length - match.length - 1
+                    ]
+                  )
+                )
+                  return $2[0] === '(' && $2[$2.length - 1] === ')'
+                    ? `${$2.slice(1, -1)}`
+                    : `${$2}`;
+                return `+${$2}`;
+              }
+              if ($1 === '+') {
+                return `-${$2}`;
+              }
+
+              return `${$1}-(${$2})`;
+            }
+
+            return `-${$3}`;
           }
-        } else if (
-          !(
-            this.display.value[0] == '(' &&
-            this.display.value[this.display.value.length - 1] == ')'
-          )
-        ) {
-          this.display.value = `-(${this.display.value})`;
-        } else {
-          this.display.value = `-${this.display.value}`;
-        }
+        );
+
+        this.display.value = newExpression;
       }
     }
     if (this.hasResult) {
