@@ -23,9 +23,9 @@ const alghoritm = {
       '*': 2,
       '/': 2,
       '%': 2,
-      sqrt: 4,
-      lg: 4,
-      ln: 4,
+      sqrt: 5,
+      lg: 5,
+      ln: 5,
       '^': 4,
       '!': 4,
       n: 4,
@@ -95,16 +95,20 @@ const alghoritm = {
      * @type {string}
      */
     const modifiedExpression1 = expression.replace(
-      /(^|[-+*/%^(]|\([-+*/%^(]*\))(-)(\(?\d+(\.\d*)?|\.\d+)/g,
+      /(^|[-+*/%^(]|\([-+*/%^(]*\))(-)(.)/g,
       (_, p1, p2, p3) => (p2 == '-' ? `${p1}n${p3}` : p1 + p2 + p3)
     );
+    console.log(modifiedExpression1);
     /**
      * Измененное выражение после второй модификации с заменой π на число Pi.
      * @type {string}
      */
-    const modifiedExpression2 = modifiedExpression1.replace(/(π)/g, () =>
-      Math.PI.toFixed(5)
+    const modifiedExpression2 = modifiedExpression1.replace(
+      /(\d)(π)|(π)/g,
+      (_, $1, $2, $3) =>
+        $3 ? Math.PI.toFixed(5) : `${$1}*${Math.PI.toFixed(5)}`
     );
+    console.log(modifiedExpression2);
     /**
      * Массив токенов из модифицированного выражения, готовый для обработки в алгоритме.
      * @type {string[]}
@@ -112,7 +116,7 @@ const alghoritm = {
     const tokensExp = modifiedExpression2.match(
       /(\d+(\.\d*)?|\.\d+|[+\-*/%^()!]|sqrt|PI|lg|ln|\^|n)/g
     );
-
+    console.log(tokensExp);
     if (!tokensExp) {
       throw new Error(`Invalid expression ${tokensExp}`);
     }

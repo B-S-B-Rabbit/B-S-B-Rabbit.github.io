@@ -83,8 +83,7 @@ class Calculator {
         this.display.value += '!';
       }
       if (operator === '+-') {
-        const numberOrExpressionRegex =
-          /([\+\*%/\-])([\(\)\^\w]+)$|([\(\)\^\w]+)$/;
+        const numberOrExpressionRegex = /([+*%/-])([()^\w]+)$|([()^\w]+)$/;
         const newExpression = this.display.value.replace(
           numberOrExpressionRegex,
           (match, $1, $2, $3) => {
@@ -211,7 +210,6 @@ class Calculator {
    * Выполняет операцию "назад" (удаляет символ справа) на экране калькулятора.
    */
   leftBackspace() {
-    console.log(this.display.value.length);
     if (this.display.value.length == 1) {
       this.clear();
     } else if (this.display.value.length > 1) {
@@ -220,6 +218,7 @@ class Calculator {
         this.display.value.length - 1
       );
       this.operator = '';
+      this.checkValidity(this);
     }
   }
 
