@@ -7,7 +7,7 @@
     height: 100%;
     min-height: 100%;
     flex-direction: column;
-    background-color: rgba($color: #b8b8b8, $alpha: 1);
+    background-color: $bg-calc-color;
     color: #000; 
     font-family: Georgia, serif;
 }

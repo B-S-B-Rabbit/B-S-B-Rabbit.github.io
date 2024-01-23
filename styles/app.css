@@ -650,20 +650,44 @@ sub {
       -ms-flex-pack: center;
           justify-content: center;
 }
+@media screen and (min-width: 650px) {
+  .project-updates__list-wrapper {
+    opacity: 0;
+    -webkit-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+  }
+  .project-updates__list-wrapper:hover {
+    opacity: 1;
+  }
+}
 
 .project-updates__head {
   color: black;
   font-family: Versus, sans-serif;
   text-align: center;
 }
+@media screen and (min-width: 650px) {
+  .project-updates__head {
+    position: absolute;
+    display: inline-block;
+    height: 17vw;
+    font-size: 1.25vw;
+    text-align: center;
+    text-orientation: upright;
+    -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
+  }
+}
 .project-updates__list {
   padding: 0;
+  margin: 0;
+  list-style: none;
   background-color: "";
   color: "";
   font-family: "Verdana, Geneva, Tahoma, sans-serif", sans-serif;
   font-size: 5vw;
   line-height: 1.5;
-  list-style: none;
 }
 @media screen and (min-width: 650px) {
   .project-updates__list {
@@ -672,7 +696,9 @@ sub {
 }
 @media screen and (min-width: 650px) {
   .project-updates__list {
-    height: 20vw;
+    z-index: 2;
+    height: 17vw;
+    background-color: #b8b8b8;
     overflow-y: auto;
   }
 }
@@ -688,6 +714,9 @@ sub {
   -webkit-transition: left 0.6s ease, background-color 0.4s linear, text-shadow 0.4s linear, right 1s;
   transition: left 0.6s ease, background-color 0.4s linear, text-shadow 0.4s linear, right 1s;
 }
+.project-updates__item:last-child {
+  margin-bottom: 0;
+}
 .project-updates__item::before {
   content: "💾";
 }
@@ -697,8 +726,8 @@ sub {
 }
 @media screen and (min-width: 650px) {
   .project-updates__item {
-    width: 13vw;
-    height: 13vw;
+    width: 14vw;
+    height: 14vw;
     padding-left: 1vw;
     overflow-y: auto;
   }
@@ -707,10 +736,10 @@ sub {
   .project-updates {
     position: fixed;
     top: 0;
-    right: -10%;
+    right: -12vw;
   }
   .project-updates:hover {
-    right: .1%;
+    right: 0;
   }
 }
 

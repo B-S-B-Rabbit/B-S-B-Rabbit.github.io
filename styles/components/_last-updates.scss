@@ -1,29 +1,57 @@
 .project-updates__list-wrapper {
     display: flex;
     justify-content: center;
+
+    @media screen and (min-width: 650px) {
+        opacity: 0;
+        transition: opacity 1s ease;
+    
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
+
 
 .project-updates {
     &__head {
         color: rgb(0, 0, 0);
         font-family: Versus, sans-serif;
         text-align: center;
+
+        @media screen and (min-width: 650px) {
+            position: absolute;
+            display: inline-block;
+            height: 17vw;
+            font-size: 1.25vw;
+            text-align: center;
+            text-orientation: upright;
+            writing-mode: vertical-rl;
+        }
+
+
     }
 
     &__list {
-        padding: 0;
-
-        @include main-text("", 5vw, "Verdana, Geneva, Tahoma, sans-serif", 1.5, "", 1.4vw);
+        @include padding-margin(0,0);
 
         list-style: none;
 
+        @include main-text("", 5vw, "Verdana, Geneva, Tahoma, sans-serif", 1.5, "", 1.4vw);
+
         @media screen and (min-width: 650px) {
-            height: 20vw;
+            z-index: 2;
+            height: 17vw;
+            background-color: $bg-calc-color;
             overflow-y: auto;
         }
     }
 
     &__item {
+        &:last-child {
+            margin-bottom: 0;
+        }
+
         position: relative;
         left: -9999px;
         padding-right: 1vw;
@@ -44,8 +72,8 @@
         }
 
         @media screen and (min-width: 650px) {
-            width: 13vw;
-            height: 13vw;
+            width: 14vw;
+            height: 14vw;
             padding-left: 1vw;
             overflow-y: auto;
         }
@@ -54,10 +82,10 @@
     @media screen and (min-width: 650px) {
         position: fixed;
         top: 0;
-        right: -10%;
+        right: -12vw;
     
         &:hover {
-            right: .1%;
+            right: 0;
         }
     }
     
