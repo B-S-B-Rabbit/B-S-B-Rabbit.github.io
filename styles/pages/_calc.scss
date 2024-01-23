@@ -9,18 +9,18 @@
     &__head {
         max-width: 100%;
         margin-top: 0;
-        color: rgb(255, 208, 0);
+        color: rgba(233, 201, 56, 0.788);
         font-family: DiplomatiaTwo, sans-serif;
         font-size: 7vw;
         text-align: center;
         -webkit-text-stroke: .03em rgb(0, 0, 0);
 
         &::before {
-            position: absolute; /* в том же месте той же ширины */
+            position: absolute;
             right: 0;
             left: 0;
             content: attr(data-text);
-            -webkit-text-stroke: .02em gold
+            -webkit-text-stroke: .02em rgba(221, 198, 64, 0.863)
         }
 
         @media screen and (min-width: 650px) {
@@ -29,32 +29,32 @@
     }
 }
 
-.head-animation {
-    animation: cl 15s linear infinite ;
-  }
+// .head-animation {
+//     animation: cl 15s linear infinite ;
+//   }
   
-  @keyframes cl{
-    0%{
-      color: rgb(255, 208, 0);
-    }
+//   @keyframes cl{
+//     0%{
+//       color: rgb(255, 208, 0);
+//     }
     
-    19% {
-        color: rgb(0, 0, 0);
-    }
+//     19% {
+//         color: rgb(0, 0, 0);
+//     }
 
-    40% {
-        color: rgb(0, 45, 245);
-    }
+//     40% {
+//         color: rgb(0, 45, 245);
+//     }
 
-    60% {
-        color: rgb(0, 68, 255);
-    }
+//     60% {
+//         color: rgb(0, 68, 255);
+//     }
 
-    83% {
-        color: rgb(0, 119, 255);
-    }
+//     83% {
+//         color: rgb(0, 119, 255);
+//     }
 
-    100% {
-        color: rgb(255, 208, 0);
-    }
-  }
+//     100% {
+//         color: rgb(255, 208, 0);
+//     }
+//   }

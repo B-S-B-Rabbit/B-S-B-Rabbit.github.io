@@ -7,26 +7,26 @@
     height: 100%;
     min-height: 100%;
     flex-direction: column;
-    background-color: rgba($color: #cccbcb, $alpha: 1);
+    background-color: rgba($color: #b8b8b8, $alpha: 1);
     color: #000; 
     font-family: Georgia, serif;
 }
 
-.page_back_animation {
-    animation: bg 15s linear infinite ;
-    background: linear-gradient(to right, #242323 0%,#424242 19%,#868686 40%,#b4b4b4 60%,#d4d4d4 83%,#242323 100%); 
-    background-size: $bg-width 100%;
-  }
+// .page_back_animation {
+//     animation: bg 15s linear infinite ;
+//     background: linear-gradient(to right, #242323 0%,#424242 19%,#868686 40%,#b4b4b4 60%,#d4d4d4 83%,#242323 100%); 
+//     background-size: $bg-width 100%;
+//   }
   
-  @keyframes bg{
-    0%{
-      background-position-x: 0;
-    }
+  // @keyframes bg{
+  //   0%{
+  //     background-position-x: 0;
+  //   }
     
-    100%{
-      background-position-x: $bg-width;
-    }
-  }
+  //   100%{
+  //     background-position-x: $bg-width;
+  //   }
+  // }
 
   .page__wide-screen
   {

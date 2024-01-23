@@ -652,6 +652,7 @@ sub {
 }
 
 .project-updates__head {
+  color: black;
   font-family: Versus, sans-serif;
   text-align: center;
 }
@@ -714,18 +715,18 @@ sub {
 }
 
 .animated-text {
-  -webkit-animation: textAnimation 1s ease-in-out;
-          animation: textAnimation 1s ease-in-out;
+  -webkit-animation: ta 1s ease-in-out;
+          animation: ta 1s ease-in-out;
 }
 
-@-webkit-keyframes textAnimation {
+@-webkit-keyframes ta {
   0% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
 }
 
-@keyframes textAnimation {
+@keyframes ta {
   0% {
     -webkit-transform: translateX(0);
             transform: translateX(0);
@@ -745,36 +746,11 @@ sub {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #cccbcb;
+  background-color: #b8b8b8;
   color: #000;
   font-family: Georgia, serif;
 }
 
-.page_back_animation {
-  -webkit-animation: bg 15s linear infinite;
-          animation: bg 15s linear infinite;
-  background: -webkit-gradient(linear, left top, right top, from(#242323), color-stop(19%, #424242), color-stop(40%, #868686), color-stop(60%, #b4b4b4), color-stop(83%, #d4d4d4), to(#242323));
-  background: linear-gradient(to right, #242323 0%, #424242 19%, #868686 40%, #b4b4b4 60%, #d4d4d4 83%, #242323 100%);
-  background-size: 10000px 100%;
-}
-
-@-webkit-keyframes bg {
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 10000px;
-  }
-}
-
-@keyframes bg {
-  0% {
-    background-position-x: 0;
-  }
-  100% {
-    background-position-x: 10000px;
-  }
-}
 .page__wide-screen {
   position: relative;
   display: -webkit-box;
@@ -1354,7 +1330,7 @@ sub {
 .calc-wrapper__head {
   max-width: 100%;
   margin-top: 0;
-  color: #ffd000;
+  color: rgba(233, 201, 56, 0.788);
   font-family: DiplomatiaTwo, sans-serif;
   font-size: 7vw;
   text-align: center;
@@ -1362,11 +1338,10 @@ sub {
 }
 .calc-wrapper__head::before {
   position: absolute;
-  /* в том же месте той же ширины */
   right: 0;
   left: 0;
   content: attr(data-text);
-  -webkit-text-stroke: 0.02em gold;
+  -webkit-text-stroke: 0.02em rgba(221, 198, 64, 0.863);
 }
 @media screen and (min-width: 650px) {
   .calc-wrapper__head {
@@ -1374,52 +1349,6 @@ sub {
   }
 }
 
-.head-animation {
-  -webkit-animation: cl 15s linear infinite;
-          animation: cl 15s linear infinite;
-}
-
-@-webkit-keyframes cl {
-  0% {
-    color: #ffd000;
-  }
-  19% {
-    color: black;
-  }
-  40% {
-    color: #002df5;
-  }
-  60% {
-    color: #0044ff;
-  }
-  83% {
-    color: #0077ff;
-  }
-  100% {
-    color: #ffd000;
-  }
-}
-
-@keyframes cl {
-  0% {
-    color: #ffd000;
-  }
-  19% {
-    color: black;
-  }
-  40% {
-    color: #002df5;
-  }
-  60% {
-    color: #0044ff;
-  }
-  83% {
-    color: #0077ff;
-  }
-  100% {
-    color: #ffd000;
-  }
-}
 .main-block {
   max-width: 100%;
 }

@@ -5,6 +5,7 @@
 
 .project-updates {
     &__head {
+        color: rgb(0, 0, 0);
         font-family: Versus, sans-serif;
         text-align: center;
     }
@@ -63,10 +64,10 @@
 }
 
 .animated-text {
-    animation: textAnimation 1s ease-in-out;
+    animation: ta 1s ease-in-out;
 }
 
-@keyframes textAnimation {
+@keyframes ta {
     0% {
         transform: translateX(0);
     }
