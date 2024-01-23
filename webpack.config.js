@@ -4,9 +4,9 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    index: [`${path.resolve(__dirname, 'scripts', 'calculator', 'app.js')}?2`],
-    using: [`${path.resolve(__dirname, 'scripts', 'using', 'app.js')}?2`],
-    about: [`${path.resolve(__dirname, 'scripts', 'about', 'app.js')}?2`],
+    index: [`${path.resolve(__dirname, 'scripts', 'calculator', 'app.js')}?3`],
+    using: [`${path.resolve(__dirname, 'scripts', 'using', 'app.js')}?3`],
+    about: [`${path.resolve(__dirname, 'scripts', 'about', 'app.js')}?3`],
   },
   plugins: [
     new HtmlWebpackPlugin({
